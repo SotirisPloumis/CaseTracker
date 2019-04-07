@@ -1,0 +1,42 @@
+﻿@model CaseTracker.Models.CaseParties
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CaseParties</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Case.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Case.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaseRole.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaseRole.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Party.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Party.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

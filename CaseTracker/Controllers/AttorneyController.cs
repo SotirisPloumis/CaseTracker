@@ -11,116 +11,112 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class CasesController : Controller
+    public class AttorneyController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
 
-        // GET: Cases
+		public AttorneyController()
+		{
+			db = new ApplicationDbContext();
+		}
+
+        // GET: Attorneys
         public ActionResult Index()
         {
-            var cases = db.Cases.Include(c => c.Attorney).Include(c => c.Court);
-            return View(cases.ToList());
+            return View(db.Attorneys.ToList());
         }
 
-        // GET: Cases/Details/5
+        // GET: Attorneys/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Case @case = db.Cases.Find(id);
-            if (@case == null)
+            Attorney attorney = db.Attorneys.Find(id);
+            if (attorney == null)
             {
                 return HttpNotFound();
             }
-            return View(@case);
+            return View(attorney);
         }
 
-        // GET: Cases/Create
+        // GET: Attorneys/Create
         public ActionResult Create()
         {
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName");
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name");
             return View();
         }
 
-        // POST: Cases/Create
+        // POST: Attorneys/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Aa,Type,CourtId,AttorneyId,DateOfAssignment,DateOfSubmission,DateOfEnd")] Case @case)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,AFM,City")] Attorney attorney)
         {
             if (ModelState.IsValid)
             {
-                db.Cases.Add(@case);
+                db.Attorneys.Add(attorney);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            return View(@case);
+            return View(attorney);
         }
 
-        // GET: Cases/Edit/5
+        // GET: Attorneys/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Case @case = db.Cases.Find(id);
-            if (@case == null)
+            Attorney attorney = db.Attorneys.Find(id);
+            if (attorney == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            return View(@case);
+            return View(attorney);
         }
 
-        // POST: Cases/Edit/5
+        // POST: Attorneys/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Aa,Type,CourtId,AttorneyId,DateOfAssignment,DateOfSubmission,DateOfEnd")] Case @case)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,AFM,City")] Attorney attorney)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(@case).State = EntityState.Modified;
+                db.Entry(attorney).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            return View(@case);
+            return View(attorney);
         }
 
-        // GET: Cases/Delete/5
+        // GET: Attorneys/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Case @case = db.Cases.Find(id);
-            if (@case == null)
+            Attorney attorney = db.Attorneys.Find(id);
+            if (attorney == null)
             {
                 return HttpNotFound();
             }
-            return View(@case);
+            return View(attorney);
         }
 
-        // POST: Cases/Delete/5
+        // POST: Attorneys/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Case @case = db.Cases.Find(id);
-            db.Cases.Remove(@case);
+            Attorney attorney = db.Attorneys.Find(id);
+            db.Attorneys.Remove(attorney);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

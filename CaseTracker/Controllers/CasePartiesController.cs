@@ -11,116 +11,120 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class CasesController : Controller
+    public class CasePartiesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Cases
+        // GET: CaseParties
         public ActionResult Index()
         {
-            var cases = db.Cases.Include(c => c.Attorney).Include(c => c.Court);
-            return View(cases.ToList());
+            var caseParties = db.CaseParties.Include(c => c.Case).Include(c => c.CaseRole).Include(c => c.Party);
+            return View(caseParties.ToList());
         }
 
-        // GET: Cases/Details/5
+        // GET: CaseParties/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Case @case = db.Cases.Find(id);
-            if (@case == null)
+            CaseParties caseParties = db.CaseParties.Find(id);
+            if (caseParties == null)
             {
                 return HttpNotFound();
             }
-            return View(@case);
+            return View(caseParties);
         }
 
-        // GET: Cases/Create
+        // GET: CaseParties/Create
         public ActionResult Create()
         {
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName");
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name");
+            ViewBag.CaseId = new SelectList(db.Cases, "Id", "Type");
+            ViewBag.RoleId = new SelectList(db.CaseRoles, "Id", "Title");
+            ViewBag.PartyId = new SelectList(db.Parties, "Id", "FirstName");
             return View();
         }
 
-        // POST: Cases/Create
+        // POST: CaseParties/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Aa,Type,CourtId,AttorneyId,DateOfAssignment,DateOfSubmission,DateOfEnd")] Case @case)
+        public ActionResult Create([Bind(Include = "CaseId,PartyId,RoleId")] CaseParties caseParties)
         {
             if (ModelState.IsValid)
             {
-                db.Cases.Add(@case);
+                db.CaseParties.Add(caseParties);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            return View(@case);
+            ViewBag.CaseId = new SelectList(db.Cases, "Id", "Type", caseParties.CaseId);
+            ViewBag.RoleId = new SelectList(db.CaseRoles, "Id", "Title", caseParties.RoleId);
+            ViewBag.PartyId = new SelectList(db.Parties, "Id", "FirstName", caseParties.PartyId);
+            return View(caseParties);
         }
 
-        // GET: Cases/Edit/5
+        // GET: CaseParties/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Case @case = db.Cases.Find(id);
-            if (@case == null)
+            CaseParties caseParties = db.CaseParties.Find(id);
+            if (caseParties == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            return View(@case);
+            ViewBag.CaseId = new SelectList(db.Cases, "Id", "Type", caseParties.CaseId);
+            ViewBag.RoleId = new SelectList(db.CaseRoles, "Id", "Title", caseParties.RoleId);
+            ViewBag.PartyId = new SelectList(db.Parties, "Id", "FirstName", caseParties.PartyId);
+            return View(caseParties);
         }
 
-        // POST: Cases/Edit/5
+        // POST: CaseParties/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Aa,Type,CourtId,AttorneyId,DateOfAssignment,DateOfSubmission,DateOfEnd")] Case @case)
+        public ActionResult Edit([Bind(Include = "CaseId,PartyId,RoleId")] CaseParties caseParties)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(@case).State = EntityState.Modified;
+                db.Entry(caseParties).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            return View(@case);
+            ViewBag.CaseId = new SelectList(db.Cases, "Id", "Type", caseParties.CaseId);
+            ViewBag.RoleId = new SelectList(db.CaseRoles, "Id", "Title", caseParties.RoleId);
+            ViewBag.PartyId = new SelectList(db.Parties, "Id", "FirstName", caseParties.PartyId);
+            return View(caseParties);
         }
 
-        // GET: Cases/Delete/5
+        // GET: CaseParties/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Case @case = db.Cases.Find(id);
-            if (@case == null)
+            CaseParties caseParties = db.CaseParties.Find(id);
+            if (caseParties == null)
             {
                 return HttpNotFound();
             }
-            return View(@case);
+            return View(caseParties);
         }
 
-        // POST: Cases/Delete/5
+        // POST: CaseParties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Case @case = db.Cases.Find(id);
-            db.Cases.Remove(@case);
+            CaseParties caseParties = db.CaseParties.Find(id);
+            db.CaseParties.Remove(caseParties);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
