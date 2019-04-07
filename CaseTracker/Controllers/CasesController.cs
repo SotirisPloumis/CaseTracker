@@ -18,7 +18,7 @@ namespace CaseTracker.Controllers
         // GET: Cases
         public ActionResult Index()
         {
-            var cases = db.Cases.Include(@ => @.Attorney).Include(@ => @.Court);
+            var cases = db.Cases.Include(c => c.Attorney).Include(c => c.Court);
             return View(cases.ToList());
         }
 
