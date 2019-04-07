@@ -189,12 +189,16 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CaseController.cs" />
+    <Compile Include="Controllers\CasesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Migrations\201904050859194_initialTest.cs" />
     <Compile Include="Migrations\201904050859194_initialTest.Designer.cs">
       <DependentUpon>201904050859194_initialTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904071640308_AddCaseFields.cs" />
+    <Compile Include="Migrations\201904071640308_AddCaseFields.Designer.cs">
+      <DependentUpon>201904071640308_AddCaseFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -264,11 +268,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Case\Create.cshtml" />
-    <Content Include="Views\Case\Delete.cshtml" />
-    <Content Include="Views\Case\Details.cshtml" />
-    <Content Include="Views\Case\Edit.cshtml" />
-    <Content Include="Views\Case\Index.cshtml" />
+    <Content Include="Views\Cases\Create.cshtml" />
+    <Content Include="Views\Cases\Delete.cshtml" />
+    <Content Include="Views\Cases\Details.cshtml" />
+    <Content Include="Views\Cases\Edit.cshtml" />
+    <Content Include="Views\Cases\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,6 +293,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904050859194_initialTest.resx">
       <DependentUpon>201904050859194_initialTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904071640308_AddCaseFields.resx">
+      <DependentUpon>201904071640308_AddCaseFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
