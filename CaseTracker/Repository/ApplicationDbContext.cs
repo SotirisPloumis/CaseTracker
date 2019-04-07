@@ -7,6 +7,8 @@ namespace CaseTracker.Repository
 	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 		public DbSet<Case> Cases { get; set; }
+		public DbSet<Attorney> Attorneys { get; set; }
+		public DbSet<Court> Courts { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
