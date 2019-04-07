@@ -5,14 +5,10 @@ using System.Web;
 
 namespace CaseTracker.Models
 {
-	public class Case
+	public class CaseRole
 	{
 		public int Id { get; set; }
 
-		public int Aa { get; set; }
-
-		public string Type { get; set; }
-
-		public int CourtId
+		public string Title { get; set; }
 	}
 }

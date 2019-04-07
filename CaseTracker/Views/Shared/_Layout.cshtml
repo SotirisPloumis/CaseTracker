@@ -20,13 +20,24 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-					<li>@Html.ActionLink("Attorneys","Index","Attorney")</li>
-					<li>@Html.ActionLink("Courts","Index","Court")</li>
-                </ul>
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Home", "Index", "Home")</li>
+					<li>@Html.ActionLink("About", "About", "Home")</li>
+					<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+					<li>
+						<div class="dropdown show">
+							<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Entities
+							</a>
+
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" href="@Url.Action("Index","Attorney")">Attorneys</a>
+								<a class="dropdown-item" href="@Url.Action("Index","Court")">Courts</a>
+								<a class="dropdown-item" href="@Url.Action("Index","CaseRoles")">Case Roles</a>
+							</div>
+						</div>
+					</li>
+				</ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

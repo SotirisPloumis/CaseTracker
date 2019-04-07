@@ -190,9 +190,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttorneyController.cs" />
+    <Compile Include="Controllers\CasePartiesController.cs" />
+    <Compile Include="Controllers\CaseRolesController.cs" />
     <Compile Include="Controllers\CourtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Migrations\201904050859194_initialTest.cs" />
     <Compile Include="Migrations\201904050859194_initialTest.Designer.cs">
       <DependentUpon>201904050859194_initialTest.cs</DependentUpon>
@@ -205,6 +208,18 @@
     <Compile Include="Migrations\201904071850138_court.Designer.cs">
       <DependentUpon>201904071850138_court.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904071857373_caseroles.cs" />
+    <Compile Include="Migrations\201904071857373_caseroles.Designer.cs">
+      <DependentUpon>201904071857373_caseroles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904071916029_parties.cs" />
+    <Compile Include="Migrations\201904071916029_parties.Designer.cs">
+      <DependentUpon>201904071916029_parties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904071943439_caseparties.cs" />
+    <Compile Include="Migrations\201904071943439_caseparties.Designer.cs">
+      <DependentUpon>201904071943439_caseparties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -213,7 +228,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CaseParties.cs" />
     <Compile Include="Models\Court.cs" />
+    <Compile Include="Models\CaseRole.cs" />
+    <Compile Include="Models\Party.cs" />
     <Compile Include="Repository\ApplicationDbContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -285,6 +303,21 @@
     <Content Include="Views\Court\Details.cshtml" />
     <Content Include="Views\Court\Edit.cshtml" />
     <Content Include="Views\Court\Index.cshtml" />
+    <Content Include="Views\CaseRoles\Create.cshtml" />
+    <Content Include="Views\CaseRoles\Delete.cshtml" />
+    <Content Include="Views\CaseRoles\Details.cshtml" />
+    <Content Include="Views\CaseRoles\Edit.cshtml" />
+    <Content Include="Views\CaseRoles\Index.cshtml" />
+    <Content Include="Views\Parties\Create.cshtml" />
+    <Content Include="Views\Parties\Delete.cshtml" />
+    <Content Include="Views\Parties\Details.cshtml" />
+    <Content Include="Views\Parties\Edit.cshtml" />
+    <Content Include="Views\Parties\Index.cshtml" />
+    <Content Include="Views\CaseParties\Create.cshtml" />
+    <Content Include="Views\CaseParties\Delete.cshtml" />
+    <Content Include="Views\CaseParties\Details.cshtml" />
+    <Content Include="Views\CaseParties\Edit.cshtml" />
+    <Content Include="Views\CaseParties\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,6 +344,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904071850138_court.resx">
       <DependentUpon>201904071850138_court.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904071857373_caseroles.resx">
+      <DependentUpon>201904071857373_caseroles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904071916029_parties.resx">
+      <DependentUpon>201904071916029_parties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904071943439_caseparties.resx">
+      <DependentUpon>201904071943439_caseparties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
