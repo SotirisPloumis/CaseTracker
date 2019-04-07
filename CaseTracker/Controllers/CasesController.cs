@@ -18,8 +18,7 @@ namespace CaseTracker.Controllers
         // GET: Cases
         public ActionResult Index()
         {
-            var cases = db.Cases.Include(c => c.Attorney).Include(c => c.Court);
-            return View(cases.ToList());
+            return View(db.Cases.ToList());
         }
 
         // GET: Cases/Details/5
@@ -40,8 +39,6 @@ namespace CaseTracker.Controllers
         // GET: Cases/Create
         public ActionResult Create()
         {
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName");
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name");
             return View();
         }
 
@@ -50,7 +47,7 @@ namespace CaseTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Aa,Type,CourtId,AttorneyId,DateOfAssignment,DateOfSubmission,DateOfEnd")] Case @case)
+        public ActionResult Create([Bind(Include = "Id,Aa,Type,DateOfSubmission,DateOfEnd,DateOfAssigmnent,Attorney,Court")] Case @case)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +56,6 @@ namespace CaseTracker.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
             return View(@case);
         }
 
@@ -76,8 +71,6 @@ namespace CaseTracker.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
             return View(@case);
         }
 
@@ -86,7 +79,7 @@ namespace CaseTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Aa,Type,CourtId,AttorneyId,DateOfAssignment,DateOfSubmission,DateOfEnd")] Case @case)
+        public ActionResult Edit([Bind(Include = "Id,Aa,Type,DateOfSubmission,DateOfEnd,DateOfAssigmnent,Attorney,Court")] Case @case)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +87,6 @@ namespace CaseTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
             return View(@case);
         }
 
