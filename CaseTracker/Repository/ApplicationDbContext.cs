@@ -22,5 +22,7 @@ namespace CaseTracker.Repository
         {
             return new ApplicationDbContext();
         }
-    }
+
+		public System.Data.Entity.DbSet<CaseTracker.Models.DocumentType> DocumentTypes { get; set; }
+	}
 }

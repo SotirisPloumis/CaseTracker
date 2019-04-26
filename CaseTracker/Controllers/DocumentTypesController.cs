@@ -11,112 +11,107 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class PartiesController : Controller
+    public class DocumentTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Parties
+        // GET: DocumentTypes
         public ActionResult Index()
         {
-            var parties = db.Parties.Include(p => p.CaseRole);
-            return View(parties.ToList());
+            return View(db.DocumentTypes.ToList());
         }
 
-        // GET: Parties/Details/5
+        // GET: DocumentTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Party party = db.Parties.Find(id);
-            if (party == null)
+            DocumentType documentType = db.DocumentTypes.Find(id);
+            if (documentType == null)
             {
                 return HttpNotFound();
             }
-            return View(party);
+            return View(documentType);
         }
 
-        // GET: Parties/Create
+        // GET: DocumentTypes/Create
         public ActionResult Create()
         {
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title");
             return View();
         }
 
-        // POST: Parties/Create
+        // POST: DocumentTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
+        public ActionResult Create([Bind(Include = "Id,Description")] DocumentType documentType)
         {
             if (ModelState.IsValid)
             {
-                db.Parties.Add(party);
+                db.DocumentTypes.Add(documentType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
-            return View(party);
+            return View(documentType);
         }
 
-        // GET: Parties/Edit/5
+        // GET: DocumentTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Party party = db.Parties.Find(id);
-            if (party == null)
+            DocumentType documentType = db.DocumentTypes.Find(id);
+            if (documentType == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
-            return View(party);
+            return View(documentType);
         }
 
-        // POST: Parties/Edit/5
+        // POST: DocumentTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
+        public ActionResult Edit([Bind(Include = "Id,Description")] DocumentType documentType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(party).State = EntityState.Modified;
+                db.Entry(documentType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
-            return View(party);
+            return View(documentType);
         }
 
-        // GET: Parties/Delete/5
+        // GET: DocumentTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Party party = db.Parties.Find(id);
-            if (party == null)
+            DocumentType documentType = db.DocumentTypes.Find(id);
+            if (documentType == null)
             {
                 return HttpNotFound();
             }
-            return View(party);
+            return View(documentType);
         }
 
-        // POST: Parties/Delete/5
+        // POST: DocumentTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Party party = db.Parties.Find(id);
-            db.Parties.Remove(party);
+            DocumentType documentType = db.DocumentTypes.Find(id);
+            db.DocumentTypes.Remove(documentType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

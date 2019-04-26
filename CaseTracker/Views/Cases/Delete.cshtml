@@ -10,64 +10,96 @@
 <div>
     <h4>Case</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Attorney.FirstName)
-        </dt>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Aa)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Attorney.FirstName)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Aa)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Court.Name)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Attorney.FirstName)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Court.Name)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Attorney.FirstName)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Aa)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Court.Name)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Aa)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Court.Name)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.DocumentType.Description)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.DocumentType.Description)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfAssignment)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.DateOfAssignment)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateOfAssignment)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.DateOfAssignment)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfSubmission)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.DateOfSubmission)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateOfSubmission)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.DateOfSubmission)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfEnd)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.DateOfEnd)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateOfEnd)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.DateOfEnd)
+		</dd>
 
-    </dl>
+		<dt>
+			@Html.DisplayNameFor(model => model.Notes)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Notes)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Prosecution.FullName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Prosecution.FullName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Defense.FullName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Defense.FullName)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Recipient.FullName)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Recipient.FullName)
+		</dd>
+
+	</dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

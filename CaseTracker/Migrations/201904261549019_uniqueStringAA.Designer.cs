@@ -7,13 +7,13 @@ namespace CaseTracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class caseroles : IMigrationMetadata
+    public sealed partial class uniqueStringAA : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(caseroles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(uniqueStringAA));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904071857373_caseroles"; }
+            get { return "201904261549019_uniqueStringAA"; }
         }
         
         string IMigrationMetadata.Source
