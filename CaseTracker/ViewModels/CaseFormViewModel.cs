@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using System.ComponentModel;
-using System.Web.Mvc;
+using CaseTracker.Models;
 
-namespace CaseTracker.Models
+namespace CaseTracker.ViewModels
 {
-	public class Case
+	public class CaseFormViewModel
 	{
 		public int Id { get; set; }
 
-		//public string CreatedBy { get; set; }
-
-		[StringLength(450)]
-		[Index(IsUnique = true)]
-		[Remote("UniqueAA","Cases",ErrorMessage = "Duplicate AA")]
-		public string Aa { get; set; }
+		public int Aa { get; set; }
 
 		[ForeignKey("DocumentType")]
 		[DisplayName("Document type")]
@@ -51,23 +46,5 @@ namespace CaseTracker.Models
 		public DateTime DateOfEnd { get; set; }
 
 		public string Notes { get; set; }
-
-		[ForeignKey("Prosecution")]
-		[DisplayName("Prosecution")]
-		public int? ProsecutionId { get; set; }
-
-		public virtual Party Prosecution { get; set; }
-
-		[ForeignKey("Defense")]
-		[DisplayName("Defense")]
-		public int? DefenseId { get; set; }
-
-		public virtual Party Defense { get; set; }
-
-		[ForeignKey("Recipient")]
-		[DisplayName("Recipient")]
-		public int? RecipientId { get; set; }
-
-		public virtual Party Recipient { get; set; }
 	}
 }

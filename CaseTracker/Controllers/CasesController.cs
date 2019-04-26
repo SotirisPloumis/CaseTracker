@@ -18,7 +18,13 @@ namespace CaseTracker.Controllers
         // GET: Cases
         public ActionResult Index()
         {
-            var cases = db.Cases.Include(c => c.Attorney).Include(c => c.Court);
+            var cases = db.Cases
+						.Include(c => c.Attorney)
+						.Include(c => c.Court)
+						.Include(c => c.DocumentType)
+						.Include(c => c.Prosecution)
+						.Include(c => c.Defense)
+						.Include(c => c.Recipient);
             return View(cases.ToList());
         }
 
@@ -30,6 +36,8 @@ namespace CaseTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Case @case = db.Cases.Find(id);
+			
+
             if (@case == null)
             {
                 return HttpNotFound();
@@ -40,8 +48,17 @@ namespace CaseTracker.Controllers
         // GET: Cases/Create
         public ActionResult Create()
         {
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName");
+            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FullName");
             ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name");
+            ViewBag.DocumentTypeId = new SelectList(db.DocumentTypes, "Id", "Description");
+
+			var Prosecutors = db.Parties.Where(c => c.CaseRole.Title == "Prosecution");
+			var Defenders = db.Parties.Where(c => c.CaseRole.Title == "Defense");
+			var Recipients = db.Parties.Where(c => c.CaseRole.Title == "Recipient");
+
+			ViewBag.ProsecutionId = new SelectList(Prosecutors, "Id", "Fullname");
+			ViewBag.DefenseId = new SelectList(Defenders, "Id", "Fullname");
+			ViewBag.RecipientId = new SelectList(Recipients, "Id", "Fullname");
             return View();
         }
 
@@ -50,9 +67,12 @@ namespace CaseTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Aa,Type,CourtId,AttorneyId,DateOfAssignment,DateOfSubmission,DateOfEnd")] Case @case)
+        public ActionResult Create([Bind(Include = "Id,Aa,DocumentTypeId,CourtId,AttorneyId" +
+			                                       ",DateOfAssignment,DateOfSubmission,DateOfEnd" +
+												   ",Notes,ProsecutionId,DefenseId,RecipientId")] Case @case)
         {
-            if (ModelState.IsValid)
+			
+            if (!db.Cases.Any(x => x.Aa == @case.Aa) && ModelState.IsValid)
             {
                 db.Cases.Add(@case);
                 db.SaveChanges();
@@ -61,7 +81,14 @@ namespace CaseTracker.Controllers
 
             ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
             ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            return View(@case);
+            ViewBag.DocumentTypeId = new SelectList(db.DocumentTypes, "Id", "Description", @case.DocumentTypeId);
+			var Prosecutors = db.Parties.Where(c => c.CaseRole.Title == "Prosecution");
+			var Defenders = db.Parties.Where(c => c.CaseRole.Title == "Defense");
+			var Recipients = db.Parties.Where(c => c.CaseRole.Title == "Recipient");
+			ViewBag.ProsecutionId = new SelectList(Prosecutors, "Id", "Fullname",@case.ProsecutionId);
+			ViewBag.DefenseId = new SelectList(Defenders, "Id", "Fullname",@case.DefenseId);
+			ViewBag.RecipientId = new SelectList(Recipients, "Id", "Fullname",@case.RecipientId);
+			return View(@case);
         }
 
         // GET: Cases/Edit/5
@@ -78,7 +105,14 @@ namespace CaseTracker.Controllers
             }
             ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
             ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            return View(@case);
+			ViewBag.DocumentTypeId = new SelectList(db.DocumentTypes, "Id", "Description", @case.DocumentTypeId);
+			var Prosecutors = db.Parties.Where(c => c.CaseRole.Title == "Prosecution");
+			var Defenders = db.Parties.Where(c => c.CaseRole.Title == "Defense");
+			var Recipients = db.Parties.Where(c => c.CaseRole.Title == "Recipient");
+			ViewBag.ProsecutionId = new SelectList(Prosecutors, "Id", "Fullname", @case.ProsecutionId);
+			ViewBag.DefenseId = new SelectList(Defenders, "Id", "Fullname", @case.DefenseId);
+			ViewBag.RecipientId = new SelectList(Recipients, "Id", "Fullname", @case.RecipientId);
+			return View(@case);
         }
 
         // POST: Cases/Edit/5
@@ -86,7 +120,9 @@ namespace CaseTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Aa,Type,CourtId,AttorneyId,DateOfAssignment,DateOfSubmission,DateOfEnd")] Case @case)
+        public ActionResult Edit([Bind(Include = "Id,Aa,DocumentTypeId,CourtId,AttorneyId,DateOfAssignment," +
+													"DateOfSubmission,DateOfEnd," +
+													"Notes,ProsecutionId,DefenseId,RecipientId")] Case @case)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +132,14 @@ namespace CaseTracker.Controllers
             }
             ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
             ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            return View(@case);
+            ViewBag.DocumentTypeId = new SelectList(db.DocumentTypes, "Id", "Description", @case.DocumentTypeId);
+			var Prosecutors = db.Parties.Where(c => c.CaseRole.Title == "Prosecution");
+			var Defenders = db.Parties.Where(c => c.CaseRole.Title == "Defense");
+			var Recipients = db.Parties.Where(c => c.CaseRole.Title == "Recipient");
+			ViewBag.ProsecutionId = new SelectList(Prosecutors, "Id", "Fullname", @case.ProsecutionId);
+			ViewBag.DefenseId = new SelectList(Defenders, "Id", "Fullname", @case.DefenseId);
+			ViewBag.RecipientId = new SelectList(Recipients, "Id", "Fullname", @case.RecipientId);
+			return View(@case);
         }
 
         // GET: Cases/Delete/5
@@ -133,5 +176,10 @@ namespace CaseTracker.Controllers
             }
             base.Dispose(disposing);
         }
-    }
+
+		public JsonResult UniqueAA(string aa)
+		{
+			return Json(!db.Cases.Any(x => x.Aa == aa), JsonRequestBehavior.AllowGet);
+		}
+	}
 }

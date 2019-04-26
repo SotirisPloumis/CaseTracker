@@ -18,7 +18,10 @@ namespace CaseTracker.Controllers
         // GET: CaseParties
         public ActionResult Index()
         {
-            var caseParties = db.CaseParties.Include(c => c.Case).Include(c => c.CaseRole).Include(c => c.Party);
+            var caseParties = db.CaseParties
+								.Include(c => c.Case)
+								.Include(c => c.CaseRole)
+								.Include(c => c.Party);
             return View(caseParties.ToList());
         }
 

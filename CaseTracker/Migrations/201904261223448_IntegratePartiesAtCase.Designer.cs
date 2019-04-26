@@ -7,13 +7,13 @@ namespace CaseTracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class attorney : IMigrationMetadata
+    public sealed partial class IntegratePartiesAtCase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(attorney));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(IntegratePartiesAtCase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904071646374_attorney"; }
+            get { return "201904261223448_IntegratePartiesAtCase"; }
         }
         
         string IMigrationMetadata.Source
