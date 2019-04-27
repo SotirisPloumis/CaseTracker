@@ -7,11 +7,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CaseTracker.Models;
+using CaseTracker.Repository;
 
 namespace CaseTracker.ViewModels
 {
 	public class CreateCaseViewModel
 	{
+		private ApplicationDbContext db = new ApplicationDbContext();
+
 		public int Id { get; set; }
 
 		[StringLength(450)]
@@ -71,5 +74,27 @@ namespace CaseTracker.ViewModels
 		[DisplayName("Deed result")]
 		public int? DeedResultId { get; set; }
 		public ICollection<DeedResult> DeedResultList { get; set; }
+
+		[DisplayName("Date of deed")]
+		[DataType(DataType.Date)]
+		//[Required]
+		public DateTime DateOfDeed { get; set; }
+
+		[ForeignKey("Zone")]
+		[DisplayName("Zone")]
+		public int? ZoneId { get; set; }
+		public ICollection<Zone> ZoneList { get; set; }
+
+		public void PrepareLists()
+		{
+			AttorneysList = db.Attorneys.ToList();
+			CourtsList = db.Courts.ToList();
+			DocumentTypesList = db.DocumentTypes.ToList();
+			ProsecutionList = db.Parties.Where(c => c.CaseRole.Title == "Prosecution").ToList();
+			DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList();
+			RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList();
+			DeedResultList = db.DeedResults.ToList();
+			ZoneList = db.Zones.ToList();
+		}
 	}
 }

@@ -198,6 +198,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />
+    <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="Migrations\201904240926351_rebuild.cs" />
     <Compile Include="Migrations\201904240926351_rebuild.Designer.cs">
       <DependentUpon>201904240926351_rebuild.cs</DependentUpon>
@@ -230,6 +231,14 @@
     <Compile Include="Migrations\201904270140409_deedresultAtCase.Designer.cs">
       <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904271038036_zones.cs" />
+    <Compile Include="Migrations\201904271038036_zones.Designer.cs">
+      <DependentUpon>201904271038036_zones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904271041003_decimalAmountsAtZone.cs" />
+    <Compile Include="Migrations\201904271041003_decimalAmountsAtZone.Designer.cs">
+      <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -238,12 +247,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CaseParties.cs" />
     <Compile Include="Models\Court.cs" />
     <Compile Include="Models\CaseRole.cs" />
     <Compile Include="Models\DeedResult.cs" />
     <Compile Include="Models\DocumentType.cs" />
     <Compile Include="Models\Party.cs" />
+    <Compile Include="Models\Zone.cs" />
     <Compile Include="Repository\ApplicationDbContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -347,6 +356,11 @@
     <Content Include="Views\DeedResults\Details.cshtml" />
     <Content Include="Views\DeedResults\Edit.cshtml" />
     <Content Include="Views\DeedResults\Index.cshtml" />
+    <Content Include="Views\Zones\Create.cshtml" />
+    <Content Include="Views\Zones\Delete.cshtml" />
+    <Content Include="Views\Zones\Details.cshtml" />
+    <Content Include="Views\Zones\Edit.cshtml" />
+    <Content Include="Views\Zones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -388,6 +402,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904270140409_deedresultAtCase.resx">
       <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271038036_zones.resx">
+      <DependentUpon>201904271038036_zones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271041003_decimalAmountsAtZone.resx">
+      <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
