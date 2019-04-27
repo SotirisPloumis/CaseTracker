@@ -1,75 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using System.ComponentModel;
 using System.Web.Mvc;
+using CaseTracker.Models;
 
-namespace CaseTracker.Models
+namespace CaseTracker.ViewModels
 {
-	public class Case
+	public class CreateCaseViewModel
 	{
 		public int Id { get; set; }
 
-		//public string CreatedBy { get; set; }
-
 		[StringLength(450)]
 		[Index(IsUnique = true)]
-		[Remote("UniqueAA", "Cases", ErrorMessage = "Duplicate AA")]
+		[Remote("UniqueAACreate", "Cases", ErrorMessage = "Duplicate AA")]
+		[Required]
 		public string Aa { get; set; }
 
-		[ForeignKey("DocumentType")]
 		[DisplayName("Document type")]
+		[Required]
 		public int DocumentTypeId { get; set; }
+		public ICollection<DocumentType> DocumentTypesList { get; set; }
 
-		public virtual DocumentType DocumentType { get; set; }
-
-		[ForeignKey("Court")]
 		[DisplayName("Court")]
+		[Required]
 		public int CourtId { get; set; }
+		public ICollection<Court> CourtsList { get; set; }
 
-		public virtual Court Court { get; set; }
-
-		[ForeignKey("Attorney")]
 		[DisplayName("Attorney")]
+		[Required]
 		public int AttorneyId { get; set; }
-
-		public virtual Attorney Attorney { get; set; }
+		public ICollection<Attorney> AttorneysList { get; set; }
 
 		[DisplayName("Date of assignment")]
 		[DataType(DataType.Date)]
+		[Required]
 		public DateTime DateOfAssignment { get; set; }
 
 		[DisplayName("Date of submission")]
 		[DataType(DataType.Date)]
+		[Required]
 		public DateTime DateOfSubmission { get; set; }
 
 		[DisplayName("Date of return")]
 		[DataType(DataType.Date)]
+		[Required]
 		public DateTime DateOfEnd { get; set; }
 
 		public string Notes { get; set; }
 
-		[ForeignKey("Prosecution")]
 		[DisplayName("Prosecution")]
+		[Required]
 		public int? ProsecutionId { get; set; }
+		public ICollection<Party> ProsecutionList { get; set; }
 
-		public virtual Party Prosecution { get; set; }
-
-		[ForeignKey("Defense")]
 		[DisplayName("Defense")]
+		[Required]
 		public int? DefenseId { get; set; }
+		public ICollection<Party> DefenseList { get; set; }
 
-		public virtual Party Defense { get; set; }
-
-		[ForeignKey("Recipient")]
 		[DisplayName("Recipient")]
+		[Required]
 		public int? RecipientId { get; set; }
-
-		public virtual Party Recipient { get; set; }
-
-
+		public ICollection<Party> RecipientList { get; set; }
 	}
 }
