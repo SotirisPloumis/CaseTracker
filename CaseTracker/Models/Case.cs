@@ -11,7 +11,7 @@ namespace CaseTracker.Models
 	{
 		public int Id { get; set; }
 
-		public int Aa { get; set; }
+		public string Aa { get; set; }
 
 		public string Type { get; set; }
 
