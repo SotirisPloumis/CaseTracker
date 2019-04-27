@@ -7,7 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CaseTracker.Models;
+using CaseTracker.ViewModels;
 using CaseTracker.Repository;
+using System.Diagnostics;
 
 namespace CaseTracker.Controllers
 {
@@ -15,7 +17,6 @@ namespace CaseTracker.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Cases
         public ActionResult Index()
         {
             var cases = db.Cases
@@ -28,7 +29,6 @@ namespace CaseTracker.Controllers
             return View(cases.ToList());
         }
 
-        // GET: Cases/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -45,105 +45,133 @@ namespace CaseTracker.Controllers
             return View(@case);
         }
 
-        // GET: Cases/Create
         public ActionResult Create()
         {
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FullName");
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name");
-            ViewBag.DocumentTypeId = new SelectList(db.DocumentTypes, "Id", "Description");
+			CreateCaseViewModel vm = new CreateCaseViewModel() {
+				AttorneysList = db.Attorneys.ToList(),
+				CourtsList = db.Courts.ToList(),
+				DocumentTypesList = db.DocumentTypes.ToList(),
+				ProsecutionList = db.Parties.Where(c => c.CaseRole.Title == "Prosecution").ToList(),
+				DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList(),
+				RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList(),
+				
+			};
 
-			var Prosecutors = db.Parties.Where(c => c.CaseRole.Title == "Prosecution");
-			var Defenders = db.Parties.Where(c => c.CaseRole.Title == "Defense");
-			var Recipients = db.Parties.Where(c => c.CaseRole.Title == "Recipient");
-
-			ViewBag.ProsecutionId = new SelectList(Prosecutors, "Id", "Fullname");
-			ViewBag.DefenseId = new SelectList(Defenders, "Id", "Fullname");
-			ViewBag.RecipientId = new SelectList(Recipients, "Id", "Fullname");
-            return View();
+            return View(vm);
         }
 
-        // POST: Cases/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Aa,DocumentTypeId,CourtId,AttorneyId" +
-			                                       ",DateOfAssignment,DateOfSubmission,DateOfEnd" +
-												   ",Notes,ProsecutionId,DefenseId,RecipientId")] Case @case)
-        {
-			
-            if (!db.Cases.Any(x => x.Aa == @case.Aa) && ModelState.IsValid)
-            {
-                db.Cases.Add(@case);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Create(CreateCaseViewModel vm)
+		{
 
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            ViewBag.DocumentTypeId = new SelectList(db.DocumentTypes, "Id", "Description", @case.DocumentTypeId);
-			var Prosecutors = db.Parties.Where(c => c.CaseRole.Title == "Prosecution");
-			var Defenders = db.Parties.Where(c => c.CaseRole.Title == "Defense");
-			var Recipients = db.Parties.Where(c => c.CaseRole.Title == "Recipient");
-			ViewBag.ProsecutionId = new SelectList(Prosecutors, "Id", "Fullname",@case.ProsecutionId);
-			ViewBag.DefenseId = new SelectList(Defenders, "Id", "Fullname",@case.DefenseId);
-			ViewBag.RecipientId = new SelectList(Recipients, "Id", "Fullname",@case.RecipientId);
-			return View(@case);
-        }
+			if (db.Cases.Any(x => x.Aa == vm.Aa) || !ModelState.IsValid)
+			{
+				vm.AttorneysList = db.Attorneys.ToList();
+				vm.CourtsList = db.Courts.ToList();
+				vm.DocumentTypesList = db.DocumentTypes.ToList();
+				vm.ProsecutionList = db.Parties.Where(c => c.CaseRole.Title == "Prosecution").ToList();
+				vm.DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList();
+				vm.RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList();
+				return View(vm);
+			}
 
-        // GET: Cases/Edit/5
-        public ActionResult Edit(int? id)
+			Case newCase = new Case()
+			{
+				Aa = vm.Aa,
+				DocumentTypeId = vm.DocumentTypeId,
+				CourtId = vm.CourtId,
+				AttorneyId = vm.AttorneyId,
+				DateOfAssignment = vm.DateOfAssignment,
+				DateOfSubmission = vm.DateOfAssignment,
+				DateOfEnd = vm.DateOfEnd,
+				Notes = vm.Notes,
+				ProsecutionId = vm.ProsecutionId,
+				DefenseId = vm.DefenseId,
+				RecipientId = vm.RecipientId
+			};
+
+			db.Cases.Add(newCase);
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult Edit(int? id)
         {
             if (id == null)
             {
+				Debug.Print("error");
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Case @case = db.Cases.Find(id);
-            if (@case == null)
+            Case caseToChange = db.Cases.Find(id);
+            if (caseToChange == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-			ViewBag.DocumentTypeId = new SelectList(db.DocumentTypes, "Id", "Description", @case.DocumentTypeId);
-			var Prosecutors = db.Parties.Where(c => c.CaseRole.Title == "Prosecution");
-			var Defenders = db.Parties.Where(c => c.CaseRole.Title == "Defense");
-			var Recipients = db.Parties.Where(c => c.CaseRole.Title == "Recipient");
-			ViewBag.ProsecutionId = new SelectList(Prosecutors, "Id", "Fullname", @case.ProsecutionId);
-			ViewBag.DefenseId = new SelectList(Defenders, "Id", "Fullname", @case.DefenseId);
-			ViewBag.RecipientId = new SelectList(Recipients, "Id", "Fullname", @case.RecipientId);
-			return View(@case);
+			EditCaseViewModel oldCase = new EditCaseViewModel()
+			{
+				Aa = caseToChange.Aa,
+				DocumentTypeId = caseToChange.DocumentTypeId,
+				CourtId = caseToChange.CourtId,
+				AttorneyId = caseToChange.AttorneyId,
+				DateOfAssignment = caseToChange.DateOfAssignment,
+				DateOfSubmission = caseToChange.DateOfAssignment,
+				DateOfEnd = caseToChange.DateOfEnd,
+				Notes = caseToChange.Notes,
+				ProsecutionId = caseToChange.ProsecutionId,
+				DefenseId = caseToChange.DefenseId,
+				RecipientId = caseToChange.RecipientId,
+
+				AttorneysList = db.Attorneys.ToList(),
+				CourtsList = db.Courts.ToList(),
+				DocumentTypesList = db.DocumentTypes.ToList(),
+
+				ProsecutionList = db.Parties.Where(c => c.CaseRole.Title == "Prosecution").ToList(),
+				DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList(),
+				RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList()
+		};
+
+			return View(oldCase);
         }
 
-        // POST: Cases/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Aa,DocumentTypeId,CourtId,AttorneyId,DateOfAssignment," +
-													"DateOfSubmission,DateOfEnd," +
-													"Notes,ProsecutionId,DefenseId,RecipientId")] Case @case)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(@case).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.AttorneyId = new SelectList(db.Attorneys, "Id", "FirstName", @case.AttorneyId);
-            ViewBag.CourtId = new SelectList(db.Courts, "Id", "Name", @case.CourtId);
-            ViewBag.DocumentTypeId = new SelectList(db.DocumentTypes, "Id", "Description", @case.DocumentTypeId);
-			var Prosecutors = db.Parties.Where(c => c.CaseRole.Title == "Prosecution");
-			var Defenders = db.Parties.Where(c => c.CaseRole.Title == "Defense");
-			var Recipients = db.Parties.Where(c => c.CaseRole.Title == "Recipient");
-			ViewBag.ProsecutionId = new SelectList(Prosecutors, "Id", "Fullname", @case.ProsecutionId);
-			ViewBag.DefenseId = new SelectList(Defenders, "Id", "Fullname", @case.DefenseId);
-			ViewBag.RecipientId = new SelectList(Recipients, "Id", "Fullname", @case.RecipientId);
-			return View(@case);
-        }
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Edit(EditCaseViewModel vm)
+		{
+			Case c = db.Cases.Find(vm.Id);
 
-        // GET: Cases/Delete/5
-        public ActionResult Delete(int? id)
+			bool badAa = db.Cases.Any(x => x.Aa == vm.Aa && x.Id != vm.Id);
+
+			if (!ModelState.IsValid || c == null || badAa)
+			{
+				vm.AttorneysList = db.Attorneys.ToList();
+				vm.CourtsList = db.Courts.ToList();
+				vm.DocumentTypesList = db.DocumentTypes.ToList();
+				vm.ProsecutionList = db.Parties.Where(cs => cs.CaseRole.Title == "Prosecution").ToList();
+				vm.DefenseList = db.Parties.Where(cs => cs.CaseRole.Title == "Defense").ToList();
+				vm.RecipientList = db.Parties.Where(cs => cs.CaseRole.Title == "Recipient").ToList();
+
+				return View(vm);
+			}
+
+			c.Aa = vm.Aa;
+			c.DocumentTypeId = vm.DocumentTypeId;
+			c.CourtId = vm.CourtId;
+			c.AttorneyId = vm.AttorneyId;
+			c.DateOfAssignment = vm.DateOfAssignment;
+			c.DateOfSubmission = vm.DateOfSubmission;
+			c.DateOfEnd = vm.DateOfEnd;
+			c.Notes = vm.Notes;
+			c.ProsecutionId = vm.ProsecutionId;
+			c.DefenseId = vm.DefenseId;
+			c.RecipientId = vm.RecipientId;
+
+			db.SaveChanges();
+			return RedirectToAction("Index");
+
+		}
+
+		public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -177,9 +205,17 @@ namespace CaseTracker.Controllers
             base.Dispose(disposing);
         }
 
-		public JsonResult UniqueAA(string aa)
+		public JsonResult UniqueAACreate(string aa)
 		{
+			Debug.Print(aa);
 			return Json(!db.Cases.Any(x => x.Aa == aa), JsonRequestBehavior.AllowGet);
+		}
+
+		public JsonResult UniqueAAEdit(string aa, int Id)
+		{
+			Debug.Print(aa);
+			Debug.Print(Id.ToString());
+			return Json(!db.Cases.Any(x => x.Aa == aa && x.Id != Id), JsonRequestBehavior.AllowGet);
 		}
 	}
 }

@@ -190,7 +190,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttorneyController.cs" />
-    <Compile Include="Controllers\CasePartiesController.cs" />
     <Compile Include="Controllers\CaseRolesController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
     <Compile Include="Controllers\CourtController.cs" />
@@ -214,6 +213,14 @@
     <Compile Include="Migrations\201904261549019_uniqueStringAA.Designer.cs">
       <DependentUpon>201904261549019_uniqueStringAA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904262233044_moveKeyToAa.cs" />
+    <Compile Include="Migrations\201904262233044_moveKeyToAa.Designer.cs">
+      <DependentUpon>201904262233044_moveKeyToAa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904270005577_bringBackId.cs" />
+    <Compile Include="Migrations\201904270005577_bringBackId.Designer.cs">
+      <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -231,7 +238,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\CaseFormViewModel.cs" />
+    <Compile Include="ViewModels\EditCaseViewModel.cs" />
+    <Compile Include="ViewModels\CreateCaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -353,6 +361,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904261549019_uniqueStringAA.resx">
       <DependentUpon>201904261549019_uniqueStringAA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904262233044_moveKeyToAa.resx">
+      <DependentUpon>201904262233044_moveKeyToAa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904270005577_bringBackId.resx">
+      <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

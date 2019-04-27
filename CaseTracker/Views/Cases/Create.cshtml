@@ -1,4 +1,4 @@
-﻿@model CaseTracker.Models.Case
+﻿@model CaseTracker.ViewModels.CreateCaseViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -26,23 +26,23 @@
 	<div class="form-group">
 		@Html.LabelFor(model => model.DocumentTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
-			@Html.DropDownList("DocumentTypeId", null, htmlAttributes: new { @class = "form-control" })
-			@Html.ValidationMessageFor(model => model.DocumentType, "", new { @class = "text-danger" })
+			@Html.DropDownListFor(model => model.DocumentTypeId, new SelectList(Model.DocumentTypesList, "Id", "Description"), "", new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.DocumentTypeId, "", new { @class = "text-danger" })
 		</div>
 	</div>
 
 	<div class="form-group">
-		@Html.LabelFor(model => model.CourtId, "CourtId", htmlAttributes: new { @class = "control-label col-md-2" })
+		@Html.LabelFor(model => model.CourtId, htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
-			@Html.DropDownList("CourtId", null, htmlAttributes: new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.CourtId, new SelectList(Model.CourtsList, "Id", "Name"), "", new { @class = "form-control" })
 			@Html.ValidationMessageFor(model => model.CourtId, "", new { @class = "text-danger" })
 		</div>
 	</div>
 
 	<div class="form-group">
-		@Html.LabelFor(model => model.AttorneyId, "AttorneyId", htmlAttributes: new { @class = "control-label col-md-2" })
+		@Html.LabelFor(model => model.AttorneyId, htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
-			@Html.DropDownList("AttorneyId", null, htmlAttributes: new { @class = "form-control" })
+			@Html.DropDownListFor(model => model.AttorneyId, new SelectList(Model.AttorneysList, "Id", "FullName"), "", new { @class = "form-control" })
 			@Html.ValidationMessageFor(model => model.AttorneyId, "", new { @class = "text-danger" })
 		</div>
 	</div>
@@ -80,25 +80,25 @@
 	</div>
 
 	<div class="form-group">
-		@Html.LabelFor(model => model.ProsecutionId, "ProsecutionId", htmlAttributes: new { @class = "control-label col-md-2" })
+		@Html.LabelFor(model => model.ProsecutionId, htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
-			@Html.DropDownList("ProsecutionId", null, htmlAttributes: new { @class = "form-control" })
+			@Html.DropDownListFor(m => m.ProsecutionId, new SelectList(Model.ProsecutionList,"Id","FullName"),"", htmlAttributes: new { @class = "form-control" })
 			@Html.ValidationMessageFor(model => model.ProsecutionId, "", new { @class = "text-danger" })
 		</div>
 	</div>
 
 	<div class="form-group">
-		@Html.LabelFor(model => model.DefenseId, "DefenseId", htmlAttributes: new { @class = "control-label col-md-2" })
+		@Html.LabelFor(model => model.DefenseId, htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
-			@Html.DropDownList("DefenseId", null, htmlAttributes: new { @class = "form-control" })
+			@Html.DropDownListFor(m => m.DefenseId, new SelectList(Model.DefenseList, "Id", "FullName"), "", htmlAttributes: new { @class = "form-control" })
 			@Html.ValidationMessageFor(model => model.DefenseId, "", new { @class = "text-danger" })
 		</div>
 	</div>
 
 	<div class="form-group">
-		@Html.LabelFor(model => model.RecipientId, "RecipientId", htmlAttributes: new { @class = "control-label col-md-2" })
+		@Html.LabelFor(model => model.RecipientId, htmlAttributes: new { @class = "control-label col-md-2" })
 		<div class="col-md-10">
-			@Html.DropDownList("RecipientId", null, htmlAttributes: new { @class = "form-control" })
+			@Html.DropDownListFor(m => m.RecipientId, new SelectList(Model.RecipientList, "Id", "FullName"), "", htmlAttributes: new { @class = "form-control" })
 			@Html.ValidationMessageFor(model => model.RecipientId, "", new { @class = "text-danger" })
 		</div>
 	</div>
