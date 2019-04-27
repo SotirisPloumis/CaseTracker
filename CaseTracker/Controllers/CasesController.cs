@@ -66,23 +66,8 @@ namespace CaseTracker.Controllers
 				return View(vm);
 			}
 
-			Case newCase = new Case()
-			{
-				Aa = vm.Aa,
-				DocumentTypeId = vm.DocumentTypeId,
-				CourtId = vm.CourtId,
-				AttorneyId = vm.AttorneyId,
-				DateOfAssignment = vm.DateOfAssignment,
-				DateOfSubmission = vm.DateOfAssignment,
-				DateOfEnd = vm.DateOfEnd,
-				Notes = vm.Notes,
-				ProsecutionId = vm.ProsecutionId,
-				DefenseId = vm.DefenseId,
-				RecipientId = vm.RecipientId,
-				DeedResultId = vm.DeedResultId,
-				DateOfDeed = vm.DateOfDeed,
-				ZoneId = vm.ZoneId
-			};
+			Case newCase = new Case();
+			newCase.Update(vm);
 
 			db.Cases.Add(newCase);
 			db.SaveChanges();
@@ -101,23 +86,9 @@ namespace CaseTracker.Controllers
             {
                 return HttpNotFound();
             }
-			EditCaseViewModel oldCase = new EditCaseViewModel()
-			{
-				Aa = caseToChange.Aa,
-				DocumentTypeId = caseToChange.DocumentTypeId,
-				CourtId = caseToChange.CourtId,
-				AttorneyId = caseToChange.AttorneyId,
-				DateOfAssignment = caseToChange.DateOfAssignment,
-				DateOfSubmission = caseToChange.DateOfAssignment,
-				DateOfEnd = caseToChange.DateOfEnd,
-				Notes = caseToChange.Notes,
-				ProsecutionId = caseToChange.ProsecutionId,
-				DefenseId = caseToChange.DefenseId,
-				RecipientId = caseToChange.RecipientId,
-				DeedResultId = caseToChange.DeedResultId,
-				DateOfDeed = caseToChange.DateOfDeed,
-				ZoneId = caseToChange.ZoneId
-			};
+			EditCaseViewModel oldCase = new EditCaseViewModel();
+
+			oldCase.Update(caseToChange);
 			oldCase.PrepareLists();
 
 			return View(oldCase);
@@ -138,20 +109,7 @@ namespace CaseTracker.Controllers
 				return View(vm);
 			}
 
-			c.Aa = vm.Aa;
-			c.DocumentTypeId = vm.DocumentTypeId;
-			c.CourtId = vm.CourtId;
-			c.AttorneyId = vm.AttorneyId;
-			c.DateOfAssignment = vm.DateOfAssignment;
-			c.DateOfSubmission = vm.DateOfSubmission;
-			c.DateOfEnd = vm.DateOfEnd;
-			c.Notes = vm.Notes;
-			c.ProsecutionId = vm.ProsecutionId;
-			c.DefenseId = vm.DefenseId;
-			c.RecipientId = vm.RecipientId;
-			c.DeedResultId = vm.DeedResultId;
-			c.DateOfDeed = vm.DateOfDeed;
-			c.ZoneId = vm.ZoneId;
+			c.Update(vm);
 
 			db.SaveChanges();
 			return RedirectToAction("Index");

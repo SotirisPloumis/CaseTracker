@@ -257,6 +257,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CaseViewModel.cs" />
     <Compile Include="ViewModels\EditCaseViewModel.cs" />
     <Compile Include="ViewModels\CreateCaseViewModel.cs" />
   </ItemGroup>
