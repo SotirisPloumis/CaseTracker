@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.Web.Mvc;
+using CaseTracker.ViewModels;
 
 namespace CaseTracker.Models
 {
@@ -85,6 +86,24 @@ namespace CaseTracker.Models
 		public int? ZoneId { get; set; }
 
 		public virtual Zone Zone { get; set; }
+
+		public void Update(CaseViewModel vm)
+		{
+			Aa = vm.Aa;
+			DocumentTypeId = vm.DocumentTypeId;
+			CourtId = vm.CourtId;
+			AttorneyId = vm.AttorneyId;
+			DateOfAssignment = vm.DateOfAssignment;
+			DateOfSubmission = vm.DateOfAssignment;
+			DateOfEnd = vm.DateOfEnd;
+			Notes = vm.Notes;
+			ProsecutionId = vm.ProsecutionId;
+			DefenseId = vm.DefenseId;
+			RecipientId = vm.RecipientId;
+			DeedResultId = vm.DeedResultId;
+			DateOfDeed = vm.DateOfDeed;
+			ZoneId = vm.ZoneId;
+		}
 		
 	}
 }
