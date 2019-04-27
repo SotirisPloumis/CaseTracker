@@ -45,9 +45,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -180,6 +177,9 @@
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -189,28 +189,76 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AttorneyController.cs" />
+    <Compile Include="Controllers\CaseRolesController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
+    <Compile Include="Controllers\CourtController.cs" />
+    <Compile Include="Controllers\DeedResultsController.cs" />
+    <Compile Include="Controllers\DocumentTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201904050859194_initialTest.cs" />
-    <Compile Include="Migrations\201904050859194_initialTest.Designer.cs">
-      <DependentUpon>201904050859194_initialTest.cs</DependentUpon>
+    <Compile Include="Controllers\PartiesController.cs" />
+    <Compile Include="Controllers\ZonesController.cs" />
+    <Compile Include="Migrations\201904240926351_rebuild.cs" />
+    <Compile Include="Migrations\201904240926351_rebuild.Designer.cs">
+      <DependentUpon>201904240926351_rebuild.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904071640308_AddCaseFields.cs" />
-    <Compile Include="Migrations\201904071640308_AddCaseFields.Designer.cs">
-      <DependentUpon>201904071640308_AddCaseFields.cs</DependentUpon>
+    <Compile Include="Migrations\201904261223448_IntegratePartiesAtCase.cs" />
+    <Compile Include="Migrations\201904261223448_IntegratePartiesAtCase.Designer.cs">
+      <DependentUpon>201904261223448_IntegratePartiesAtCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904261252065_caseRoleAtParty.cs" />
+    <Compile Include="Migrations\201904261252065_caseRoleAtParty.Designer.cs">
+      <DependentUpon>201904261252065_caseRoleAtParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904261549019_uniqueStringAA.cs" />
+    <Compile Include="Migrations\201904261549019_uniqueStringAA.Designer.cs">
+      <DependentUpon>201904261549019_uniqueStringAA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904262233044_moveKeyToAa.cs" />
+    <Compile Include="Migrations\201904262233044_moveKeyToAa.Designer.cs">
+      <DependentUpon>201904262233044_moveKeyToAa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904270005577_bringBackId.cs" />
+    <Compile Include="Migrations\201904270005577_bringBackId.Designer.cs">
+      <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904270124347_DeedResult.cs" />
+    <Compile Include="Migrations\201904270124347_DeedResult.Designer.cs">
+      <DependentUpon>201904270124347_DeedResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904270140409_deedresultAtCase.cs" />
+    <Compile Include="Migrations\201904270140409_deedresultAtCase.Designer.cs">
+      <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904271038036_zones.cs" />
+    <Compile Include="Migrations\201904271038036_zones.Designer.cs">
+      <DependentUpon>201904271038036_zones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904271041003_decimalAmountsAtZone.cs" />
+    <Compile Include="Migrations\201904271041003_decimalAmountsAtZone.Designer.cs">
+      <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Attorney.cs" />
     <Compile Include="Models\Case.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Court.cs" />
+    <Compile Include="Models\CaseRole.cs" />
+    <Compile Include="Models\DeedResult.cs" />
+    <Compile Include="Models\DocumentType.cs" />
+    <Compile Include="Models\Party.cs" />
+    <Compile Include="Models\Zone.cs" />
     <Compile Include="Repository\ApplicationDbContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\EditCaseViewModel.cs" />
+    <Compile Include="ViewModels\CreateCaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -268,11 +316,51 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Attorney\Create.cshtml" />
+    <Content Include="Views\Attorney\Delete.cshtml" />
+    <Content Include="Views\Attorney\Details.cshtml" />
+    <Content Include="Views\Attorney\Edit.cshtml" />
+    <Content Include="Views\Attorney\Index.cshtml" />
+    <Content Include="Views\Court\Create.cshtml" />
+    <Content Include="Views\Court\Delete.cshtml" />
+    <Content Include="Views\Court\Details.cshtml" />
+    <Content Include="Views\Court\Edit.cshtml" />
+    <Content Include="Views\Court\Index.cshtml" />
+    <Content Include="Views\CaseRoles\Create.cshtml" />
+    <Content Include="Views\CaseRoles\Delete.cshtml" />
+    <Content Include="Views\CaseRoles\Details.cshtml" />
+    <Content Include="Views\CaseRoles\Edit.cshtml" />
+    <Content Include="Views\CaseRoles\Index.cshtml" />
+    <Content Include="Views\CaseParties\Create.cshtml" />
+    <Content Include="Views\CaseParties\Delete.cshtml" />
+    <Content Include="Views\CaseParties\Details.cshtml" />
+    <Content Include="Views\CaseParties\Edit.cshtml" />
+    <Content Include="Views\CaseParties\Index.cshtml" />
     <Content Include="Views\Cases\Create.cshtml" />
     <Content Include="Views\Cases\Delete.cshtml" />
     <Content Include="Views\Cases\Details.cshtml" />
     <Content Include="Views\Cases\Edit.cshtml" />
     <Content Include="Views\Cases\Index.cshtml" />
+    <Content Include="Views\DocumentTypes\Create.cshtml" />
+    <Content Include="Views\DocumentTypes\Delete.cshtml" />
+    <Content Include="Views\DocumentTypes\Details.cshtml" />
+    <Content Include="Views\DocumentTypes\Edit.cshtml" />
+    <Content Include="Views\DocumentTypes\Index.cshtml" />
+    <Content Include="Views\Parties\Create.cshtml" />
+    <Content Include="Views\Parties\Delete.cshtml" />
+    <Content Include="Views\Parties\Details.cshtml" />
+    <Content Include="Views\Parties\Edit.cshtml" />
+    <Content Include="Views\Parties\Index.cshtml" />
+    <Content Include="Views\DeedResults\Create.cshtml" />
+    <Content Include="Views\DeedResults\Delete.cshtml" />
+    <Content Include="Views\DeedResults\Details.cshtml" />
+    <Content Include="Views\DeedResults\Edit.cshtml" />
+    <Content Include="Views\DeedResults\Index.cshtml" />
+    <Content Include="Views\Zones\Create.cshtml" />
+    <Content Include="Views\Zones\Delete.cshtml" />
+    <Content Include="Views\Zones\Details.cshtml" />
+    <Content Include="Views\Zones\Edit.cshtml" />
+    <Content Include="Views\Zones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -291,11 +379,35 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904050859194_initialTest.resx">
-      <DependentUpon>201904050859194_initialTest.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904240926351_rebuild.resx">
+      <DependentUpon>201904240926351_rebuild.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904071640308_AddCaseFields.resx">
-      <DependentUpon>201904071640308_AddCaseFields.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904261223448_IntegratePartiesAtCase.resx">
+      <DependentUpon>201904261223448_IntegratePartiesAtCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904261252065_caseRoleAtParty.resx">
+      <DependentUpon>201904261252065_caseRoleAtParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904261549019_uniqueStringAA.resx">
+      <DependentUpon>201904261549019_uniqueStringAA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904262233044_moveKeyToAa.resx">
+      <DependentUpon>201904262233044_moveKeyToAa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904270005577_bringBackId.resx">
+      <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904270124347_DeedResult.resx">
+      <DependentUpon>201904270124347_DeedResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904270140409_deedresultAtCase.resx">
+      <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271038036_zones.resx">
+      <DependentUpon>201904271038036_zones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271041003_decimalAmountsAtZone.resx">
+      <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

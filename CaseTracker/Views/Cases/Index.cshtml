@@ -47,6 +47,12 @@
 		<th>
 			@Html.DisplayNameFor(model => model.DeedResultId)
 		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DateOfDeed)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ZoneId)
+		</th>
 	</tr>
 
 @foreach (var item in Model) {
@@ -86,6 +92,12 @@
 		</td>
 		<td>
 			@Html.DisplayFor(modelItem => item.DeedResult.Result)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DateOfDeed)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Zone.Name)
 		</td>
 		<td>
 			@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

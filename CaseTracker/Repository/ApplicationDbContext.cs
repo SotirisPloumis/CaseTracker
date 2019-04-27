@@ -11,8 +11,9 @@ namespace CaseTracker.Repository
 		public DbSet<Court> Courts { get; set; }
 		public DbSet<CaseRole> CaseRoles { get; set; }
 		public DbSet<Party> Parties { get; set; }
+		public DbSet<DocumentType> DocumentTypes { get; set; }
 		public DbSet<DeedResult> DeedResults { get; set; }
-		//public DbSet<CaseParties> CaseParties { get; set; }
+		public DbSet<Zone> Zones { get; set; }
 
 		public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -24,6 +25,6 @@ namespace CaseTracker.Repository
             return new ApplicationDbContext();
         }
 
-		public System.Data.Entity.DbSet<CaseTracker.Models.DocumentType> DocumentTypes { get; set; }
+		
 	}
 }

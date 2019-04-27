@@ -75,5 +75,16 @@ namespace CaseTracker.Models
 		public int? DeedResultId { get; set; }
 
 		public virtual DeedResult DeedResult { get; set; }
+
+		[DisplayName("Date of deed")]
+		[DataType(DataType.Date)]
+		public DateTime DateOfDeed { get; set; }
+
+		[ForeignKey("Zone")]
+		[DisplayName("Zone")]
+		public int? ZoneId { get; set; }
+
+		public virtual Zone Zone { get; set; }
+		
 	}
 }
