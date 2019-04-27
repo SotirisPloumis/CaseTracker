@@ -70,6 +70,10 @@ namespace CaseTracker.Models
 
 		public virtual Party Recipient { get; set; }
 
+		[ForeignKey("DeedResult")]
+		[DisplayName("Deed result")]
+		public int? DeedResultId { get; set; }
 
+		public virtual DeedResult DeedResult { get; set; }
 	}
 }

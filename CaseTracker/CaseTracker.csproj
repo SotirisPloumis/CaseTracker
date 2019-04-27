@@ -193,6 +193,7 @@
     <Compile Include="Controllers\CaseRolesController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
     <Compile Include="Controllers\CourtController.cs" />
+    <Compile Include="Controllers\DeedResultsController.cs" />
     <Compile Include="Controllers\DocumentTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -221,6 +222,14 @@
     <Compile Include="Migrations\201904270005577_bringBackId.Designer.cs">
       <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904270124347_DeedResult.cs" />
+    <Compile Include="Migrations\201904270124347_DeedResult.Designer.cs">
+      <DependentUpon>201904270124347_DeedResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904270140409_deedresultAtCase.cs" />
+    <Compile Include="Migrations\201904270140409_deedresultAtCase.Designer.cs">
+      <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -232,6 +241,7 @@
     <Compile Include="Models\CaseParties.cs" />
     <Compile Include="Models\Court.cs" />
     <Compile Include="Models\CaseRole.cs" />
+    <Compile Include="Models\DeedResult.cs" />
     <Compile Include="Models\DocumentType.cs" />
     <Compile Include="Models\Party.cs" />
     <Compile Include="Repository\ApplicationDbContext.cs" />
@@ -332,6 +342,11 @@
     <Content Include="Views\Parties\Details.cshtml" />
     <Content Include="Views\Parties\Edit.cshtml" />
     <Content Include="Views\Parties\Index.cshtml" />
+    <Content Include="Views\DeedResults\Create.cshtml" />
+    <Content Include="Views\DeedResults\Delete.cshtml" />
+    <Content Include="Views\DeedResults\Details.cshtml" />
+    <Content Include="Views\DeedResults\Edit.cshtml" />
+    <Content Include="Views\DeedResults\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -367,6 +382,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904270005577_bringBackId.resx">
       <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904270124347_DeedResult.resx">
+      <DependentUpon>201904270124347_DeedResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904270140409_deedresultAtCase.resx">
+      <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

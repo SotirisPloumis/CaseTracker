@@ -25,7 +25,8 @@ namespace CaseTracker.Controllers
 						.Include(c => c.DocumentType)
 						.Include(c => c.Prosecution)
 						.Include(c => c.Defense)
-						.Include(c => c.Recipient);
+						.Include(c => c.Recipient)
+						.Include(c => c.DeedResult);
             return View(cases.ToList());
         }
 
@@ -54,7 +55,7 @@ namespace CaseTracker.Controllers
 				ProsecutionList = db.Parties.Where(c => c.CaseRole.Title == "Prosecution").ToList(),
 				DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList(),
 				RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList(),
-				
+				DeedResultList = db.DeedResults.ToList()
 			};
 
             return View(vm);
@@ -73,6 +74,7 @@ namespace CaseTracker.Controllers
 				vm.ProsecutionList = db.Parties.Where(c => c.CaseRole.Title == "Prosecution").ToList();
 				vm.DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList();
 				vm.RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList();
+				vm.DeedResultList = db.DeedResults.ToList();
 				return View(vm);
 			}
 
@@ -88,7 +90,8 @@ namespace CaseTracker.Controllers
 				Notes = vm.Notes,
 				ProsecutionId = vm.ProsecutionId,
 				DefenseId = vm.DefenseId,
-				RecipientId = vm.RecipientId
+				RecipientId = vm.RecipientId,
+				DeedResultId = vm.DeedResultId
 			};
 
 			db.Cases.Add(newCase);
@@ -121,6 +124,7 @@ namespace CaseTracker.Controllers
 				ProsecutionId = caseToChange.ProsecutionId,
 				DefenseId = caseToChange.DefenseId,
 				RecipientId = caseToChange.RecipientId,
+				DeedResultId = caseToChange.DeedResultId,
 
 				AttorneysList = db.Attorneys.ToList(),
 				CourtsList = db.Courts.ToList(),
@@ -128,7 +132,8 @@ namespace CaseTracker.Controllers
 
 				ProsecutionList = db.Parties.Where(c => c.CaseRole.Title == "Prosecution").ToList(),
 				DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList(),
-				RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList()
+				RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList(),
+				DeedResultList = db.DeedResults.ToList()
 		};
 
 			return View(oldCase);
@@ -150,6 +155,7 @@ namespace CaseTracker.Controllers
 				vm.ProsecutionList = db.Parties.Where(cs => cs.CaseRole.Title == "Prosecution").ToList();
 				vm.DefenseList = db.Parties.Where(cs => cs.CaseRole.Title == "Defense").ToList();
 				vm.RecipientList = db.Parties.Where(cs => cs.CaseRole.Title == "Recipient").ToList();
+				vm.DeedResultList = db.DeedResults.ToList();
 
 				return View(vm);
 			}
@@ -165,6 +171,7 @@ namespace CaseTracker.Controllers
 			c.ProsecutionId = vm.ProsecutionId;
 			c.DefenseId = vm.DefenseId;
 			c.RecipientId = vm.RecipientId;
+			c.DeedResultId = vm.DeedResultId;
 
 			db.SaveChanges();
 			return RedirectToAction("Index");

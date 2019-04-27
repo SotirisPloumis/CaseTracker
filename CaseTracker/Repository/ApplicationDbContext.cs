@@ -11,6 +11,7 @@ namespace CaseTracker.Repository
 		public DbSet<Court> Courts { get; set; }
 		public DbSet<CaseRole> CaseRoles { get; set; }
 		public DbSet<Party> Parties { get; set; }
+		public DbSet<DeedResult> DeedResults { get; set; }
 		//public DbSet<CaseParties> CaseParties { get; set; }
 
 		public ApplicationDbContext()

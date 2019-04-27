@@ -37,17 +37,17 @@ namespace CaseTracker.ViewModels
 
 		[DisplayName("Date of assignment")]
 		[DataType(DataType.Date)]
-		[Required]
+		//[Required]
 		public DateTime DateOfAssignment { get; set; }
 
 		[DisplayName("Date of submission")]
 		[DataType(DataType.Date)]
-		[Required]
+		//[Required]
 		public DateTime DateOfSubmission { get; set; }
 
 		[DisplayName("Date of return")]
 		[DataType(DataType.Date)]
-		[Required]
+		//[Required]
 		public DateTime DateOfEnd { get; set; }
 
 		public string Notes { get; set; }
@@ -66,5 +66,10 @@ namespace CaseTracker.ViewModels
 		[Required]
 		public int? RecipientId { get; set; }
 		public ICollection<Party> RecipientList { get; set; }
+
+		[ForeignKey("DeedResult")]
+		[DisplayName("Deed result")]
+		public int? DeedResultId { get; set; }
+		public ICollection<DeedResult> DeedResultList { get; set; }
 	}
 }
