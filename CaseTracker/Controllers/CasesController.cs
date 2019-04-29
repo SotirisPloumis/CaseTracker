@@ -27,11 +27,41 @@ namespace CaseTracker.Controllers
 						.Include(c => c.Defense)
 						.Include(c => c.Recipient)
 						.Include(c => c.DeedResult)
-						.Include(c => c.Zone);
+						.Include(c => c.Zone)
+						.OrderByDescending(c => c.Id);
             return View(cases.ToList());
         }
 
-        public ActionResult Details(int? id)
+		public ActionResult Book()
+		{
+			var cases = db.Cases
+						.Include(c => c.Court)
+						.Include(c => c.DocumentType)
+						.Include(c => c.Prosecution)
+						.Include(c => c.Defense)
+						.Include(c => c.Recipient)
+						.Include(c => c.DeedResult)
+						.OrderByDescending(c => c.Id);
+
+			return View(cases.ToList());
+		}
+
+		public ActionResult Pinakio()
+		{
+			var cases = db.Cases
+						.Include(c => c.Court)
+						.Include(c => c.DocumentType)
+						.Include(c => c.Prosecution)
+						.Include(c => c.Defense)
+						.Include(c => c.Recipient)
+						.Include(c => c.DeedResult)
+						.Include(c => c.Zone)
+						.OrderByDescending(c => c.Id);
+
+			return View(cases.ToList());
+		}
+
+		public ActionResult Details(int? id)
         {
             if (id == null)
             {

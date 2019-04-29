@@ -1,0 +1,80 @@
+﻿@model IEnumerable<CaseTracker.Models.Case>
+
+@{
+    ViewBag.Title = "Πινάκιο";
+}
+
+<h2>Πινάκιο</h2>
+
+<p>
+    @Html.ActionLink("Εισαγωγή νέου", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Aa)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DateOfDeed)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DocumentTypeId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ProsecutionId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DefenseId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.CourtId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.RecipientId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ZoneId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Zone.Cost)
+		</th>
+	</tr>
+
+@foreach (var item in Model) {
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Aa)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DateOfDeed)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DocumentType.Description)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Prosecution.FullName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Defense.FullName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Court.Name)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Recipient.FullName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Zone.Name)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Zone.Cost)
+		</td>
+		<td>
+			@Html.ActionLink("Επεργασία", "Edit", new { id = item.Id }) |
+			@Html.ActionLink("Λεπτομέριες", "Details", new { id = item.Id }) |
+			@Html.ActionLink("Διαγραφή", "Delete", new { id = item.Id })
+		</td>
+	</tr>
+}
+
+</table>
