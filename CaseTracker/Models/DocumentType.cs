@@ -6,11 +6,11 @@ using System.Web;
 
 namespace CaseTracker.Models
 {
-	public class Court
+	public class DocumentType
 	{
 		public int Id { get; set; }
 
-		[DisplayName("Court")]
-		public string Name { get; set; }
+		[DisplayName("Document type")]
+		public string Description { get; set; }
 	}
 }

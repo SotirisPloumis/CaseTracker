@@ -11,112 +11,107 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class PartiesController : Controller
+    public class ZonesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Parties
+        // GET: Zones
         public ActionResult Index()
         {
-            var parties = db.Parties.Include(p => p.CaseRole);
-            return View(parties.ToList());
+            return View(db.Zones.ToList());
         }
 
-        // GET: Parties/Details/5
+        // GET: Zones/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Party party = db.Parties.Find(id);
-            if (party == null)
+            Zone zone = db.Zones.Find(id);
+            if (zone == null)
             {
                 return HttpNotFound();
             }
-            return View(party);
+            return View(zone);
         }
 
-        // GET: Parties/Create
+        // GET: Zones/Create
         public ActionResult Create()
         {
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title");
             return View();
         }
 
-        // POST: Parties/Create
+        // POST: Zones/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
+        public ActionResult Create([Bind(Include = "Id,Name,Cost,Tax")] Zone zone)
         {
             if (ModelState.IsValid)
             {
-                db.Parties.Add(party);
+                db.Zones.Add(zone);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
-            return View(party);
+            return View(zone);
         }
 
-        // GET: Parties/Edit/5
+        // GET: Zones/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Party party = db.Parties.Find(id);
-            if (party == null)
+            Zone zone = db.Zones.Find(id);
+            if (zone == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
-            return View(party);
+            return View(zone);
         }
 
-        // POST: Parties/Edit/5
+        // POST: Zones/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
+        public ActionResult Edit([Bind(Include = "Id,Name,Cost,Tax")] Zone zone)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(party).State = EntityState.Modified;
+                db.Entry(zone).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
-            return View(party);
+            return View(zone);
         }
 
-        // GET: Parties/Delete/5
+        // GET: Zones/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Party party = db.Parties.Find(id);
-            if (party == null)
+            Zone zone = db.Zones.Find(id);
+            if (zone == null)
             {
                 return HttpNotFound();
             }
-            return View(party);
+            return View(zone);
         }
 
-        // POST: Parties/Delete/5
+        // POST: Zones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Party party = db.Parties.Find(id);
-            db.Parties.Remove(party);
+            Zone zone = db.Zones.Find(id);
+            db.Zones.Remove(zone);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
