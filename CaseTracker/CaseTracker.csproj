@@ -199,45 +199,9 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\ZonesController.cs" />
-    <Compile Include="Migrations\201904240926351_rebuild.cs" />
-    <Compile Include="Migrations\201904240926351_rebuild.Designer.cs">
-      <DependentUpon>201904240926351_rebuild.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904261223448_IntegratePartiesAtCase.cs" />
-    <Compile Include="Migrations\201904261223448_IntegratePartiesAtCase.Designer.cs">
-      <DependentUpon>201904261223448_IntegratePartiesAtCase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904261252065_caseRoleAtParty.cs" />
-    <Compile Include="Migrations\201904261252065_caseRoleAtParty.Designer.cs">
-      <DependentUpon>201904261252065_caseRoleAtParty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904261549019_uniqueStringAA.cs" />
-    <Compile Include="Migrations\201904261549019_uniqueStringAA.Designer.cs">
-      <DependentUpon>201904261549019_uniqueStringAA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904262233044_moveKeyToAa.cs" />
-    <Compile Include="Migrations\201904262233044_moveKeyToAa.Designer.cs">
-      <DependentUpon>201904262233044_moveKeyToAa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270005577_bringBackId.cs" />
-    <Compile Include="Migrations\201904270005577_bringBackId.Designer.cs">
-      <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270124347_DeedResult.cs" />
-    <Compile Include="Migrations\201904270124347_DeedResult.Designer.cs">
-      <DependentUpon>201904270124347_DeedResult.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270140409_deedresultAtCase.cs" />
-    <Compile Include="Migrations\201904270140409_deedresultAtCase.Designer.cs">
-      <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904271038036_zones.cs" />
-    <Compile Include="Migrations\201904271038036_zones.Designer.cs">
-      <DependentUpon>201904271038036_zones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904271041003_decimalAmountsAtZone.cs" />
-    <Compile Include="Migrations\201904271041003_decimalAmountsAtZone.Designer.cs">
-      <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
+    <Compile Include="Migrations\201904301927110_Init.cs" />
+    <Compile Include="Migrations\201904301927110_Init.Designer.cs">
+      <DependentUpon>201904301927110_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -380,35 +344,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904240926351_rebuild.resx">
-      <DependentUpon>201904240926351_rebuild.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261223448_IntegratePartiesAtCase.resx">
-      <DependentUpon>201904261223448_IntegratePartiesAtCase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261252065_caseRoleAtParty.resx">
-      <DependentUpon>201904261252065_caseRoleAtParty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261549019_uniqueStringAA.resx">
-      <DependentUpon>201904261549019_uniqueStringAA.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904262233044_moveKeyToAa.resx">
-      <DependentUpon>201904262233044_moveKeyToAa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270005577_bringBackId.resx">
-      <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270124347_DeedResult.resx">
-      <DependentUpon>201904270124347_DeedResult.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270140409_deedresultAtCase.resx">
-      <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904271038036_zones.resx">
-      <DependentUpon>201904271038036_zones.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904271041003_decimalAmountsAtZone.resx">
-      <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904301927110_Init.resx">
+      <DependentUpon>201904301927110_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
