@@ -22,19 +22,19 @@ namespace CaseTracker.Models
 		public string Aa { get; set; }
 
 		[ForeignKey("DocumentType")]
-		[DisplayName("Document type")]
+		[DisplayName("Τύπος")]
 		public int DocumentTypeId { get; set; }
 
 		public virtual DocumentType DocumentType { get; set; }
 
 		[ForeignKey("Court")]
-		[DisplayName("Court")]
+		[DisplayName("Δικαστήριο")]
 		public int CourtId { get; set; }
 
 		public virtual Court Court { get; set; }
 
 		[ForeignKey("Attorney")]
-		[DisplayName("Attorney")]
+		[DisplayName("Δικηγόρος")]
 		public int AttorneyId { get; set; }
 
 		public virtual Attorney Attorney { get; set; }
@@ -51,22 +51,23 @@ namespace CaseTracker.Models
 		[DataType(DataType.Date)]
 		public DateTime DateOfEnd { get; set; }
 
+		[DisplayName("Σημειώσεις")]
 		public string Notes { get; set; }
 
 		[ForeignKey("Prosecution")]
-		[DisplayName("Prosecution")]
+		[DisplayName("Κατήγορος")]
 		public int? ProsecutionId { get; set; }
 
 		public virtual Party Prosecution { get; set; }
 
 		[ForeignKey("Defense")]
-		[DisplayName("Defense")]
+		[DisplayName("Υπεράσπιση")]
 		public int? DefenseId { get; set; }
 
 		public virtual Party Defense { get; set; }
 
 		[ForeignKey("Recipient")]
-		[DisplayName("Recipient")]
+		[DisplayName("Παραλαβών")]
 		public int? RecipientId { get; set; }
 
 		public virtual Party Recipient { get; set; }
@@ -82,7 +83,7 @@ namespace CaseTracker.Models
 		public DateTime DateOfDeed { get; set; }
 
 		[ForeignKey("Zone")]
-		[DisplayName("Zone")]
+		[DisplayName("Ζώνη")]
 		public int? ZoneId { get; set; }
 
 		public virtual Zone Zone { get; set; }

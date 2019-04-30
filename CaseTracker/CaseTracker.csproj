@@ -326,6 +326,8 @@
     <Content Include="Views\Zones\Details.cshtml" />
     <Content Include="Views\Zones\Edit.cshtml" />
     <Content Include="Views\Zones\Index.cshtml" />
+    <Content Include="Views\Cases\Book.cshtml" />
+    <Content Include="Views\Cases\Pinakio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
