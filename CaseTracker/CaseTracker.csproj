@@ -197,33 +197,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />
-    <Compile Include="Migrations\201904050859194_initialTest.cs" />
-    <Compile Include="Migrations\201904050859194_initialTest.Designer.cs">
-      <DependentUpon>201904050859194_initialTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904071646374_attorney.cs" />
-    <Compile Include="Migrations\201904071646374_attorney.Designer.cs">
-      <DependentUpon>201904071646374_attorney.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904071850138_court.cs" />
-    <Compile Include="Migrations\201904071850138_court.Designer.cs">
-      <DependentUpon>201904071850138_court.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904071857373_caseroles.cs" />
-    <Compile Include="Migrations\201904071857373_caseroles.Designer.cs">
-      <DependentUpon>201904071857373_caseroles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904071916029_parties.cs" />
-    <Compile Include="Migrations\201904071916029_parties.Designer.cs">
-      <DependentUpon>201904071916029_parties.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904071943439_caseparties.cs" />
-    <Compile Include="Migrations\201904071943439_caseparties.Designer.cs">
-      <DependentUpon>201904071943439_caseparties.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904072015308_caseExtra.cs" />
-    <Compile Include="Migrations\201904072015308_caseExtra.Designer.cs">
-      <DependentUpon>201904072015308_caseExtra.cs</DependentUpon>
+    <Compile Include="Migrations\201904072044307_BigMerge.cs" />
+    <Compile Include="Migrations\201904072044307_BigMerge.Designer.cs">
+      <DependentUpon>201904072044307_BigMerge.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -346,26 +322,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904050859194_initialTest.resx">
-      <DependentUpon>201904050859194_initialTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904071646374_attorney.resx">
-      <DependentUpon>201904071646374_attorney.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904071850138_court.resx">
-      <DependentUpon>201904071850138_court.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904071857373_caseroles.resx">
-      <DependentUpon>201904071857373_caseroles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904071916029_parties.resx">
-      <DependentUpon>201904071916029_parties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904071943439_caseparties.resx">
-      <DependentUpon>201904071943439_caseparties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904072015308_caseExtra.resx">
-      <DependentUpon>201904072015308_caseExtra.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904072044307_BigMerge.resx">
+      <DependentUpon>201904072044307_BigMerge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
