@@ -47,7 +47,7 @@ namespace CaseTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title")] CaseRole caseRole)
+        public ActionResult Create([Bind(Include = "Id,Title,Type")] CaseRole caseRole)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace CaseTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title")] CaseRole caseRole)
+        public ActionResult Edit([Bind(Include = "Id,Title,Type")] CaseRole caseRole)
         {
             if (ModelState.IsValid)
             {

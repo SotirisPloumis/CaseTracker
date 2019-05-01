@@ -239,6 +239,10 @@
     <Compile Include="Migrations\201904271041003_decimalAmountsAtZone.Designer.cs">
       <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905011458006_caseRoleType.cs" />
+    <Compile Include="Migrations\201905011458006_caseRoleType.Designer.cs">
+      <DependentUpon>201905011458006_caseRoleType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -327,11 +331,6 @@
     <Content Include="Views\Court\Details.cshtml" />
     <Content Include="Views\Court\Edit.cshtml" />
     <Content Include="Views\Court\Index.cshtml" />
-    <Content Include="Views\CaseRoles\Create.cshtml" />
-    <Content Include="Views\CaseRoles\Delete.cshtml" />
-    <Content Include="Views\CaseRoles\Details.cshtml" />
-    <Content Include="Views\CaseRoles\Edit.cshtml" />
-    <Content Include="Views\CaseRoles\Index.cshtml" />
     <Content Include="Views\CaseParties\Create.cshtml" />
     <Content Include="Views\CaseParties\Delete.cshtml" />
     <Content Include="Views\CaseParties\Details.cshtml" />
@@ -364,6 +363,11 @@
     <Content Include="Views\Zones\Index.cshtml" />
     <Content Include="Views\Cases\Book.cshtml" />
     <Content Include="Views\Cases\Pinakio.cshtml" />
+    <Content Include="Views\CaseRoles\Create.cshtml" />
+    <Content Include="Views\CaseRoles\Delete.cshtml" />
+    <Content Include="Views\CaseRoles\Details.cshtml" />
+    <Content Include="Views\CaseRoles\Edit.cshtml" />
+    <Content Include="Views\CaseRoles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -411,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904271041003_decimalAmountsAtZone.resx">
       <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905011458006_caseRoleType.resx">
+      <DependentUpon>201905011458006_caseRoleType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

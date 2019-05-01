@@ -90,9 +90,9 @@ namespace CaseTracker.ViewModels
 			AttorneysList = db.Attorneys.ToList();
 			CourtsList = db.Courts.ToList();
 			DocumentTypesList = db.DocumentTypes.ToList();
-			ProsecutionList = db.Parties.Where(c => c.CaseRole.Title == "Prosecution").ToList();
-			DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList();
-			RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList();
+			ProsecutionList = db.Parties.Where(c => c.CaseRole.Type == RoleType.Accuse).ToList();
+			DefenseList = db.Parties.Where(c => c.CaseRole.Type == RoleType.Defend).ToList();
+			RecipientList = db.Parties.Where(c => c.CaseRole.Type == RoleType.Receive).ToList();
 			DeedResultList = db.DeedResults.ToList();
 			ZoneList = db.Zones.ToList();
 		}
