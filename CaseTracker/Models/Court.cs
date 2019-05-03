@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Web;
+﻿using App_LocalResources;
+using System.ComponentModel.DataAnnotations;
 
 namespace CaseTracker.Models
 {
@@ -10,7 +7,7 @@ namespace CaseTracker.Models
 	{
 		public int Id { get; set; }
 
-		[DisplayName("Court")]
+		[Display(Name = "Court", ResourceType = typeof(GlobalRes))]
 		public string Name { get; set; }
 	}
 }

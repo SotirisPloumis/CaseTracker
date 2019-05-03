@@ -15,7 +15,6 @@ namespace CaseTracker.Models
 		public Party()
 		{
 			db = new ApplicationDbContext();
-			TranslatedRoles = new List<CaseRole>();
 		}
 
 		public ApplicationDbContext db;
