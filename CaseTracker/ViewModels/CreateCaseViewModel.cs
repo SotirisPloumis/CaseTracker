@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using App_LocalResources;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using CaseTracker.Models;
-using CaseTracker.Repository;
 
 namespace CaseTracker.ViewModels
 {
@@ -15,9 +9,9 @@ namespace CaseTracker.ViewModels
 	{
 		[StringLength(450)]
 		[Index(IsUnique = true)]
-		[Remote("UniqueAACreate", "Cases", ErrorMessage = "Duplicate AA")]
-		[Required]
-		[DisplayName("ΑΑ")]
+		[Remote("UniqueAACreate", "Cases", AdditionalFields = "Id", ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "DuplicateAA")]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		[Display(Name = "aa", ResourceType = typeof(GlobalRes))]
 		public override string Aa { get; set; }
 	}
 }

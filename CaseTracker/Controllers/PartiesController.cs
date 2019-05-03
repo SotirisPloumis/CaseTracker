@@ -6,23 +6,22 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using App_LocalResources;
 using CaseTracker.Models;
 using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class PartiesController : Controller
-    {
+    public class PartiesController : BaseController
+	{
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Parties
         public ActionResult Index()
         {
             var parties = db.Parties.Include(p => p.CaseRole);
             return View(parties.ToList());
         }
 
-        // GET: Parties/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,16 +36,13 @@ namespace CaseTracker.Controllers
             return View(party);
         }
 
-        // GET: Parties/Create
         public ActionResult Create()
         {
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title");
-            return View();
+			Party p = new Party();
+			p.TranslateRoles();
+			return View(p);
         }
 
-        // POST: Parties/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
@@ -58,11 +54,10 @@ namespace CaseTracker.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
+			party.TranslateRoles();
             return View(party);
         }
 
-        // GET: Parties/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,13 +69,10 @@ namespace CaseTracker.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
+			party.TranslateRoles();
             return View(party);
         }
 
-        // POST: Parties/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
@@ -91,12 +83,11 @@ namespace CaseTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
-            return View(party);
+			party.TranslateRoles();
+			return View(party);
         }
 
-        // GET: Parties/Delete/5
-        public ActionResult Delete(int? id)
+		public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -110,7 +101,6 @@ namespace CaseTracker.Controllers
             return View(party);
         }
 
-        // POST: Parties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

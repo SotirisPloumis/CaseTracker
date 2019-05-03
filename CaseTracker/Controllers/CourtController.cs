@@ -11,8 +11,8 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class CourtController : Controller
-    {
+    public class CourtController : BaseController
+	{
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Court

@@ -11,8 +11,8 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class AttorneyController : Controller
-    {
+    public class AttorneyController : BaseController
+	{
         private ApplicationDbContext db;
 
 		public AttorneyController()
@@ -20,13 +20,11 @@ namespace CaseTracker.Controllers
 			db = new ApplicationDbContext();
 		}
 
-        // GET: Attorneys
         public ActionResult Index()
         {
             return View(db.Attorneys.ToList());
         }
 
-        // GET: Attorneys/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -47,9 +45,6 @@ namespace CaseTracker.Controllers
             return View();
         }
 
-        // POST: Attorneys/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,AFM,City")] Attorney attorney)
@@ -64,7 +59,6 @@ namespace CaseTracker.Controllers
             return View(attorney);
         }
 
-        // GET: Attorneys/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,9 +73,6 @@ namespace CaseTracker.Controllers
             return View(attorney);
         }
 
-        // POST: Attorneys/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,AFM,City")] Attorney attorney)
@@ -95,7 +86,6 @@ namespace CaseTracker.Controllers
             return View(attorney);
         }
 
-        // GET: Attorneys/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +100,6 @@ namespace CaseTracker.Controllers
             return View(attorney);
         }
 
-        // POST: Attorneys/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

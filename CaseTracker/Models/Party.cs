@@ -1,50 +1,71 @@
-﻿using System;
+﻿using App_LocalResources;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using CaseTracker.Repository;
 using System.Linq;
-using System.Web;
 
 namespace CaseTracker.Models
 {
+
 	public class Party
 	{
+		public Party()
+		{
+			db = new ApplicationDbContext();
+			TranslatedRoles = new List<CaseRole>();
+		}
+
+		public ApplicationDbContext db;
+
 		public int Id { get; set; }
 
-		[DisplayName("First name")]
+		[Display(Name = "FirstName", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public string FirstName { get; set; }
 
-		[DisplayName("Last name")]
+		[Display(Name = "LastName", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public string LastName { get; set; }
 
-		[DisplayName("Fathers name")]
+		[Display(Name = "FatherName", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public string FathersName { get; set; }
 
-		[DisplayName("Full name")]
+		[Display(Name = "FullName", ResourceType = typeof(GlobalRes))]
 		public string FullName
 		{
 			get
 			{
-				return $"{LastName} {FirstName} του {FathersName}";
+				return $"{LastName} {FirstName} {GlobalRes.SonOf} {FathersName}";
 			}
 		}
 
 		[ForeignKey("CaseRole")]
-		[DisplayName("Role")]
+		[Display(Name = "CaseRole", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int? CaseRoleId { get; set; }
 
 		public virtual CaseRole CaseRole { get; set; }
 
+		[NotMapped]
+		public List<CaseRole> TranslatedRoles;
+
+		[Display(Name = "Street", ResourceType = typeof(GlobalRes))]
 		public string Street { get; set; }
 
+		[Display(Name = "City", ResourceType = typeof(GlobalRes))]
 		public string City { get; set; }
 
+		[Display(Name = "Municipality", ResourceType = typeof(GlobalRes))]
 		public string Municipality { get; set; }
 
-		[DisplayName("Postal Code")]
+		[Display(Name = "PostalCode", ResourceType = typeof(GlobalRes))]
 		public string PostCode { get; set; }
 
-		[DisplayName("Full address")]
+		[Display(Name = "FullAddress", ResourceType = typeof(GlobalRes))]
 		public string FullAddress
 		{
 			get
@@ -53,20 +74,32 @@ namespace CaseTracker.Models
 			}
 		}
 
-		[DisplayName("Work Phone")]
+		[Display(Name = "WorkPhone", ResourceType = typeof(GlobalRes))]
 		public string WorkPhone { get; set; }
 
-		[DisplayName("Home Phone")]
+		[Display(Name = "HomePhone", ResourceType = typeof(GlobalRes))]
 		public string HomePhone { get; set; }
 
-		[DisplayName("Mobile Phone")]
+		[Display(Name = "MobilePhone", ResourceType = typeof(GlobalRes))]
 		public string MobilePhone { get; set; }
 
+		[Display(Name = "FAX", ResourceType = typeof(GlobalRes))]
 		public string FAX { get; set; }
 
-		[DisplayName("AFM")]
+		[Display(Name = "TaxID", ResourceType = typeof(GlobalRes))]
 		public string AFM { get; set; }
 
+		[Display(Name = "IDCard", ResourceType = typeof(GlobalRes))]
 		public string IDCard { get; set; }
+
+		public void TranslateRoles()
+		{
+			TranslatedRoles = db.CaseRoles.ToList();
+
+			foreach (var i in TranslatedRoles)
+			{
+				i.Title = GlobalRes.ResourceManager.GetString(i.Title);
+			}
+		}
 	}
 }

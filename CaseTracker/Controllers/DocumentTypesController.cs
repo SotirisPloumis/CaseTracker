@@ -11,8 +11,8 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class DocumentTypesController : Controller
-    {
+    public class DocumentTypesController : BaseController
+	{
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: DocumentTypes

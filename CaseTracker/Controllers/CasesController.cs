@@ -13,8 +13,8 @@ using System.Diagnostics;
 
 namespace CaseTracker.Controllers
 {
-    public class CasesController : Controller
-    {
+    public class CasesController : BaseController
+	{
         private ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Index()

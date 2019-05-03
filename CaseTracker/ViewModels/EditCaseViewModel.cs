@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using App_LocalResources;
+using CaseTracker.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using CaseTracker.Models;
-using CaseTracker.Repository;
 
 namespace CaseTracker.ViewModels
 {
 	public class EditCaseViewModel : CaseViewModel
 	{
-
 		[StringLength(450)]
 		[Index(IsUnique = true)]
-		[Remote("UniqueAAEdit", "Cases", AdditionalFields = "Id", ErrorMessage = "Duplicate AA")]
-		[Required]
-		[DisplayName("ΑΑ")]
+		[Remote("UniqueAAEdit", "Cases", AdditionalFields = "Id", ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "DuplicateAA")]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		[Display(Name = "aa", ResourceType = typeof(GlobalRes))]
 		public override string Aa { get; set; }
 
 		public void Update(Case caseToChange)

@@ -11,8 +11,8 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class ZonesController : Controller
-    {
+    public class ZonesController : BaseController
+	{
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Zones

@@ -15,13 +15,13 @@
 			@Html.DisplayNameFor(model => model.Aa)
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.DocumentType.Description)
+			@Html.DisplayNameFor(model => model.DocumentTypeId)
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.Attorney.FullName)
+			@Html.DisplayNameFor(model => model.AttorneyId)
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.Court.Name)
+			@Html.DisplayNameFor(model => model.CourtId)
 		</th>
 		<th>
 			@Html.DisplayNameFor(model => model.DateOfAssignment)
@@ -54,57 +54,58 @@
 			@Html.DisplayNameFor(model => model.ZoneId)
 		</th>
 	</tr>
-
-@foreach (var item in Model) {
-	<tr>
-		<td>
-			@Html.DisplayFor(modelItem => item.Aa)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DocumentType.Description)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Attorney.FullName)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Court.Name)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DateOfAssignment)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DateOfSubmission)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DateOfEnd)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Notes)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Prosecution.FullName)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Defense.FullName)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Recipient.FullName)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DeedResult.Result)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DateOfDeed)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Zone.Name)
-		</td>
-		<td>
-			@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-			@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-			@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-		</td>
-	</tr>
-}
+	@using App_LocalResources
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Aa)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DocumentType.TranslatedDescription)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Attorney.FullName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Court.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DateOfAssignment)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DateOfSubmission)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DateOfEnd)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Notes)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Prosecution.FullName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Defense.FullName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipient.FullName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DeedResult.TranslatedResult)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DateOfDeed)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Zone.Name)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+				@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+			</td>
+		</tr>
+	}
 
 </table>
