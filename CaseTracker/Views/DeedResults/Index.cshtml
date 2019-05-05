@@ -14,7 +14,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Result)
         </th>
-        <th></th>
+        <th>
+			@Html.DisplayNameFor(model => model.IsPayable)
+		</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -22,6 +24,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Result)
         </td>
+		<td>
+			@Html.DisplayFor(modelItem => item.IsPayable)
+		</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

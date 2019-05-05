@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CaseTracker.Models;
+using CaseTracker.Repository;
+using Microsoft.AspNet.Identity;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using CaseTracker.Models;
-using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class AttorneyController : BaseController
+	[Authorize]
+	public class AttorneyController : BaseController
 	{
         private ApplicationDbContext db;
 
@@ -22,24 +21,31 @@ namespace CaseTracker.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Attorneys.ToList());
+			string userID = User.Identity.GetUserId();
+
+			var attornies = db.Attorneys
+							.Where(a => a.UserId == userID)
+							.ToList();
+
+			return View(attornies);
         }
 
         public ActionResult Details(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Attorney attorney = db.Attorneys.Find(id);
-            if (attorney == null)
+            if (attorney == null || attorney.UserId != userID)
             {
                 return HttpNotFound();
             }
             return View(attorney);
         }
 
-        // GET: Attorneys/Create
         public ActionResult Create()
         {
             return View();
@@ -49,8 +55,11 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,AFM,City")] Attorney attorney)
         {
-            if (ModelState.IsValid)
+			string userID = User.Identity.GetUserId();
+
+			if (ModelState.IsValid)
             {
+				attorney.UserId = userID;
                 db.Attorneys.Add(attorney);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -61,12 +70,14 @@ namespace CaseTracker.Controllers
 
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Attorney attorney = db.Attorneys.Find(id);
-            if (attorney == null)
+            if (attorney == null || attorney.UserId != userID)
             {
                 return HttpNotFound();
             }
@@ -77,7 +88,9 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,AFM,City")] Attorney attorney)
         {
-            if (ModelState.IsValid)
+			string userID = User.Identity.GetUserId();
+
+			if (ModelState.IsValid && attorney.UserId == userID)
             {
                 db.Entry(attorney).State = EntityState.Modified;
                 db.SaveChanges();
@@ -88,12 +101,14 @@ namespace CaseTracker.Controllers
 
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Attorney attorney = db.Attorneys.Find(id);
-            if (attorney == null)
+            if (attorney == null || attorney.UserId != userID)
             {
                 return HttpNotFound();
             }
@@ -104,7 +119,13 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Attorney attorney = db.Attorneys.Find(id);
+			string userID = User.Identity.GetUserId();
+
+			Attorney attorney = db.Attorneys.Find(id);
+			if (attorney == null || attorney.UserId != userID)
+			{
+				return HttpNotFound();
+			}
             db.Attorneys.Remove(attorney);
             db.SaveChanges();
             return RedirectToAction("Index");

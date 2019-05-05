@@ -9,27 +9,42 @@ using System.Web.Mvc;
 using App_LocalResources;
 using CaseTracker.Models;
 using CaseTracker.Repository;
+using Microsoft.AspNet.Identity;
 
 namespace CaseTracker.Controllers
 {
+	[Authorize]
     public class PartiesController : BaseController
 	{
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+
+		public PartiesController()
+		{
+			db = new ApplicationDbContext();
+		}
 
         public ActionResult Index()
         {
-            var parties = db.Parties.Include(p => p.CaseRole);
-            return View(parties.ToList());
+			string userID = User.Identity.GetUserId();
+
+            var parties = db.Parties
+							.Include(p => p.CaseRole)
+							.Where(p => p.UserId == userID)
+							.ToList();
+
+            return View(parties);
         }
 
         public ActionResult Details(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Party party = db.Parties.Find(id);
-            if (party == null)
+            if (party == null || party.UserId != userID)
             {
                 return HttpNotFound();
             }
@@ -47,8 +62,11 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
         {
-            if (ModelState.IsValid)
+			string userID = User.Identity.GetUserId();
+
+			if (ModelState.IsValid)
             {
+				party.UserId = userID;
                 db.Parties.Add(party);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -60,12 +78,14 @@ namespace CaseTracker.Controllers
 
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Party party = db.Parties.Find(id);
-            if (party == null)
+            if (party == null || party.UserId != userID)
             {
                 return HttpNotFound();
             }
@@ -77,7 +97,9 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
         {
-            if (ModelState.IsValid)
+			string userID = User.Identity.GetUserId();
+
+			if (ModelState.IsValid && party.UserId == userID)
             {
                 db.Entry(party).State = EntityState.Modified;
                 db.SaveChanges();
@@ -89,12 +111,14 @@ namespace CaseTracker.Controllers
 
 		public ActionResult Delete(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Party party = db.Parties.Find(id);
-            if (party == null)
+            if (party == null || party.UserId != userID)
             {
                 return HttpNotFound();
             }
@@ -105,7 +129,13 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Party party = db.Parties.Find(id);
+			string userID = User.Identity.GetUserId();
+
+			Party party = db.Parties.Find(id);
+			if (party == null || party.UserId != userID)
+			{
+				return HttpNotFound();
+			}
             db.Parties.Remove(party);
             db.SaveChanges();
             return RedirectToAction("Index");

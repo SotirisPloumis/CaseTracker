@@ -13,14 +13,28 @@ namespace CaseTracker.Models
 {
 	public class Case
 	{
+		public Case()
+		{
+
+		}
+
+		public Case(string userID)
+		{
+			this.UserId = userID;
+		}
+
 		public int Id { get; set; }
 
-		//public string CreatedBy { get; set; }
+		[ForeignKey("User")]
+		public string UserId { get; set; }
+		public ApplicationUser User { get; set; }
 
 		[StringLength(450)]
-		[Index(IsUnique = true)]
 		[Display(Name = "aa", ResourceType = typeof(GlobalRes))]
 		public string Aa { get; set; }
+
+		[Display(Name = "State", ResourceType = typeof(GlobalRes))]
+		public bool IsFinished { get; set; }
 
 		[ForeignKey("DocumentType")]
 		[Display(Name = "Document_Type", ResourceType = typeof(GlobalRes))]
@@ -75,7 +89,7 @@ namespace CaseTracker.Models
 
 		[ForeignKey("DeedResult")]
 		[Display(Name = "Result_Service", ResourceType = typeof(GlobalRes))]
-		public int? DeedResultId { get; set; }
+		public int DeedResultId { get; set; }
 
 		public virtual DeedResult DeedResult { get; set; }
 
@@ -85,7 +99,7 @@ namespace CaseTracker.Models
 
 		[ForeignKey("Zone")]
 		[Display(Name = "Zone", ResourceType = typeof(GlobalRes))]
-		public int? ZoneId { get; set; }
+		public int ZoneId { get; set; }
 
 		public virtual Zone Zone { get; set; }
 
@@ -105,6 +119,7 @@ namespace CaseTracker.Models
 			DeedResultId = vm.DeedResultId;
 			DateOfDeed = vm.DateOfDeed;
 			ZoneId = vm.ZoneId;
+			IsFinished = vm.IsFinished;
 		}
 	}
 }

@@ -25,6 +25,9 @@ namespace CaseTracker.ViewModels
 
 		public int Id { get; set; }
 
+		[Display(Name = "State", ResourceType = typeof(GlobalRes))]
+		public bool IsFinished { get; set; }
+
 		[Display(Name = "Document_Type", ResourceType = typeof(GlobalRes))]
 		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int DocumentTypeId { get; set; }
@@ -41,8 +44,8 @@ namespace CaseTracker.ViewModels
 		public ICollection<Attorney> AttorneysList { get; set; }
 
 		[Display(Name = "Date_Assignment", ResourceType = typeof(GlobalRes))]
-		//[DataType(DataType.Date)]
-		//[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0: dd/MM/yyyy}")]
+		[DataType(DataType.Date)]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0: dd/MM/yyyy}")]
 		//[Required]
 		public DateTime DateOfAssignment { get; set; }
 
@@ -75,7 +78,7 @@ namespace CaseTracker.ViewModels
 		public ICollection<Party> RecipientList { get; set; }
 
 		[Display(Name = "Result_Service", ResourceType = typeof(GlobalRes))]
-		public int? DeedResultId { get; set; }
+		public int DeedResultId { get; set; }
 		public ICollection<DeedResult> DeedResultList { get; set; }
 
 		[Display(Name = "Date_Service", ResourceType = typeof(GlobalRes))]
@@ -85,24 +88,34 @@ namespace CaseTracker.ViewModels
 
 		[Display(Name = "Zone", ResourceType = typeof(GlobalRes))]
 		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
-		public int? ZoneId { get; set; }
+		public int ZoneId { get; set; }
 		public ICollection<Zone> ZoneList { get; set; }
 
-		public void PrepareLists()
+		public void PrepareLists(string userID)
 		{
-			AttorneysList = db.Attorneys.ToList();
-			CourtsList = db.Courts.ToList();
+			AttorneysList = db.Attorneys.Where(c => c.UserId == userID).ToList();
+			CourtsList = db.Courts.Where(c => c.UserId == userID).ToList();
 
-			
 			DocumentTypesList = db.DocumentTypes.ToList();
 			foreach(var i in DocumentTypesList)
 			{
 				i.Description = GlobalRes.ResourceManager.GetString(i.Description);
 			}
 
-			ProsecutionList = db.Parties.Where(c => c.CaseRole.Type == RoleType.Accuse).ToList();
-			DefenseList = db.Parties.Where(c => c.CaseRole.Type == RoleType.Defend).ToList();
-			RecipientList = db.Parties.Where(c => c.CaseRole.Type == RoleType.Receive).ToList();
+			ProsecutionList = db.Parties
+							.Where(c => c.CaseRole.Type == RoleType.Accuse 
+									 && c.UserId == userID)
+							.ToList();
+
+			DefenseList = db.Parties
+							.Where(c => c.CaseRole.Type == RoleType.Defend 
+									 && c.UserId == userID)
+							.ToList();
+
+			RecipientList = db.Parties
+							.Where(c => c.CaseRole.Type == RoleType.Receive 
+									 && c.UserId == userID)
+							.ToList();
 
 			DeedResultList = db.DeedResults.ToList();
 			foreach(var i in DeedResultList)

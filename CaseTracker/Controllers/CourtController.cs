@@ -1,56 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using CaseTracker.Models;
+using CaseTracker.Repository;
+using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using CaseTracker.Models;
-using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
+	[Authorize]
     public class CourtController : BaseController
 	{
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Court
         public ActionResult Index()
         {
-            return View(db.Courts.ToList());
+			string userID = User.Identity.GetUserId();
+
+			var courts = db.Courts
+							.Where(c => c.UserId == userID)
+							.ToList();
+
+			return View(courts);
         }
 
-        // GET: Court/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Court court = db.Courts.Find(id);
-            if (court == null)
+            if (court == null || court.UserId != userID)
             {
                 return HttpNotFound();
             }
             return View(court);
         }
 
-        // GET: Court/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Court/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name")] Court court)
         {
-            if (ModelState.IsValid)
+			string userID = User.Identity.GetUserId();
+
+			if (ModelState.IsValid)
             {
+				court.UserId = userID;
                 db.Courts.Add(court);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -59,29 +62,29 @@ namespace CaseTracker.Controllers
             return View(court);
         }
 
-        // GET: Court/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Court court = db.Courts.Find(id);
-            if (court == null)
+            if (court == null || court.UserId != userID)
             {
                 return HttpNotFound();
             }
             return View(court);
         }
 
-        // POST: Court/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name")] Court court)
         {
-            if (ModelState.IsValid)
+			string userID = User.Identity.GetUserId();
+
+			if (ModelState.IsValid && court.UserId == userID)
             {
                 db.Entry(court).State = EntityState.Modified;
                 db.SaveChanges();
@@ -90,27 +93,33 @@ namespace CaseTracker.Controllers
             return View(court);
         }
 
-        // GET: Court/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Court court = db.Courts.Find(id);
-            if (court == null)
+            if (court == null || court.UserId != userID)
             {
                 return HttpNotFound();
             }
             return View(court);
         }
 
-        // POST: Court/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Court court = db.Courts.Find(id);
+			string userID = User.Identity.GetUserId();
+
+			Court court = db.Courts.Find(id);
+			if (court == null || court.UserId != userID)
+			{
+				return HttpNotFound();
+			}
             db.Courts.Remove(court);
             db.SaveChanges();
             return RedirectToAction("Index");

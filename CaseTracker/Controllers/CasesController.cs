@@ -10,16 +10,26 @@ using CaseTracker.Models;
 using CaseTracker.ViewModels;
 using CaseTracker.Repository;
 using System.Diagnostics;
+using Microsoft.AspNet.Identity;
 
 namespace CaseTracker.Controllers
 {
+	[Authorize]
     public class CasesController : BaseController
 	{
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+		private string userID;
 
-        public ActionResult Index()
+		public CasesController()
+		{
+			db = new ApplicationDbContext();
+		}
+
+		public ActionResult Index()
         {
-            var cases = db.Cases
+			userID = User.Identity.GetUserId();
+
+			var cases = db.Cases
 						.Include(c => c.Attorney)
 						.Include(c => c.Court)
 						.Include(c => c.DocumentType)
@@ -28,12 +38,17 @@ namespace CaseTracker.Controllers
 						.Include(c => c.Recipient)
 						.Include(c => c.DeedResult)
 						.Include(c => c.Zone)
-						.OrderByDescending(c => c.Id);
-            return View(cases.ToList());
+						.Where(c => c.UserId == userID)
+						.OrderByDescending(c => c.Id)
+						.ToList();
+
+            return View(cases);
         }
 
 		public ActionResult Book()
 		{
+			userID = User.Identity.GetUserId();
+
 			var cases = db.Cases
 						.Include(c => c.Court)
 						.Include(c => c.DocumentType)
@@ -41,13 +56,17 @@ namespace CaseTracker.Controllers
 						.Include(c => c.Defense)
 						.Include(c => c.Recipient)
 						.Include(c => c.DeedResult)
-						.OrderByDescending(c => c.Id);
+						.Where(c => c.UserId == userID)
+						.OrderByDescending(c => c.Id)
+						.ToList();
 
-			return View(cases.ToList());
+			return View(cases);
 		}
 
 		public ActionResult Pinakio()
 		{
+			userID = User.Identity.GetUserId();
+
 			var cases = db.Cases
 						.Include(c => c.Court)
 						.Include(c => c.DocumentType)
@@ -56,21 +75,26 @@ namespace CaseTracker.Controllers
 						.Include(c => c.Recipient)
 						.Include(c => c.DeedResult)
 						.Include(c => c.Zone)
-						.OrderByDescending(c => c.Id);
+						.Where(c => c.UserId == userID)
+						.Where(c => c.DeedResult.IsPayable && !c.IsFinished)
+						.OrderByDescending(c => c.Id)
+						.ToList();
 
-			return View(cases.ToList());
+			return View(cases);
 		}
 
 		public ActionResult Details(int? id)
         {
-            if (id == null)
+			userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Case @case = db.Cases.Find(id);
 			
 
-            if (@case == null)
+            if (@case == null || @case.UserId != userID)
             {
                 return HttpNotFound();
             }
@@ -79,8 +103,10 @@ namespace CaseTracker.Controllers
 
         public ActionResult Create()
         {
+			userID = User.Identity.GetUserId();
+
 			CreateCaseViewModel vm = new CreateCaseViewModel();
-			vm.PrepareLists();
+			vm.PrepareLists(userID);
 
             return View(vm);
         }
@@ -89,14 +115,15 @@ namespace CaseTracker.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(CreateCaseViewModel vm)
 		{
+			userID = User.Identity.GetUserId();
 
-			if (db.Cases.Any(x => x.Aa == vm.Aa) || !ModelState.IsValid)
+			if (db.Cases.Any(x => x.Aa == vm.Aa && x.UserId == userID) || !ModelState.IsValid)
 			{
-				vm.PrepareLists();
+				vm.PrepareLists(userID);
 				return View(vm);
 			}
 
-			Case newCase = new Case();
+			Case newCase = new Case(userID);
 			newCase.Update(vm);
 
 			db.Cases.Add(newCase);
@@ -106,20 +133,22 @@ namespace CaseTracker.Controllers
 
 		public ActionResult Edit(int? id)
         {
-            if (id == null)
+			userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
 				Debug.Print("error");
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Case caseToChange = db.Cases.Find(id);
-            if (caseToChange == null)
+            if (caseToChange == null || caseToChange.UserId != userID)
             {
                 return HttpNotFound();
             }
 			EditCaseViewModel oldCase = new EditCaseViewModel();
 
 			oldCase.Update(caseToChange);
-			oldCase.PrepareLists();
+			oldCase.PrepareLists(userID);
 
 			return View(oldCase);
         }
@@ -128,13 +157,15 @@ namespace CaseTracker.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(EditCaseViewModel vm)
 		{
+			userID = User.Identity.GetUserId();
+
 			Case c = db.Cases.Find(vm.Id);
 
-			bool badAa = db.Cases.Any(x => x.Aa == vm.Aa && x.Id != vm.Id);
+			bool badAa = db.Cases.Any(x => x.Aa == vm.Aa && x.Id != vm.Id && x.UserId == userID);
 
-			if (!ModelState.IsValid || c == null || badAa)
+			if (!ModelState.IsValid || c == null || c.UserId != userID || badAa)
 			{
-				vm.PrepareLists();
+				vm.PrepareLists(userID);
 
 				return View(vm);
 			}
@@ -148,24 +179,31 @@ namespace CaseTracker.Controllers
 
 		public ActionResult Delete(int? id)
         {
-            if (id == null)
+			userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Case @case = db.Cases.Find(id);
-            if (@case == null)
+            if (@case == null || @case.UserId != userID)
             {
                 return HttpNotFound();
             }
             return View(@case);
         }
 
-        // POST: Cases/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Case @case = db.Cases.Find(id);
+			userID = User.Identity.GetUserId();
+
+			Case @case = db.Cases.Find(id);
+			if (@case == null || @case.UserId != userID)
+			{
+				return HttpNotFound();
+			}
             db.Cases.Remove(@case);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -182,15 +220,17 @@ namespace CaseTracker.Controllers
 
 		public JsonResult UniqueAACreate(string aa)
 		{
+			userID = User.Identity.GetUserId();
 			Debug.Print(aa);
-			return Json(!db.Cases.Any(x => x.Aa == aa), JsonRequestBehavior.AllowGet);
+			return Json(!db.Cases.Any(x => x.Aa == aa && x.UserId == userID), JsonRequestBehavior.AllowGet);
 		}
 
 		public JsonResult UniqueAAEdit(string aa, int Id)
 		{
+			userID = User.Identity.GetUserId();
 			Debug.Print(aa);
 			Debug.Print(Id.ToString());
-			return Json(!db.Cases.Any(x => x.Aa == aa && x.Id != Id), JsonRequestBehavior.AllowGet);
+			return Json(!db.Cases.Any(x => x.Aa == aa && x.Id != Id && x.UserId == userID), JsonRequestBehavior.AllowGet);
 		}
 	}
 }

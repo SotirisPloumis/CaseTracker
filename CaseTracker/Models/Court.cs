@@ -7,6 +7,9 @@ namespace CaseTracker.Models
 	{
 		public int Id { get; set; }
 
+		public string UserId { get; set; }
+		public ApplicationUser User { get; set; }
+
 		[Display(Name = "Court", ResourceType = typeof(GlobalRes))]
 		public string Name { get; set; }
 	}

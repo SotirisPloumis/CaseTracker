@@ -53,6 +53,9 @@
 		<th>
 			@Html.DisplayNameFor(model => model.ZoneId)
 		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.IsFinished)
+		</th>
 	</tr>
 	@using App_LocalResources
 	@foreach (var item in Model)
@@ -98,7 +101,10 @@
 				@Html.DisplayFor(modelItem => item.DateOfDeed)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.Zone.Name)
+				@Html.DisplayFor(modelItem => item.Zone.TranslatedName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.IsFinished)
 			</td>
 			<td>
 				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

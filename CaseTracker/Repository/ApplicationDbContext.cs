@@ -24,7 +24,5 @@ namespace CaseTracker.Repository
         {
             return new ApplicationDbContext();
         }
-
-		
 	}
 }

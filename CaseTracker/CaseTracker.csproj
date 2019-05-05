@@ -273,6 +273,26 @@
     <Compile Include="Migrations\201905032206416_reqCaseRole.Designer.cs">
       <DependentUpon>201905032206416_reqCaseRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905041035377_reqStuffAtCase.cs" />
+    <Compile Include="Migrations\201905041035377_reqStuffAtCase.Designer.cs">
+      <DependentUpon>201905041035377_reqStuffAtCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905041159276_isPayable.cs" />
+    <Compile Include="Migrations\201905041159276_isPayable.Designer.cs">
+      <DependentUpon>201905041159276_isPayable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905041221080_isFinished.cs" />
+    <Compile Include="Migrations\201905041221080_isFinished.Designer.cs">
+      <DependentUpon>201905041221080_isFinished.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905041727347_userId.cs" />
+    <Compile Include="Migrations\201905041727347_userId.Designer.cs">
+      <DependentUpon>201905041727347_userId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905051238374_nonUniqueAA.cs" />
+    <Compile Include="Migrations\201905051238374_nonUniqueAA.Designer.cs">
+      <DependentUpon>201905051238374_nonUniqueAA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -473,6 +493,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905032206416_reqCaseRole.resx">
       <DependentUpon>201905032206416_reqCaseRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905041035377_reqStuffAtCase.resx">
+      <DependentUpon>201905041035377_reqStuffAtCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905041159276_isPayable.resx">
+      <DependentUpon>201905041159276_isPayable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905041221080_isFinished.resx">
+      <DependentUpon>201905041221080_isFinished.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905041727347_userId.resx">
+      <DependentUpon>201905041727347_userId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905051238374_nonUniqueAA.resx">
+      <DependentUpon>201905051238374_nonUniqueAA.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
