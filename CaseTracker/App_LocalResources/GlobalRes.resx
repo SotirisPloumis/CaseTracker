@@ -294,8 +294,8 @@
   <data name="Zone" xml:space="preserve">
     <value>Zone</value>
   </data>
-  <data name="ZoneCost" xml:space="preserve">
-    <value>Zone Cost</value>
+  <data name="ZoneCostFull" xml:space="preserve">
+    <value>Zone Cost pre Taxes</value>
   </data>
   <data name="DuplicateAA" xml:space="preserve">
     <value>This Incremental number is taken by another case</value>
@@ -332,5 +332,8 @@
   </data>
   <data name="RoleType" xml:space="preserve">
     <value>Role type</value>
+  </data>
+  <data name="ZoneCostClean" xml:space="preserve">
+    <value>Zone Cost after Taxes</value>
   </data>
 </root>

@@ -691,11 +691,20 @@ namespace App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zone Cost.
+        ///   Looks up a localized string similar to Zone Cost after Taxes.
         /// </summary>
-        public static string ZoneCost {
+        public static string ZoneCostClean {
             get {
-                return ResourceManager.GetString("ZoneCost", resourceCulture);
+                return ResourceManager.GetString("ZoneCostClean", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zone Cost pre Taxes.
+        /// </summary>
+        public static string ZoneCostFull {
+            get {
+                return ResourceManager.GetString("ZoneCostFull", resourceCulture);
             }
         }
         

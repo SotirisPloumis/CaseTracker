@@ -196,8 +196,8 @@ namespace CaseTracker.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        Cost = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Tax = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        CostFull = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        CostClean = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.Id);
             

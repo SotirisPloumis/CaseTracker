@@ -15,11 +15,11 @@ namespace CaseTracker.Models
 
 		public string Name { get; set; }
 
-		[Display(Name = "ZoneCost", ResourceType = typeof(GlobalRes))]
-		public decimal Cost { get; set; }
+		[Display(Name = "ZoneCostFull", ResourceType = typeof(GlobalRes))]
+		public decimal CostFull { get; set; }
 
-		[Display(Name = "Tax", ResourceType = typeof(GlobalRes))]
-		public decimal Tax { get; set; }
+		[Display(Name = "ZoneCostClean", ResourceType = typeof(GlobalRes))]
+		public decimal CostClean { get; set; }
 
 		[NotMapped]
 		[Display(Name = "Zone", ResourceType = typeof(GlobalRes))]

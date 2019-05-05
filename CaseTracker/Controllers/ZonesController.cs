@@ -47,7 +47,7 @@ namespace CaseTracker.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Cost,Tax")] Zone zone)
+        public ActionResult Create([Bind(Include = "Id,Name,CostFull,CostClean")] Zone zone)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +75,7 @@ namespace CaseTracker.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Cost,Tax")] Zone zone)
+        public ActionResult Edit([Bind(Include = "Id,Name,CostFull,CostClean")] Zone zone)
         {
             if (ModelState.IsValid)
             {

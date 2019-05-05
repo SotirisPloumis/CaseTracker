@@ -15,10 +15,10 @@
             @Html.DisplayNameFor(model => model.TranslatedName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cost)
+            @Html.DisplayNameFor(model => model.CostFull)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tax)
+            @Html.DisplayNameFor(model => model.CostClean)
         </th>
         <th></th>
     </tr>
@@ -29,10 +29,10 @@
             @Html.DisplayFor(modelItem => item.TranslatedName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Cost)
+            @Html.DisplayFor(modelItem => item.CostFull)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Tax)
+            @Html.DisplayFor(modelItem => item.CostClean)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

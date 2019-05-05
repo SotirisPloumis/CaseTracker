@@ -121,10 +121,10 @@ namespace CaseTracker.Migrations
 			context.DocumentTypes.AddOrUpdate(new DocumentType() { Description = "dt_Prosfygi" });
 
 			//zones
-			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneA", Cost = 35, Tax = 28});
-			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneB", Cost = 55, Tax = 44});
-			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneC", Cost = 73, Tax = 58});
-			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneD", Cost = 95, Tax = 76});
+			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneA", CostFull = 35, CostClean = 28});
+			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneB", CostFull = 55, CostClean = 44});
+			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneC", CostFull = 73, CostClean = 58.40M});
+			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneD", CostFull = 95, CostClean = 76});
 
 			context.SaveChanges();
         }
