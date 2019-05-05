@@ -209,89 +209,9 @@
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\201904240926351_rebuild.cs" />
-    <Compile Include="Migrations\201904240926351_rebuild.Designer.cs">
-      <DependentUpon>201904240926351_rebuild.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904261223448_IntegratePartiesAtCase.cs" />
-    <Compile Include="Migrations\201904261223448_IntegratePartiesAtCase.Designer.cs">
-      <DependentUpon>201904261223448_IntegratePartiesAtCase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904261252065_caseRoleAtParty.cs" />
-    <Compile Include="Migrations\201904261252065_caseRoleAtParty.Designer.cs">
-      <DependentUpon>201904261252065_caseRoleAtParty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904261549019_uniqueStringAA.cs" />
-    <Compile Include="Migrations\201904261549019_uniqueStringAA.Designer.cs">
-      <DependentUpon>201904261549019_uniqueStringAA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904262233044_moveKeyToAa.cs" />
-    <Compile Include="Migrations\201904262233044_moveKeyToAa.Designer.cs">
-      <DependentUpon>201904262233044_moveKeyToAa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270005577_bringBackId.cs" />
-    <Compile Include="Migrations\201904270005577_bringBackId.Designer.cs">
-      <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270124347_DeedResult.cs" />
-    <Compile Include="Migrations\201904270124347_DeedResult.Designer.cs">
-      <DependentUpon>201904270124347_DeedResult.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270140409_deedresultAtCase.cs" />
-    <Compile Include="Migrations\201904270140409_deedresultAtCase.Designer.cs">
-      <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904271038036_zones.cs" />
-    <Compile Include="Migrations\201904271038036_zones.Designer.cs">
-      <DependentUpon>201904271038036_zones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904271041003_decimalAmountsAtZone.cs" />
-    <Compile Include="Migrations\201904271041003_decimalAmountsAtZone.Designer.cs">
-      <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905011458006_caseRoleType.cs" />
-    <Compile Include="Migrations\201905011458006_caseRoleType.Designer.cs">
-      <DependentUpon>201905011458006_caseRoleType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905031608013_lang1.cs" />
-    <Compile Include="Migrations\201905031608013_lang1.Designer.cs">
-      <DependentUpon>201905031608013_lang1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905031713572_partyLang.cs" />
-    <Compile Include="Migrations\201905031713572_partyLang.Designer.cs">
-      <DependentUpon>201905031713572_partyLang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905031741297_roleToEnum.cs" />
-    <Compile Include="Migrations\201905031741297_roleToEnum.Designer.cs">
-      <DependentUpon>201905031741297_roleToEnum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905031918344_revertEnumRole.cs" />
-    <Compile Include="Migrations\201905031918344_revertEnumRole.Designer.cs">
-      <DependentUpon>201905031918344_revertEnumRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905032206416_reqCaseRole.cs" />
-    <Compile Include="Migrations\201905032206416_reqCaseRole.Designer.cs">
-      <DependentUpon>201905032206416_reqCaseRole.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905041035377_reqStuffAtCase.cs" />
-    <Compile Include="Migrations\201905041035377_reqStuffAtCase.Designer.cs">
-      <DependentUpon>201905041035377_reqStuffAtCase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905041159276_isPayable.cs" />
-    <Compile Include="Migrations\201905041159276_isPayable.Designer.cs">
-      <DependentUpon>201905041159276_isPayable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905041221080_isFinished.cs" />
-    <Compile Include="Migrations\201905041221080_isFinished.Designer.cs">
-      <DependentUpon>201905041221080_isFinished.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905041727347_userId.cs" />
-    <Compile Include="Migrations\201905041727347_userId.Designer.cs">
-      <DependentUpon>201905041727347_userId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905051238374_nonUniqueAA.cs" />
-    <Compile Include="Migrations\201905051238374_nonUniqueAA.Designer.cs">
-      <DependentUpon>201905051238374_nonUniqueAA.cs</DependentUpon>
+    <Compile Include="Migrations\201905051552032_rebuild.cs" />
+    <Compile Include="Migrations\201905051552032_rebuild.Designer.cs">
+      <DependentUpon>201905051552032_rebuild.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -446,68 +366,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>App_LocalResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904240926351_rebuild.resx">
-      <DependentUpon>201904240926351_rebuild.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261223448_IntegratePartiesAtCase.resx">
-      <DependentUpon>201904261223448_IntegratePartiesAtCase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261252065_caseRoleAtParty.resx">
-      <DependentUpon>201904261252065_caseRoleAtParty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261549019_uniqueStringAA.resx">
-      <DependentUpon>201904261549019_uniqueStringAA.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904262233044_moveKeyToAa.resx">
-      <DependentUpon>201904262233044_moveKeyToAa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270005577_bringBackId.resx">
-      <DependentUpon>201904270005577_bringBackId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270124347_DeedResult.resx">
-      <DependentUpon>201904270124347_DeedResult.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270140409_deedresultAtCase.resx">
-      <DependentUpon>201904270140409_deedresultAtCase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904271038036_zones.resx">
-      <DependentUpon>201904271038036_zones.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904271041003_decimalAmountsAtZone.resx">
-      <DependentUpon>201904271041003_decimalAmountsAtZone.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905011458006_caseRoleType.resx">
-      <DependentUpon>201905011458006_caseRoleType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905031608013_lang1.resx">
-      <DependentUpon>201905031608013_lang1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905031713572_partyLang.resx">
-      <DependentUpon>201905031713572_partyLang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905031741297_roleToEnum.resx">
-      <DependentUpon>201905031741297_roleToEnum.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905031918344_revertEnumRole.resx">
-      <DependentUpon>201905031918344_revertEnumRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905032206416_reqCaseRole.resx">
-      <DependentUpon>201905032206416_reqCaseRole.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905041035377_reqStuffAtCase.resx">
-      <DependentUpon>201905041035377_reqStuffAtCase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905041159276_isPayable.resx">
-      <DependentUpon>201905041159276_isPayable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905041221080_isFinished.resx">
-      <DependentUpon>201905041221080_isFinished.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905041727347_userId.resx">
-      <DependentUpon>201905041727347_userId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905051238374_nonUniqueAA.resx">
-      <DependentUpon>201905051238374_nonUniqueAA.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905051552032_rebuild.resx">
+      <DependentUpon>201905051552032_rebuild.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

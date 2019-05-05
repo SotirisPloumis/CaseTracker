@@ -1,4 +1,5 @@
 ﻿using App_LocalResources;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CaseTracker.Models
@@ -17,6 +18,7 @@ namespace CaseTracker.Models
 		public string Title { get; set; }
 
 		[NotMapped]
+		[Display(Name = "Title", ResourceType = typeof(GlobalRes))]
 		public string TranslatedTitle
 		{
 			get
@@ -25,6 +27,7 @@ namespace CaseTracker.Models
 			}
 		}
 
+		[Display(Name = "RoleType", ResourceType = typeof(GlobalRes))]
 		public RoleType Type { get; set; }
 	}
 }

@@ -297,9 +297,6 @@
   <data name="ZoneCost" xml:space="preserve">
     <value>Κόστος ζώνης</value>
   </data>
-  <data name="ZoneName" xml:space="preserve">
-    <value>Ζώνη</value>
-  </data>
   <data name="DuplicateAA" xml:space="preserve">
     <value>Αυτός ο ΑΑ χρησιμοποιείται ήδη από άλλη υπόθεση</value>
   </data>
@@ -329,5 +326,11 @@
   </data>
   <data name="State" xml:space="preserve">
     <value>Κατάσταση</value>
+  </data>
+  <data name="Payable" xml:space="preserve">
+    <value>Πληρωτέο</value>
+  </data>
+  <data name="RoleType" xml:space="preserve">
+    <value>Τύπος</value>
   </data>
 </root>

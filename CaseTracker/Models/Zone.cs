@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -14,13 +15,14 @@ namespace CaseTracker.Models
 
 		public string Name { get; set; }
 
-		[DisplayName("Κόστος")]
-		public Decimal Cost { get; set; }
+		[Display(Name = "ZoneCost", ResourceType = typeof(GlobalRes))]
+		public decimal Cost { get; set; }
 
-		[DisplayName("ΦΠΑ")]
-		public Decimal Tax { get; set; }
+		[Display(Name = "Tax", ResourceType = typeof(GlobalRes))]
+		public decimal Tax { get; set; }
 
 		[NotMapped]
+		[Display(Name = "Zone", ResourceType = typeof(GlobalRes))]
 		public string TranslatedName
 		{
 			get

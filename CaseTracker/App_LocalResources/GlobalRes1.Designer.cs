@@ -520,6 +520,15 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payable.
+        /// </summary>
+        public static string Payable {
+            get {
+                return ResourceManager.GetString("Payable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Postal Code.
         /// </summary>
         public static string PostalCode {
@@ -561,6 +570,15 @@ namespace App_LocalResources {
         public static string Result_Service {
             get {
                 return ResourceManager.GetString("Result_Service", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role type.
+        /// </summary>
+        public static string RoleType {
+            get {
+                return ResourceManager.GetString("RoleType", resourceCulture);
             }
         }
         
@@ -687,15 +705,6 @@ namespace App_LocalResources {
         public static string ZoneD {
             get {
                 return ResourceManager.GetString("ZoneD", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zone Name.
-        /// </summary>
-        public static string ZoneName {
-            get {
-                return ResourceManager.GetString("ZoneName", resourceCulture);
             }
         }
     }
