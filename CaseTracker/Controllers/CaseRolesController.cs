@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace CaseTracker.Controllers
 {
-	[Authorize]
+	[Authorize(Roles = "Admin")]
 	public class CaseRolesController : BaseController
 	{
         private ApplicationDbContext db;

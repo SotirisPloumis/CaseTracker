@@ -11,7 +11,7 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-	[Authorize]
+	[Authorize(Roles = "Admin")]
     public class DocumentTypesController : BaseController
 	{
         private ApplicationDbContext db = new ApplicationDbContext();
