@@ -162,7 +162,7 @@ namespace CaseTracker.Migrations
                         UserId = c.String(maxLength: 128),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
-                        FathersName = c.String(nullable: false),
+                        FathersName = c.String(),
                         CaseRoleId = c.Int(nullable: false),
                         Street = c.String(),
                         City = c.String(),

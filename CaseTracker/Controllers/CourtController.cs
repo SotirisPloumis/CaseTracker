@@ -5,13 +5,21 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
 	[Authorize]
     public class CourtController : BaseController
 	{
-        private ApplicationDbContext db = new ApplicationDbContext();
+		private ApplicationDbContext db;
+		private CourtRepository CourtRepository;
+
+		public CourtController()
+		{
+			db = new ApplicationDbContext();
+			CourtRepository = new CourtRepository();
+		}
 
         public ActionResult Index()
         {
@@ -53,9 +61,7 @@ namespace CaseTracker.Controllers
 
 			if (ModelState.IsValid)
             {
-				court.UserId = userID;
-                db.Courts.Add(court);
-                db.SaveChanges();
+				CourtRepository.InsertCourt(userID, court.Name);
                 return RedirectToAction("Index");
             }
 
@@ -84,9 +90,12 @@ namespace CaseTracker.Controllers
         {
 			string userID = User.Identity.GetUserId();
 
-			if (ModelState.IsValid && court.UserId == userID)
+			Court courtToEdit = db.Courts.Find(court.Id);
+
+			if (ModelState.IsValid && courtToEdit.UserId == userID)
             {
-                db.Entry(court).State = EntityState.Modified;
+				courtToEdit.Name = court.Name;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

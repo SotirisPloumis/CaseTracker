@@ -6,6 +6,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using CaseTracker.Repository;
+using System.Diagnostics;
 
 namespace CaseTracker.Controllers
 {
@@ -13,10 +15,12 @@ namespace CaseTracker.Controllers
 	public class AttorneyController : BaseController
 	{
         private ApplicationDbContext db;
+		private AttorneyRepository AttorneyRepository;
 
 		public AttorneyController()
 		{
 			db = new ApplicationDbContext();
+			AttorneyRepository = new AttorneyRepository();
 		}
 
         public ActionResult Index()
@@ -59,9 +63,12 @@ namespace CaseTracker.Controllers
 
 			if (ModelState.IsValid)
             {
-				attorney.UserId = userID;
-                db.Attorneys.Add(attorney);
-                db.SaveChanges();
+				
+				AttorneyRepository.InsertAttorney(userID, 
+													attorney.FirstName, 
+													attorney.LastName, 
+													attorney.AFM,
+													attorney.City);
                 return RedirectToAction("Index");
             }
 
@@ -89,10 +96,16 @@ namespace CaseTracker.Controllers
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,AFM,City")] Attorney attorney)
         {
 			string userID = User.Identity.GetUserId();
+			
+			Attorney attorneyToEdit = db.Attorneys.Find(attorney.Id);
 
-			if (ModelState.IsValid && attorney.UserId == userID)
+			if (ModelState.IsValid && attorneyToEdit.UserId == userID)
             {
-                db.Entry(attorney).State = EntityState.Modified;
+				attorneyToEdit.FirstName = attorney.FirstName;
+				attorneyToEdit.LastName = attorney.LastName;
+				attorneyToEdit.AFM = attorney.AFM;
+				attorneyToEdit.City = attorney.City;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

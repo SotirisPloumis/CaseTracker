@@ -7,13 +7,13 @@ namespace CaseTracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class rebuild : IMigrationMetadata
+    public sealed partial class reqCourtName : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(rebuild));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(reqCourtName));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905051552032_rebuild"; }
+            get { return "201905061047394_reqCourtName"; }
         }
         
         string IMigrationMetadata.Source

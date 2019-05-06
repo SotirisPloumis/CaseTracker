@@ -30,7 +30,6 @@ namespace CaseTracker.Models
 		public string AFM { get; set; }
 
 		[Display(Name = "City", ResourceType = typeof(GlobalRes))]
-		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public string City { get; set; }
 
 		[Display(Name = "Attorney", ResourceType = typeof(GlobalRes))]

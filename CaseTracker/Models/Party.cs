@@ -34,7 +34,6 @@ namespace CaseTracker.Models
 		public string LastName { get; set; }
 
 		[Display(Name = "FatherName", ResourceType = typeof(GlobalRes))]
-		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public string FathersName { get; set; }
 
 		[Display(Name = "FullName", ResourceType = typeof(GlobalRes))]
@@ -69,6 +68,7 @@ namespace CaseTracker.Models
 		[Display(Name = "PostalCode", ResourceType = typeof(GlobalRes))]
 		public string PostCode { get; set; }
 
+		[NotMapped]
 		[Display(Name = "FullAddress", ResourceType = typeof(GlobalRes))]
 		public string FullAddress
 		{

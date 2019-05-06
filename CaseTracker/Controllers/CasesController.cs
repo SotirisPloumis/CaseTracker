@@ -19,28 +19,19 @@ namespace CaseTracker.Controllers
 	{
         private ApplicationDbContext db;
 		private string userID;
+		private CaseRepository CaseRepository;
 
 		public CasesController()
 		{
 			db = new ApplicationDbContext();
+			CaseRepository = new CaseRepository();
 		}
 
 		public ActionResult Index()
         {
 			userID = User.Identity.GetUserId();
 
-			var cases = db.Cases
-						.Include(c => c.Attorney)
-						.Include(c => c.Court)
-						.Include(c => c.DocumentType)
-						.Include(c => c.Prosecution)
-						.Include(c => c.Defense)
-						.Include(c => c.Recipient)
-						.Include(c => c.DeedResult)
-						.Include(c => c.Zone)
-						.Where(c => c.UserId == userID)
-						.OrderByDescending(c => c.Id)
-						.ToList();
+			var cases = CaseRepository.GetCases(userID);
 
             return View(cases);
         }
@@ -49,16 +40,7 @@ namespace CaseTracker.Controllers
 		{
 			userID = User.Identity.GetUserId();
 
-			var cases = db.Cases
-						.Include(c => c.Court)
-						.Include(c => c.DocumentType)
-						.Include(c => c.Prosecution)
-						.Include(c => c.Defense)
-						.Include(c => c.Recipient)
-						.Include(c => c.DeedResult)
-						.Where(c => c.UserId == userID)
-						.OrderByDescending(c => c.Id)
-						.ToList();
+			var cases = CaseRepository.GetBookCases(userID);
 
 			return View(cases);
 		}
@@ -67,18 +49,7 @@ namespace CaseTracker.Controllers
 		{
 			userID = User.Identity.GetUserId();
 
-			var cases = db.Cases
-						.Include(c => c.Court)
-						.Include(c => c.DocumentType)
-						.Include(c => c.Prosecution)
-						.Include(c => c.Defense)
-						.Include(c => c.Recipient)
-						.Include(c => c.DeedResult)
-						.Include(c => c.Zone)
-						.Where(c => c.UserId == userID)
-						.Where(c => c.DeedResult.IsPayable && !c.IsFinished)
-						.OrderByDescending(c => c.Id)
-						.ToList();
+			var cases = CaseRepository.GetPinakioCases(userID);
 
 			return View(cases);
 		}
@@ -123,11 +94,8 @@ namespace CaseTracker.Controllers
 				return View(vm);
 			}
 
-			Case newCase = new Case(userID);
-			newCase.Update(vm);
+			CaseRepository.InsertCaseFromViewModel(userID,vm);
 
-			db.Cases.Add(newCase);
-			db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 

@@ -13,6 +13,7 @@ namespace CaseTracker.Models
 		public ApplicationUser User { get; set; }
 
 		[Display(Name = "Court", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public string Name { get; set; }
 	}
 }

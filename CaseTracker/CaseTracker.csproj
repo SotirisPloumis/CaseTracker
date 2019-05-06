@@ -209,9 +209,17 @@
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\201905051552032_rebuild.cs" />
-    <Compile Include="Migrations\201905051552032_rebuild.Designer.cs">
-      <DependentUpon>201905051552032_rebuild.cs</DependentUpon>
+    <Compile Include="Migrations\201905060831581_rebuild.cs" />
+    <Compile Include="Migrations\201905060831581_rebuild.Designer.cs">
+      <DependentUpon>201905060831581_rebuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905061018323_attorneyRepo.cs" />
+    <Compile Include="Migrations\201905061018323_attorneyRepo.Designer.cs">
+      <DependentUpon>201905061018323_attorneyRepo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905061047394_reqCourtName.cs" />
+    <Compile Include="Migrations\201905061047394_reqCourtName.Designer.cs">
+      <DependentUpon>201905061047394_reqCourtName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -230,6 +238,10 @@
     <Compile Include="Repository\ApplicationDbContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AttorneyRepository.cs" />
+    <Compile Include="Repository\CaseRepository.cs" />
+    <Compile Include="Repository\CourtRepository.cs" />
+    <Compile Include="Repository\PartyRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CaseViewModel.cs" />
     <Compile Include="ViewModels\EditCaseViewModel.cs" />
@@ -246,6 +258,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\icasetracker - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -366,8 +379,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>App_LocalResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905051552032_rebuild.resx">
-      <DependentUpon>201905051552032_rebuild.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905060831581_rebuild.resx">
+      <DependentUpon>201905060831581_rebuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905061018323_attorneyRepo.resx">
+      <DependentUpon>201905061018323_attorneyRepo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905061047394_reqCourtName.resx">
+      <DependentUpon>201905061047394_reqCourtName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

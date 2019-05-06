@@ -17,10 +17,12 @@ namespace CaseTracker.Controllers
     public class PartiesController : BaseController
 	{
         private ApplicationDbContext db;
+		private PartyRepository PartyRepository;
 
 		public PartiesController()
 		{
 			db = new ApplicationDbContext();
+			PartyRepository = new PartyRepository();
 		}
 
         public ActionResult Index()
@@ -66,9 +68,21 @@ namespace CaseTracker.Controllers
 
 			if (ModelState.IsValid)
             {
-				party.UserId = userID;
-                db.Parties.Add(party);
-                db.SaveChanges();
+				PartyRepository.InsertParty(userID, 
+											party.FirstName, 
+											party.LastName, 
+											party.FathersName, 
+											party.CaseRoleId, 
+											party.Street, 
+											party.City, 
+											party.Municipality, 
+											party.PostCode, 
+											party.WorkPhone, 
+											party.HomePhone, 
+											party.MobilePhone, 
+											party.FAX, 
+											party.AFM, 
+											party.IDCard);
                 return RedirectToAction("Index");
             }
 
@@ -95,13 +109,31 @@ namespace CaseTracker.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId," +
+												 "Street,City,Municipality,PostCode,WorkPhone,HomePhone," +
+												 "MobilePhone,FAX,AFM,IDCard")] Party party)
         {
 			string userID = User.Identity.GetUserId();
 
-			if (ModelState.IsValid && party.UserId == userID)
+			Party partyToEdit = db.Parties.Find(party.Id);
+
+			if (ModelState.IsValid && partyToEdit.UserId == userID)
             {
-                db.Entry(party).State = EntityState.Modified;
+				partyToEdit.FirstName = party.FirstName;
+				partyToEdit.LastName = party.LastName;
+				partyToEdit.FathersName = party.FathersName;
+				partyToEdit.CaseRoleId = party.CaseRoleId;
+				partyToEdit.Street = party.Street;
+				partyToEdit.City = party.City;
+				partyToEdit.Municipality = party.Municipality;
+				partyToEdit.PostCode = party.PostCode;
+				partyToEdit.WorkPhone = party.WorkPhone;
+				partyToEdit.HomePhone = party.HomePhone;
+				partyToEdit.MobilePhone = party.MobilePhone;
+				partyToEdit.FAX = party.FAX;
+				partyToEdit.AFM = party.AFM;
+				partyToEdit.IDCard = party.IDCard;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -10,6 +10,8 @@ namespace CaseTracker.Migrations
     using System.Linq;
 	using System.Web;
 	using Microsoft.Owin.Security;
+	using System.Data.Entity.Validation;
+	using System.Diagnostics;
 
 	internal sealed class Configuration : DbMigrationsConfiguration<CaseTracker.Repository.ApplicationDbContext>
     {
@@ -126,7 +128,19 @@ namespace CaseTracker.Migrations
 			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneC", CostFull = 73, CostClean = 58.40M});
 			context.Zones.AddOrUpdate(new Zone() { Name = "ZoneD", CostFull = 95, CostClean = 76});
 
-			context.SaveChanges();
+			try
+			{
+				context.SaveChanges();
+			}
+			catch (DbEntityValidationException e)
+			{
+				foreach(var msg in e.EntityValidationErrors)
+				{
+					Debug.Print(msg.ToString());
+				}
+				
+				//throw;
+			}
         }
     }
 }
