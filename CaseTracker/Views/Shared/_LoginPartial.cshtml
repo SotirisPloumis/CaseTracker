@@ -15,8 +15,8 @@
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Εγγραφή", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Είσοδος", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    <ul class="nav navbar-nav navbar-dark navbar-right">
+        <li>@Html.ActionLink("Εγγραφή", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" , @class = "nav-link"})</li>
+        <li>@Html.ActionLink("Είσοδος", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
     </ul>
 }
