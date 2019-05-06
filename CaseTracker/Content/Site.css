@@ -63,3 +63,23 @@ hr{
     margin-left: -30px;
     margin-right: 50px;
 }
+
+.modalPlus{
+    border-style: solid;
+    border-width: 1px;
+    width: 45px;
+    text-align: center;
+    text-decoration: none;
+    background-color: darkmagenta;
+    color: white;
+    border-radius: 5px;
+    border-color:darkmagenta;  
+}
+
+    .modalPlus:hover {
+        border-color: darkmagenta;
+        color: darkmagenta;
+        background-color: snow;
+        text-decoration: none;        
+    }
+
