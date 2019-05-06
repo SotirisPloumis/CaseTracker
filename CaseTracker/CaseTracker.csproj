@@ -197,6 +197,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Attributes\LocalizationAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\PartysController.cs" />
+    <Compile Include="Controllers\API\CourtsController.cs" />
+    <Compile Include="Controllers\API\AttorneysController.cs" />
     <Compile Include="Controllers\AttorneyController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaseRolesController.cs" />
@@ -351,6 +354,7 @@
     <Content Include="Views\CaseRoles\Details.cshtml" />
     <Content Include="Views\CaseRoles\Edit.cshtml" />
     <Content Include="Views\CaseRoles\Index.cshtml" />
+    <Content Include="Views\Cases\CreateNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -82,6 +82,16 @@ namespace CaseTracker.Controllers
             return View(vm);
         }
 
+		public ActionResult CreateNew()
+		{
+			userID = User.Identity.GetUserId();
+
+			CreateCaseViewModel vm = new CreateCaseViewModel();
+			vm.PrepareLists(userID);
+
+			return View(vm);
+		}
+
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(CreateCaseViewModel vm)
