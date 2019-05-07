@@ -44,13 +44,13 @@ namespace CaseTracker.Models
 
 		[ForeignKey("Court")]
 		[Display(Name = "Court", ResourceType = typeof(GlobalRes))]
-		public int CourtId { get; set; }
+		public int? CourtId { get; set; }
 
 		public virtual Court Court { get; set; }
 
 		[ForeignKey("Attorney")]
 		[Display(Name = "Attorney", ResourceType = typeof(GlobalRes))]
-		public int AttorneyId { get; set; }
+		public int? AttorneyId { get; set; }
 
 		public virtual Attorney Attorney { get; set; }
 

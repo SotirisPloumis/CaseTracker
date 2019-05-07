@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CaseTracker.Models;
+using CaseTracker.ViewModels;
 
 namespace CaseTracker.Repository
 {
@@ -30,10 +31,12 @@ namespace CaseTracker.Repository
 				Name = Name
 			};
 
-			db.Courts.Add(court);
-			db.SaveChanges();
+			return InsertCourt(court);
+		}
 
-			return court.Id;
+		public int InsertCourt(string userID, CreateCaseViewModel vm)
+		{
+			return InsertCourt(userID, vm.CourtName);
 		}
 	}
 }

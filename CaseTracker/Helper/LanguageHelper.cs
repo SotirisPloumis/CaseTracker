@@ -12,7 +12,6 @@ namespace CaseTracker.Helper
 												RouteData routeData, 
 												string lang)
         {
-			Debug.Print("-----" + lang);
 			foreach (var i in routeData.Values)
 			{
 				//Debug.Print(i.Key + " " + i.Value);
@@ -24,22 +23,16 @@ namespace CaseTracker.Helper
             var routeValueDictionary = new RouteValueDictionary(routeData.Values);
             if (routeValueDictionary.ContainsKey("lang"))
             {
-				Debug.Print("bike");
                 if (routeData.Values["lang"] as string == lang)
                 {
-					Debug.Print("vrike");
                     liTagBuilder.AddCssClass("active");
                 }
                 else
                 {
-					Debug.Print("den vrike");
 					routeValueDictionary["lang"] = lang;
                 }
 			}
-			else
-			{
-				Debug.Print("den bike");
-			}
+			
             aTagBuilder.MergeAttribute("href", url.RouteUrl(routeValueDictionary));
             aTagBuilder.SetInnerText(name);
             liTagBuilder.InnerHtml = aTagBuilder.ToString();

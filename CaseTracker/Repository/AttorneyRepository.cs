@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CaseTracker.Models;
+using CaseTracker.ViewModels;
 
 namespace CaseTracker.Repository
 {
@@ -37,10 +38,17 @@ namespace CaseTracker.Repository
 				AFM = AFM,
 				City = City
 			};
-			db.Attorneys.Add(attorney);
-			db.SaveChanges();
 
-			return attorney.Id;
+			return InsertAttorney(attorney);
+		}
+
+		public int InsertAttorney(string userID,CreateCaseViewModel vm)
+		{
+			return InsertAttorney(userID,
+								  vm.AttorneyFirstName,
+								  vm.AttorneyLastName,
+								  vm.AttorneyAFM,
+								  vm.AttorneyCity);
 		}
 	}
 }

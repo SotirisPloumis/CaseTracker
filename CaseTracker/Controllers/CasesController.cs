@@ -20,11 +20,17 @@ namespace CaseTracker.Controllers
         private ApplicationDbContext db;
 		private string userID;
 		private CaseRepository CaseRepository;
+		private AttorneyRepository AttorneyRepository;
+		private CourtRepository CourtRepository;
+		private PartyRepository PartyRepository;
 
 		public CasesController()
 		{
 			db = new ApplicationDbContext();
 			CaseRepository = new CaseRepository();
+			AttorneyRepository = new AttorneyRepository();
+			CourtRepository = new CourtRepository();
+			PartyRepository = new PartyRepository();
 		}
 
 		public ActionResult Index()
@@ -90,9 +96,24 @@ namespace CaseTracker.Controllers
 
 			if (db.Cases.Any(x => x.Aa == vm.Aa && x.UserId == userID) || !ModelState.IsValid)
 			{
+				Debug.Print("0000000000000000000");
+				Debug.Print(ModelState.IsValid.ToString());
+				foreach(ModelState m in ViewData.ModelState.Values)
+				{
+					Debug.Print("--" + m.Errors.ToList().Count());
+					foreach(ModelError e in m.Errors)
+					{
+						Debug.Print(e.ErrorMessage);
+					}
+				}
 				vm.PrepareLists(userID);
 				return View(vm);
 			}
+			vm.AttorneyId = AttorneyRepository.InsertAttorney(userID, vm);
+			vm.CourtId = CourtRepository.InsertCourt(userID, vm);
+			vm.ProsecutionId = PartyRepository.InsertPartyProsecution(userID, vm);
+			vm.DefenseId = PartyRepository.InsertPartyDefense(userID, vm);
+			vm.RecipientId = PartyRepository.InsertPartyRecipient(userID, vm);
 
 			CaseRepository.InsertCaseFromViewModel(userID,vm);
 
@@ -189,15 +210,15 @@ namespace CaseTracker.Controllers
 		public JsonResult UniqueAACreate(string aa)
 		{
 			userID = User.Identity.GetUserId();
-			Debug.Print(aa);
+			//Debug.Print(aa);
 			return Json(!db.Cases.Any(x => x.Aa == aa && x.UserId == userID), JsonRequestBehavior.AllowGet);
 		}
 
 		public JsonResult UniqueAAEdit(string aa, int Id)
 		{
 			userID = User.Identity.GetUserId();
-			Debug.Print(aa);
-			Debug.Print(Id.ToString());
+			//Debug.Print(aa);
+			//Debug.Print(Id.ToString());
 			return Json(!db.Cases.Any(x => x.Aa == aa && x.Id != Id && x.UserId == userID), JsonRequestBehavior.AllowGet);
 		}
 	}

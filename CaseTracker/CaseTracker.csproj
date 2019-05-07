@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201905070734207_rebuild.Designer.cs">
       <DependentUpon>201905070734207_rebuild.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905071800033_unifiedcreatecase.cs" />
+    <Compile Include="Migrations\201905071800033_unifiedcreatecase.Designer.cs">
+      <DependentUpon>201905071800033_unifiedcreatecase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Attorney.cs" />
@@ -377,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905070734207_rebuild.resx">
       <DependentUpon>201905070734207_rebuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905071800033_unifiedcreatecase.resx">
+      <DependentUpon>201905071800033_unifiedcreatecase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

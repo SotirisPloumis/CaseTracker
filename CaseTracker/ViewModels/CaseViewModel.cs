@@ -29,24 +29,24 @@ namespace CaseTracker.ViewModels
 		public bool IsFinished { get; set; }
 
 		[Display(Name = "Document_Type", ResourceType = typeof(GlobalRes))]
-		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int DocumentTypeId { get; set; }
 		public ICollection<DocumentType> DocumentTypesList { get; set; }
 
 		[Display(Name = "Court", ResourceType = typeof(GlobalRes))]
-		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
-		public int CourtId { get; set; }
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		public int? CourtId { get; set; }
 		public ICollection<Court> CourtsList { get; set; }
 
 		[Display(Name = "Attorney", ResourceType = typeof(GlobalRes))]
-		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
-		public int AttorneyId { get; set; }
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		public int? AttorneyId { get; set; }
 		public ICollection<Attorney> AttorneysList { get; set; }
 
 		[Display(Name = "Date_Assignment", ResourceType = typeof(GlobalRes))]
 		[DataType(DataType.Date)]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0: dd/MM/yyyy}")]
-		//[Required]
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public DateTime DateOfAssignment { get; set; }
 
 		[Display(Name = "Date_Submission", ResourceType = typeof(GlobalRes))]
@@ -63,17 +63,17 @@ namespace CaseTracker.ViewModels
 		public string Notes { get; set; }
 
 		[Display(Name = "Prosecution", ResourceType = typeof(GlobalRes))]
-		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int? ProsecutionId { get; set; }
 		public ICollection<Party> ProsecutionList { get; set; }
 
 		[Display(Name = "Defense", ResourceType = typeof(GlobalRes))]
-		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int? DefenseId { get; set; }
 		public ICollection<Party> DefenseList { get; set; }
 
 		[Display(Name = "Recipient", ResourceType = typeof(GlobalRes))]
-		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int? RecipientId { get; set; }
 		public ICollection<Party> RecipientList { get; set; }
 
@@ -87,7 +87,7 @@ namespace CaseTracker.ViewModels
 		public DateTime DateOfDeed { get; set; }
 
 		[Display(Name = "Zone", ResourceType = typeof(GlobalRes))]
-		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int ZoneId { get; set; }
 		public ICollection<Zone> ZoneList { get; set; }
 
