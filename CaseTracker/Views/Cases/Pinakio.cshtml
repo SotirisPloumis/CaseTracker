@@ -37,7 +37,7 @@
                 @Html.DisplayNameFor(model => model.ZoneId)
             </th>
             <th class="th-sm">
-                @Html.DisplayNameFor(model => model.Zone.Cost)
+                @Html.DisplayNameFor(model => model.Zone.CostFull)
             </th>
         </tr>
     </thead>
@@ -70,7 +70,7 @@
                     @Html.DisplayFor(modelItem => item.Zone.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Zone.Cost)
+                    @Html.DisplayFor(modelItem => item.Zone.CostFull)
                 </td>
                 <td>
                     @Html.ActionLink("Επεργασία", "Edit", new { id = item.Id }) |

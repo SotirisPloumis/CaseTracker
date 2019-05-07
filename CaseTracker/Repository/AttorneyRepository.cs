@@ -42,5 +42,11 @@ namespace CaseTracker.Repository
 
 			return attorney.Id;
 		}
+
+        public IQueryable<Attorney> getAttorney(int id)
+        {            
+            var attorney = db.Attorneys.Where(a => a.Id == id);
+            return attorney;
+        }
 	}
 }

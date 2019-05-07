@@ -25,15 +25,15 @@ namespace CaseTracker.Controllers.API
         }
 
         // GET: api/Attornies/5
-        public string Get(int id)
+        public IQueryable<Attorney> Get(int id)
         {
-            return "value";
+            return AttorneyRepository.getAttorney(id);
         }
 
         // POST: api/Attornies
         public IHttpActionResult Post([FromBody]Attorney a)
         {
-			a.UserId = "b05c5fcc-f7cf-4111-a77b-cdea8c56cf7b";
+			a.UserId = "b4738ca1-664a-4004-b9b8-de4c4098edde";
 
 			int id = AttorneyRepository.InsertAttorney(a);
 

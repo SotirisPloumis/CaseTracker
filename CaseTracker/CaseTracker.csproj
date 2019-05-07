@@ -213,9 +213,13 @@
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\201905070734207_rebuild.cs" />
-    <Compile Include="Migrations\201905070734207_rebuild.Designer.cs">
-      <DependentUpon>201905070734207_rebuild.cs</DependentUpon>
+    <Compile Include="Migrations\201905071629474_rebuild.cs" />
+    <Compile Include="Migrations\201905071629474_rebuild.Designer.cs">
+      <DependentUpon>201905071629474_rebuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905071638474_runSeed.cs" />
+    <Compile Include="Migrations\201905071638474_runSeed.Designer.cs">
+      <DependentUpon>201905071638474_runSeed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -375,8 +379,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>App_LocalResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905070734207_rebuild.resx">
-      <DependentUpon>201905070734207_rebuild.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905071629474_rebuild.resx">
+      <DependentUpon>201905071629474_rebuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905071638474_runSeed.resx">
+      <DependentUpon>201905071638474_runSeed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
