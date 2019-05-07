@@ -9,109 +9,119 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-	<tr>
-		<th>
-			@Html.DisplayNameFor(model => model.Aa)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DocumentTypeId)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.AttorneyId)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.CourtId)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DateOfAssignment)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DateOfSubmission)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DateOfEnd)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Notes)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.ProsecutionId)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DefenseId)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.RecipientId)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DeedResultId)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.DateOfDeed)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.ZoneId)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.IsFinished)
-		</th>
-	</tr>
-	@using App_LocalResources
-	@foreach (var item in Model)
-	{
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.Aa)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.DocumentType.TranslatedDescription)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Attorney.FullName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Court.Name)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.DateOfAssignment)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.DateOfSubmission)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.DateOfEnd)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Notes)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Prosecution.FullName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Defense.FullName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Recipient.FullName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.DeedResult.TranslatedResult)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.DateOfDeed)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Zone.TranslatedName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.IsFinished)
-			</td>
-			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-				@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-			</td>
-		</tr>
-	}
 
+<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.Aa)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.DocumentType.Description)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.Attorney.FullName)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.Court.Name)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.DateOfAssignment)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.DateOfSubmission)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.DateOfEnd)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.ProsecutionId)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.DefenseId)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.RecipientId)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.DeedResultId)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.DateOfDeed)
+            </th>
+            <th class="th-sm">
+                @Html.DisplayNameFor(model => model.ZoneId)
+            </th>
+            <th class="th-sm">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocumentType.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attorney.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Court.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfAssignment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfSubmission)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prosecution.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Defense.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recipient.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeedResult.Result)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfDeed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zone.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+    
 </table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>    
+}

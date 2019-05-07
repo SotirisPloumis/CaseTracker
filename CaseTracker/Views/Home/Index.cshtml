@@ -1,16 +1,25 @@
-﻿@using App_LocalResources
-
-@{
-	ViewBag.Title = "Home Page";
+﻿@{
+    ViewBag.Title = "Home Page";
 }
 
-<h1>
-	Case Tracker
-</h1>
-@Html.ActionLink("cases", "Index", "Cases")<br />
-@Html.ActionLink("types", "Index", "DocumentTypes")<br />
-@Html.ActionLink("parties", "Index", "Parties")<br />
-@Html.ActionLink("results", "Index", "DeedResults")<br />
-@Html.ActionLink("zones", "Index", "Zones")<br />
-@Html.ActionLink("book", "Book", "Cases")<br />
-@Html.ActionLink("pinakio", "Pinakio", "Cases")<br />
+
+
+<div class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to case tracker</h1>
+                <p class="lead">Keep track of all incoming and outcoming movement of your cases!</p>
+                <hr class="my-4">
+                <p>For new fixes and updates click the button below</p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </div>
+        <div>
+            <div class="row">
+                <div class="col-6">                    
+                    <button type="button" class="btn btn-dark">Start Route</button>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-dark">Create New Route</button>                  
+                </div>
+            </div>
+        </div>    
+</div>
