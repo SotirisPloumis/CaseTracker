@@ -15,6 +15,13 @@ namespace CaseTracker.Repository
 			db = new ApplicationDbContext();
 		}
 
+		public int InsertParty(Party party)
+		{
+			db.Parties.Add(party);
+			db.SaveChanges();
+			return party.Id;
+		}
+
 		public int InsertParty(string userID, 
 								string FirstName, 
 								string LastName, 

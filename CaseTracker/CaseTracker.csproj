@@ -197,6 +197,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Attributes\LocalizationAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\AttorniesController.cs" />
+    <Compile Include="Controllers\API\CasesController.cs" />
+    <Compile Include="Controllers\API\CourtsController.cs" />
+    <Compile Include="Controllers\API\PartiesController.cs" />
     <Compile Include="Controllers\AttorneyController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaseRolesController.cs" />

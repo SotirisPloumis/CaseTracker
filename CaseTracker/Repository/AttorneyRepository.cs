@@ -15,6 +15,14 @@ namespace CaseTracker.Repository
 			db = new ApplicationDbContext();
 		}
 
+		public int InsertAttorney(Attorney attorney)
+		{
+			db.Attorneys.Add(attorney);
+			db.SaveChanges();
+
+			return attorney.Id;
+		}
+
 		public int InsertAttorney(string userID, 
 								  string FirstName, 
 								  string LastName, 
