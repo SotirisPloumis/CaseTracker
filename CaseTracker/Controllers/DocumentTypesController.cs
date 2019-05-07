@@ -11,17 +11,16 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class DocumentTypesController : Controller
-    {
+	[Authorize(Roles = "Admin")]
+    public class DocumentTypesController : BaseController
+	{
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: DocumentTypes
         public ActionResult Index()
         {
             return View(db.DocumentTypes.ToList());
         }
 
-        // GET: DocumentTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,15 +35,11 @@ namespace CaseTracker.Controllers
             return View(documentType);
         }
 
-        // GET: DocumentTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: DocumentTypes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Description")] DocumentType documentType)
@@ -59,7 +54,6 @@ namespace CaseTracker.Controllers
             return View(documentType);
         }
 
-        // GET: DocumentTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,9 +68,6 @@ namespace CaseTracker.Controllers
             return View(documentType);
         }
 
-        // POST: DocumentTypes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Description")] DocumentType documentType)
@@ -90,7 +81,6 @@ namespace CaseTracker.Controllers
             return View(documentType);
         }
 
-        // GET: DocumentTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +95,6 @@ namespace CaseTracker.Controllers
             return View(documentType);
         }
 
-        // POST: DocumentTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

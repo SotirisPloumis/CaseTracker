@@ -1,10 +1,12 @@
-﻿using CaseTracker.Models;
+﻿using App_LocalResources;
+using CaseTracker.Models;
 using CaseTracker.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -23,124 +25,109 @@ namespace CaseTracker.ViewModels
 
 		public int Id { get; set; }
 
-		[DisplayName("Τύπος αρχείου")]
-		[Required]
+		[Display(Name = "State", ResourceType = typeof(GlobalRes))]
+		public bool IsFinished { get; set; }
+
+		[Display(Name = "Document_Type", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int DocumentTypeId { get; set; }
 		public ICollection<DocumentType> DocumentTypesList { get; set; }
 
-		[DisplayName("Δικαστήριο")]
-		[Required]
+		[Display(Name = "Court", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int CourtId { get; set; }
 		public ICollection<Court> CourtsList { get; set; }
 
-		[DisplayName("Δικηγόρος")]
-		[Required]
+		[Display(Name = "Attorney", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int AttorneyId { get; set; }
 		public ICollection<Attorney> AttorneysList { get; set; }
 
-		[DisplayName("Ημερομηνία ανάθεσης")]
+		[Display(Name = "Date_Assignment", ResourceType = typeof(GlobalRes))]
 		[DataType(DataType.Date)]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0: dd/MM/yyyy}")]
 		//[Required]
 		public DateTime DateOfAssignment { get; set; }
 
-		[DisplayName("Ημερομηνία υποβολής")]
+		[Display(Name = "Date_Submission", ResourceType = typeof(GlobalRes))]
 		[DataType(DataType.Date)]
-		//[Required]
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public DateTime DateOfSubmission { get; set; }
 
-		[DisplayName("Ημερομηνία επιστροφής")]
+		[Display(Name = "Date_return", ResourceType = typeof(GlobalRes))]
 		[DataType(DataType.Date)]
-		//[Required]
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public DateTime DateOfEnd { get; set; }
 
-        [DataType(DataType.MultilineText)]
+		[Display(Name = "Notes", ResourceType = typeof(GlobalRes))]
 		public string Notes { get; set; }
 
-		[DisplayName("Κατήγορος")]
-		[Required]
+		[Display(Name = "Prosecution", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int? ProsecutionId { get; set; }
 		public ICollection<Party> ProsecutionList { get; set; }
 
-		[DisplayName("Υπεράσπιση")]
-		[Required]
+		[Display(Name = "Defense", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int? DefenseId { get; set; }
 		public ICollection<Party> DefenseList { get; set; }
 
-        [DisplayName("Ονομα")]
-        [Required]
-        [DataType(DataType.Text)]
-        public string FirstName { get; set; }
-        
-
-
-        [DisplayName("Επώνυμο")]
-        [Required]
-        public string LastName { get; set; }
-
-        [DisplayName("Ονομα Πατρός")]
-        [Required]
-        public string FathersName { get; set; }
-
-        [DisplayName("Οδός")]
-        [Required]
-        public string Street { get; set; }
-
-        [DisplayName("Πόλη")]
-        [Required]
-        public string City { get; set; }
-
-        [DisplayName("Νομός")]
-        [Required]
-        public string Municipality { get; set; }
-
-        [DisplayName("Ταχυδρομικός κώδικας")]
-        [Required]
-        public string PostCode { get; set; }
-
-        [DisplayName("Τηλέφωνο")]
-        [Required]
-        public string Phone { get; set; }
-
-        [DisplayName("ΑΦΜ")]
-        [Required]
-        public string AFM { get; set; }
-
-        [DisplayName("Ταυτότητα")]
-        [Required]
-        public string IDCard { get; set; }
-
-
-        [DisplayName("Παραλαβών")]
-		[Required]
+		[Display(Name = "Recipient", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public int? RecipientId { get; set; }
 		public ICollection<Party> RecipientList { get; set; }
 
-		[ForeignKey("DeedResult")]
-		[DisplayName("Αποτέλεσμα επίδοσης")]
-		public int? DeedResultId { get; set; }
+		[Display(Name = "Result_Service", ResourceType = typeof(GlobalRes))]
+		public int DeedResultId { get; set; }
 		public ICollection<DeedResult> DeedResultList { get; set; }
 
-		[DisplayName("Ημερομηνία επίδοσης")]
+		[Display(Name = "Date_Service", ResourceType = typeof(GlobalRes))]
 		[DataType(DataType.Date)]
-		//[Required]
+		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public DateTime DateOfDeed { get; set; }
 
-		[ForeignKey("Zone")]
-		[DisplayName("Ζώνη")]
-		public int? ZoneId { get; set; }
+		[Display(Name = "Zone", ResourceType = typeof(GlobalRes))]
+		[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
+		public int ZoneId { get; set; }
 		public ICollection<Zone> ZoneList { get; set; }
 
-		public void PrepareLists()
+		public void PrepareLists(string userID)
 		{
-			AttorneysList = db.Attorneys.ToList();
-			CourtsList = db.Courts.ToList();
-			DocumentTypesList = db.DocumentTypes.ToList();
-			ProsecutionList = db.Parties.Where(c => c.CaseRole.Title == "Prosecution").ToList();
-			DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList();
-			RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList();
-			DeedResultList = db.DeedResults.ToList();
-			ZoneList = db.Zones.ToList();         
+			AttorneysList = db.Attorneys.Where(c => c.UserId == userID).ToList();
+			CourtsList = db.Courts.Where(c => c.UserId == userID).ToList();
 
-        }
+			DocumentTypesList = db.DocumentTypes.ToList();
+			foreach(var i in DocumentTypesList)
+			{
+				i.Description = GlobalRes.ResourceManager.GetString(i.Description);
+			}
+
+			ProsecutionList = db.Parties
+							.Where(c => c.CaseRole.Type == RoleType.Accuse 
+									 && c.UserId == userID)
+							.ToList();
+
+			DefenseList = db.Parties
+							.Where(c => c.CaseRole.Type == RoleType.Defend 
+									 && c.UserId == userID)
+							.ToList();
+
+			RecipientList = db.Parties
+							.Where(c => c.CaseRole.Type == RoleType.Receive 
+									 && c.UserId == userID)
+							.ToList();
+
+			DeedResultList = db.DeedResults.ToList();
+			foreach(var i in DeedResultList)
+			{
+				i.Result = GlobalRes.ResourceManager.GetString(i.Result);
+			}
+
+			ZoneList = db.Zones.ToList();
+			foreach(var i in ZoneList)
+			{
+				i.Name = GlobalRes.ResourceManager.GetString(i.Name);
+			}
+		}
 	}
 }

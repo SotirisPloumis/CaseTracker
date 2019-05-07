@@ -9,75 +9,60 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.Aa)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.DateOfDeed)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.DocumentTypeId)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.ProsecutionId)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.DefenseId)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.CourtId)
-            </th>
-            <th class="th-sm">
-                @Html.DisplayNameFor(model => model.RecipientId)
-            </th>
-            <th class="th-sm">
-                Actions
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Aa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfDeed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DocumentType.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Prosecution.FullName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Defense.FullName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Court.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Recipient.FullName)
-                </td>
-                <td>
-                    @Html.ActionLink("Επεργασία", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Λεπτομέριες", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Διαγραφή", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Aa)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DateOfDeed)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DocumentTypeId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ProsecutionId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DefenseId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.CourtId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.RecipientId)
+		</th>
+	</tr>
 
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            $('#dtBasicExample').DataTable();
-            $('.dataTables_length').addClass('bs-select');
-        });
-    </script>
+@foreach (var item in Model) {
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Aa)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DateOfDeed)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DocumentType.TranslatedDescription)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Prosecution.FullName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Defense.FullName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Court.Name)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Recipient.FullName)
+		</td>
+		<td>
+			@Html.ActionLink("Επεργασία", "Edit", new { id = item.Id }) |
+			@Html.ActionLink("Λεπτομέριες", "Details", new { id = item.Id }) |
+			@Html.ActionLink("Διαγραφή", "Delete", new { id = item.Id })
+		</td>
+	</tr>
 }
+
+</table>

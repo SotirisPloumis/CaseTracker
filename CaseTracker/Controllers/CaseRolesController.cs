@@ -1,27 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using CaseTracker.Models;
+using CaseTracker.Repository;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using CaseTracker.Models;
-using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class CaseRolesController : Controller
-    {
-        private ApplicationDbContext db = new ApplicationDbContext();
+	[Authorize(Roles = "Admin")]
+	public class CaseRolesController : BaseController
+	{
+        private ApplicationDbContext db;
 
-        // GET: CaseRoles
+		public CaseRolesController()
+		{
+			db = new ApplicationDbContext();
+		}
+        
         public ActionResult Index()
         {
-            return View(db.CaseRoles.ToList());
+			return View(db.CaseRoles.ToList());
         }
 
-        // GET: CaseRoles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,18 +36,14 @@ namespace CaseTracker.Controllers
             return View(caseRole);
         }
 
-        // GET: CaseRoles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CaseRoles/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title")] CaseRole caseRole)
+        public ActionResult Create([Bind(Include = "Id,Title,Type")] CaseRole caseRole)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +55,6 @@ namespace CaseTracker.Controllers
             return View(caseRole);
         }
 
-        // GET: CaseRoles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,12 +69,9 @@ namespace CaseTracker.Controllers
             return View(caseRole);
         }
 
-        // POST: CaseRoles/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title")] CaseRole caseRole)
+        public ActionResult Edit([Bind(Include = "Id,Title,Type")] CaseRole caseRole)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +82,6 @@ namespace CaseTracker.Controllers
             return View(caseRole);
         }
 
-        // GET: CaseRoles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +96,6 @@ namespace CaseTracker.Controllers
             return View(caseRole);
         }
 
-        // POST: CaseRoles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

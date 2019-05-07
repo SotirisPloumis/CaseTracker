@@ -6,116 +6,168 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using App_LocalResources;
 using CaseTracker.Models;
 using CaseTracker.Repository;
+using Microsoft.AspNet.Identity;
 
 namespace CaseTracker.Controllers
 {
-    public class PartiesController : Controller
-    {
-        private ApplicationDbContext db = new ApplicationDbContext();
+	[Authorize]
+    public class PartiesController : BaseController
+	{
+        private ApplicationDbContext db;
+		private PartyRepository PartyRepository;
 
-        // GET: Parties
+		public PartiesController()
+		{
+			db = new ApplicationDbContext();
+			PartyRepository = new PartyRepository();
+		}
+
         public ActionResult Index()
         {
-            var parties = db.Parties.Include(p => p.CaseRole);
-            return View(parties.ToList());
+			string userID = User.Identity.GetUserId();
+
+            var parties = db.Parties
+							.Include(p => p.CaseRole)
+							.Where(p => p.UserId == userID)
+							.ToList();
+
+            return View(parties);
         }
 
-        // GET: Parties/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Party party = db.Parties.Find(id);
-            if (party == null)
+            if (party == null || party.UserId != userID)
             {
                 return HttpNotFound();
             }
             return View(party);
         }
 
-        // GET: Parties/Create
         public ActionResult Create()
         {
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title");
-            return View();
+			Party p = new Party();
+			p.TranslateRoles();
+			return View(p);
         }
 
-        // POST: Parties/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
         {
-            if (ModelState.IsValid)
+			string userID = User.Identity.GetUserId();
+
+			if (ModelState.IsValid)
             {
-                db.Parties.Add(party);
-                db.SaveChanges();
+				PartyRepository.InsertParty(userID, 
+											party.FirstName, 
+											party.LastName, 
+											party.FathersName, 
+											party.CaseRoleId, 
+											party.Street, 
+											party.City, 
+											party.Municipality, 
+											party.PostCode, 
+											party.WorkPhone, 
+											party.HomePhone, 
+											party.MobilePhone, 
+											party.FAX, 
+											party.AFM, 
+											party.IDCard);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
+			party.TranslateRoles();
             return View(party);
         }
 
-        // GET: Parties/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Party party = db.Parties.Find(id);
-            if (party == null)
+            if (party == null || party.UserId != userID)
             {
                 return HttpNotFound();
             }
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
+			party.TranslateRoles();
             return View(party);
         }
 
-        // POST: Parties/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId," +
+												 "Street,City,Municipality,PostCode,WorkPhone,HomePhone," +
+												 "MobilePhone,FAX,AFM,IDCard")] Party party)
         {
-            if (ModelState.IsValid)
+			string userID = User.Identity.GetUserId();
+
+			Party partyToEdit = db.Parties.Find(party.Id);
+
+			if (ModelState.IsValid && partyToEdit.UserId == userID)
             {
-                db.Entry(party).State = EntityState.Modified;
+				partyToEdit.FirstName = party.FirstName;
+				partyToEdit.LastName = party.LastName;
+				partyToEdit.FathersName = party.FathersName;
+				partyToEdit.CaseRoleId = party.CaseRoleId;
+				partyToEdit.Street = party.Street;
+				partyToEdit.City = party.City;
+				partyToEdit.Municipality = party.Municipality;
+				partyToEdit.PostCode = party.PostCode;
+				partyToEdit.WorkPhone = party.WorkPhone;
+				partyToEdit.HomePhone = party.HomePhone;
+				partyToEdit.MobilePhone = party.MobilePhone;
+				partyToEdit.FAX = party.FAX;
+				partyToEdit.AFM = party.AFM;
+				partyToEdit.IDCard = party.IDCard;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CaseRoleId = new SelectList(db.CaseRoles, "Id", "Title", party.CaseRoleId);
-            return View(party);
+			party.TranslateRoles();
+			return View(party);
         }
 
-        // GET: Parties/Delete/5
-        public ActionResult Delete(int? id)
+		public ActionResult Delete(int? id)
         {
-            if (id == null)
+			string userID = User.Identity.GetUserId();
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Party party = db.Parties.Find(id);
-            if (party == null)
+            if (party == null || party.UserId != userID)
             {
                 return HttpNotFound();
             }
             return View(party);
         }
 
-        // POST: Parties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Party party = db.Parties.Find(id);
+			string userID = User.Identity.GetUserId();
+
+			Party party = db.Parties.Find(id);
+			if (party == null || party.UserId != userID)
+			{
+				return HttpNotFound();
+			}
             db.Parties.Remove(party);
             db.SaveChanges();
             return RedirectToAction("Index");

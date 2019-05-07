@@ -14,6 +14,13 @@ namespace CaseTracker
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
+				name: "Language",
+				url: "{lang}/{controller}/{action}/{id}",
+				defaults: new {lang = "el", controller = "Home", action = "Index", id = UrlParameter.Optional },
+				constraints: new { lang = @"el|en" }
+			);
+
+			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

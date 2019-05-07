@@ -11,17 +11,16 @@ using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-    public class DeedResultsController : Controller
-    {
+	[Authorize(Roles = "Admin")]
+    public class DeedResultsController : BaseController
+	{
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: DeedResults
         public ActionResult Index()
         {
             return View(db.DeedResults.ToList());
         }
 
-        // GET: DeedResults/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,18 +35,14 @@ namespace CaseTracker.Controllers
             return View(deedResult);
         }
 
-        // GET: DeedResults/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: DeedResults/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Result")] DeedResult deedResult)
+        public ActionResult Create([Bind(Include = "Id,Result,IsPayable")] DeedResult deedResult)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +54,6 @@ namespace CaseTracker.Controllers
             return View(deedResult);
         }
 
-        // GET: DeedResults/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,12 +68,9 @@ namespace CaseTracker.Controllers
             return View(deedResult);
         }
 
-        // POST: DeedResults/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Result")] DeedResult deedResult)
+        public ActionResult Edit([Bind(Include = "Id,Result,IsPayable")] DeedResult deedResult)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +81,6 @@ namespace CaseTracker.Controllers
             return View(deedResult);
         }
 
-        // GET: DeedResults/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +95,6 @@ namespace CaseTracker.Controllers
             return View(deedResult);
         }
 
-        // POST: DeedResults/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
