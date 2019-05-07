@@ -53,6 +53,7 @@ namespace CaseTracker.ViewModels
 		//[Required]
 		public DateTime DateOfEnd { get; set; }
 
+        [DataType(DataType.MultilineText)]
 		public string Notes { get; set; }
 
 		[DisplayName("Κατήγορος")]
@@ -65,7 +66,51 @@ namespace CaseTracker.ViewModels
 		public int? DefenseId { get; set; }
 		public ICollection<Party> DefenseList { get; set; }
 
-		[DisplayName("Παραλαβών")]
+        [DisplayName("Ονομα")]
+        [Required]
+        [DataType(DataType.Text)]
+        public string FirstName { get; set; }
+        
+
+
+        [DisplayName("Επώνυμο")]
+        [Required]
+        public string LastName { get; set; }
+
+        [DisplayName("Ονομα Πατρός")]
+        [Required]
+        public string FathersName { get; set; }
+
+        [DisplayName("Οδός")]
+        [Required]
+        public string Street { get; set; }
+
+        [DisplayName("Πόλη")]
+        [Required]
+        public string City { get; set; }
+
+        [DisplayName("Νομός")]
+        [Required]
+        public string Municipality { get; set; }
+
+        [DisplayName("Ταχυδρομικός κώδικας")]
+        [Required]
+        public string PostCode { get; set; }
+
+        [DisplayName("Τηλέφωνο")]
+        [Required]
+        public string Phone { get; set; }
+
+        [DisplayName("ΑΦΜ")]
+        [Required]
+        public string AFM { get; set; }
+
+        [DisplayName("Ταυτότητα")]
+        [Required]
+        public string IDCard { get; set; }
+
+
+        [DisplayName("Παραλαβών")]
 		[Required]
 		public int? RecipientId { get; set; }
 		public ICollection<Party> RecipientList { get; set; }
@@ -94,7 +139,8 @@ namespace CaseTracker.ViewModels
 			DefenseList = db.Parties.Where(c => c.CaseRole.Title == "Defense").ToList();
 			RecipientList = db.Parties.Where(c => c.CaseRole.Title == "Recipient").ToList();
 			DeedResultList = db.DeedResults.ToList();
-			ZoneList = db.Zones.ToList();
-		}
+			ZoneList = db.Zones.ToList();         
+
+        }
 	}
 }

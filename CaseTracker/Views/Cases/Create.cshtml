@@ -9,32 +9,38 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="row">
-        <p class="title">Title</p>
+        <p class="title">Document Details</p>
     </div>
 
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                @Html.LabelFor(model => model.DocumentTypeId, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.DocumentTypeId, new SelectList(Model.DocumentTypesList, "Id", "Description"), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DocumentTypeId, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col">
             <div class="form-group">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                @Html.LabelFor(model => model.CourtId, htmlAttributes: new { @class = "control-label " })
+                @Html.DropDownListFor(model => model.CourtId, new SelectList(Model.CourtsList, "Id", "Name"), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CourtId, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col">
             <div class="form-group">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                <a href="" data-toggle="modal" data-target="#modalLoginForm" class="modalPlus">+</a>
+                @Html.LabelFor(model => model.AttorneyId, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.AttorneyId, new SelectList(Model.AttorneysList, "Id", "FullName"), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AttorneyId, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col">
             <div class="form-group green-border-focus">
-                <label for="exampleFormControlTextarea5">Colorful border on :focus state</label>
-                <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+                @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Notes, new { @class = "form-control", @rows = "3" })
+                @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+
             </div>
         </div>
         <div class="col-3">
@@ -46,20 +52,23 @@
     <div class="row">
         <div class="col">
             <div class="md-form">
-                <label for="datepicker1">StartDate</label>
-                <input type="text" placeholder="Selected date" id="datepicker1" class="datepicker">
+                @Html.LabelFor(model => model.DateOfAssignment, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.DateOfAssignment, new { htmlAttributes = new { @class = "form-control datepicker", @placholder = "Select Date" } })
+                @Html.ValidationMessageFor(model => model.DateOfAssignment, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col">
             <div class="md-form">
-                <label for="datepicker1">Deed Date</label>
-                <input type="text" placeholder="Selected date" id="datepicker2" class="datepicker">
+                @Html.LabelFor(model => model.DateOfSubmission, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.DateOfSubmission, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateOfSubmission, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col">
             <div class="md-form">
-                <label for="datepicker1">End Date</label>
-                <input type="text" placeholder="Selected date" id="datepicker3" class="datepicker">
+                @Html.LabelFor(model => model.DateOfEnd, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.DateOfEnd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateOfEnd, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col-3">
@@ -71,21 +80,22 @@
 
     <hr />
     <div class="row">
-        <p class="title">Title</p>
+        <p class="title">Party Details</p>
     </div>
 
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label for="formGroupExampleInput">Example label</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <div class="row">
-                    <a href="" data-toggle="modal" data-target="#modalLoginForm" class="modalPlus">+</a>
-                    @Html.LabelFor(model => model.ProsecutionId, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                    @Html.LabelFor(model => model.ProsecutionId, htmlAttributes: new { @class = "control-label" })
                     @Html.EditorFor(m => m.ProsecutionId, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ProsecutionId, "", new { @class = "text-danger" })
                 </div>
@@ -150,49 +160,63 @@
     </div>
     <hr />
     <div class="row">
-        <p class="title">Title</p>
+        <p class="title">Management</p>
     </div>
     <div class="row">
         <div class="col">
-            <label for="formGroupExampleInput">Example label</label>
+            @Html.LabelFor(model => model.DeedResultId, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.DeedResultId, new SelectList(Model.DeedResultList, "Id", "Result"), "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DeedResultId, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            <label for="formGroupExampleInput">Proce Name</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
         </div>
         <div class="col">
-            <label for="formGroupExampleInput">Example label</label>
+            @Html.LabelFor(model => model.Aa, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.Aa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Aa, "", new { @class = "text-danger" })
+        </div>
+        <div class="col">
+            <label for="formGroupExampleInput">Recipient Name</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
         </div>
         <div class="col">
-            <label for="formGroupExampleInput">Example label</label>
+            <label for="formGroupExampleInput">Recipient Street</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
         </div>
+
+
         <div class="col">
-            <label for="formGroupExampleInput">Example label</label>
+            <label for="formGroupExampleInput">Recipient Street</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
         </div>
-        <div class="col">
-            <label for="formGroupExampleInput">Example label</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-        </div>
+
     </div>
+
     <div class="row">
-        <div class="form-group">
+        <div class="col">
+
             <select class="browser-default custom-select custom-select mb-3" id="deedselect">
                 <option selected>DeedResult</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
+
         </div>
-    </div>
-    <div class="row">
+        <div class="col">
+            <label for="formGroupExampleInput">Apy</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+        </div>
         <div class="col">
             <div class="md-form">
-                <input type="text" placeholder="Selected date" id="datepicker4" class="datepicker">
+                <input type="text" placeholder="Issue Date" id="datepicker4" class="datepicker">
             </div>
         </div>
         <div class="col">
             <div class="md-form">
-                <input type="text" placeholder="Selected date" id="datepicker5" class="datepicker">
+                <input type="text" placeholder="Apy date" id="datepicker5" class="datepicker">
             </div>
         </div>
     </div>

@@ -97,7 +97,8 @@ namespace CaseTracker.Controllers
 			}
 
 			Case newCase = new Case();
-			newCase.Update(vm);
+            Party newParty = new Party();
+			newCase.Update(vm);            
 
 			db.Cases.Add(newCase);
 			db.SaveChanges();
