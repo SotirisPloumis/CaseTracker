@@ -209,17 +209,9 @@
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\201905060831581_rebuild.cs" />
-    <Compile Include="Migrations\201905060831581_rebuild.Designer.cs">
-      <DependentUpon>201905060831581_rebuild.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905061018323_attorneyRepo.cs" />
-    <Compile Include="Migrations\201905061018323_attorneyRepo.Designer.cs">
-      <DependentUpon>201905061018323_attorneyRepo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905061047394_reqCourtName.cs" />
-    <Compile Include="Migrations\201905061047394_reqCourtName.Designer.cs">
-      <DependentUpon>201905061047394_reqCourtName.cs</DependentUpon>
+    <Compile Include="Migrations\201905070734207_rebuild.cs" />
+    <Compile Include="Migrations\201905070734207_rebuild.Designer.cs">
+      <DependentUpon>201905070734207_rebuild.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -379,14 +371,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>App_LocalResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905060831581_rebuild.resx">
-      <DependentUpon>201905060831581_rebuild.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905061018323_attorneyRepo.resx">
-      <DependentUpon>201905061018323_attorneyRepo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905061047394_reqCourtName.resx">
-      <DependentUpon>201905061047394_reqCourtName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905070734207_rebuild.resx">
+      <DependentUpon>201905070734207_rebuild.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -16,7 +16,7 @@ namespace CaseTracker.Migrations
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
                         AFM = c.String(nullable: false),
-                        City = c.String(nullable: false),
+                        City = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
@@ -138,7 +138,7 @@ namespace CaseTracker.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         UserId = c.String(maxLength: 128),
-                        Name = c.String(),
+                        Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
