@@ -6,13 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using CaseTracker.CustomAnnotations;
 using CaseTracker.Models;
 using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
-	[Authorize(Roles = "Admin")]
-    public class ZonesController : BaseController
+	[NotAllowed(Roles = "Admin")]
+	public class ZonesController : BaseController
 	{
         private ApplicationDbContext db;
 

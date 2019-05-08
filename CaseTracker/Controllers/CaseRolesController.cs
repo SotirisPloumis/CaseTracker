@@ -1,4 +1,5 @@
-﻿using CaseTracker.Models;
+﻿using CaseTracker.CustomAnnotations;
+using CaseTracker.Models;
 using CaseTracker.Repository;
 using System.Data.Entity;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace CaseTracker.Controllers
 {
-	[Authorize(Roles = "Admin")]
+	[NotAllowed(Roles = "Admin")]
 	public class CaseRolesController : BaseController
 	{
         private ApplicationDbContext db;

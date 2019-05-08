@@ -8,135 +8,50 @@
 
 //prosecution
 let manageProsecution = () => {
-	let isEnabled = true;
 	$('.newProsecutionButton').click((e) => {
-		if (isEnabled) {
-			enableProsecutionList(e);
-		} else {
-			enableProsecutionInfo(e);
-		}
-		isEnabled = !isEnabled;
+		e.preventDefault();
+		$("#newProsecutionValue").val(!$("#newProsecutionValue").val);
+		$("#ProsecutionListInput").toggle();
+		$("#ProsecutionInfoInput").toggle();
 	});
-}
-
-let enableProsecutionList = (e) => {
-	e.preventDefault();
-	$("#newProsecutionValue").val(false);
-	$("#ProsecutionListInput").show();
-	$("#ProsecutionInfoInput").hide();
-}
-
-let enableProsecutionInfo = (e) => {
-	e.preventDefault();
-	$("#newProsecutionValue").val(true);
-	$("#ProsecutionListInput").hide();
-	$("#ProsecutionInfoInput").show();
 }
 
 //defense
 let manageDefense = () => {
-	let isEnabled = true;
 	$('.newDefenseButton').click((e) => {
-		if (isEnabled) {
-			enableDefenseList(e);
-		} else {
-			enableDefenseInfo(e);
-		}
-		isEnabled = !isEnabled;
+		e.preventDefault();
+		$("#newDefenseValue").val(!$("#newDefenseValue").val);
+		$("#DefenseListInput").toggle();
+		$("#DefenseInfoInput").toggle();
 	});
-}
-
-let enableDefenseList = (e) => {
-	e.preventDefault();
-	$("#newDefenseValue").val(false);
-	$("#DefenseListInput").show();
-	$("#DefenseInfoInput").hide();
-}
-
-let enableDefenseInfo = (e) => {
-	e.preventDefault();
-	$("#newDefenseValue").val(true);
-	$("#DefenseListInput").hide();
-	$("#DefenseInfoInput").show();
 }
 
 //recipient
 let manageRecipient = () => {
-	let isEnabled = true;
 	$('.newRecipientButton').click((e) => {
-		if (isEnabled) {
-			enableRecipientList(e);
-		} else {
-			enableRecipientInfo(e);
-		}
-		isEnabled = !isEnabled;
+		e.preventDefault();
+		$("#newRecipientValue").val(!$("#newRecipientValue").val);
+		$("#RecipientListInput").toggle();
+		$("#RecipientInfoInput").toggle();
 	});
-}
-
-let enableRecipientList = (e) => {
-	e.preventDefault();
-	$("#newRecipientValue").val(false);
-	$("#RecipientListInput").show();
-	$("#RecipientInfoInput").hide();
-}
-
-let enableRecipientInfo = (e) => {
-	e.preventDefault();
-	$("#newRecipientValue").val(true);
-	$("#RecipientListInput").hide();
-	$("#RecipientInfoInput").show();
 }
 
 //court
 let manageCourt = () => {
-	let isEnabled = true;
 	$('.newCourtButton').click((e) => {
-		if (isEnabled) {
-			enableCourtList(e);
-		} else {
-			enableCourtName(e);
-		}
-		isEnabled = !isEnabled;
+		e.preventDefault();
+		$("#newCourtValue").val(!$("#newCourtValue").val);
+		$("#CourtListInput").toggle();
+		$("#CourtNameInput").toggle();
 	});
-}
-
-let enableCourtList = (e) => {
-	e.preventDefault();
-	$("#newCourtValue").val(false);
-	$("#CourtListInput").show();
-	$("#CourtNameInput").hide();
-}
-
-let enableCourtName = (e) => {
-	e.preventDefault();
-	$("#newCourtValue").val(true);
-	$("#CourtNameInput").show();
-	$("#CourtListInput").hide();
 }
 
 //attorney
 let manageAttorney = () => {
-	let isEnabled = true;
 	$('.newAttorneyButton').click((e) => {
-		if (isEnabled) {
-			enableAttorneyList(e);
-		} else {
-			enableAttorneyInfo(e);
-		}
-		isEnabled = !isEnabled;
+		e.preventDefault();
+		$("#newAttorneyValue").val(!$("#newAttorneyValue").val);
+		$("#AttorneyListInput").toggle();
+		$("#AttorneyInfoInput").toggle();
 	});
-}
-
-let enableAttorneyList = (e) => {
-	e.preventDefault();
-	$("#newAttorneyValue").val(false);
-	$("#AttorneyListInput").show();
-	$("#AttorneyInfoInput").hide();
-}
-
-let enableAttorneyInfo = (e) => {
-	e.preventDefault();
-	$("#newAttorneyValue").val(true);
-	$("#AttorneyListInput").hide();
-	$("#AttorneyInfoInput").show();
 }

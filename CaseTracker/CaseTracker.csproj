@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\ZonesController.cs" />
+    <Compile Include="CustomAnnotations\NotAllowed.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
     <Compile Include="Migrations\201905070734207_rebuild.cs" />
     <Compile Include="Migrations\201905070734207_rebuild.Designer.cs">
@@ -352,6 +353,7 @@
     <Content Include="Views\CaseRoles\Details.cshtml" />
     <Content Include="Views\CaseRoles\Edit.cshtml" />
     <Content Include="Views\CaseRoles\Index.cshtml" />
+    <Content Include="Views\Home\Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
