@@ -33,7 +33,7 @@ namespace CaseTracker.Controllers.API
         // POST: api/Courts
         public IHttpActionResult Post([FromBody] Court c)
         {
-			c.UserId = "b05c5fcc-f7cf-4111-a77b-cdea8c56cf7b";
+			c.UserId = "b4738ca1-664a-4004-b9b8-de4c4098edde";
 
 			int result = CourtRepository.InsertCourt(c);
 
