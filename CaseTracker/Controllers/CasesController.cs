@@ -96,24 +96,34 @@ namespace CaseTracker.Controllers
 
 			if (db.Cases.Any(x => x.Aa == vm.Aa && x.UserId == userID) || !ModelState.IsValid)
 			{
-				Debug.Print("0000000000000000000");
-				Debug.Print(ModelState.IsValid.ToString());
-				foreach(ModelState m in ViewData.ModelState.Values)
-				{
-					Debug.Print("--" + m.Errors.ToList().Count());
-					foreach(ModelError e in m.Errors)
-					{
-						Debug.Print(e.ErrorMessage);
-					}
-				}
 				vm.PrepareLists(userID);
 				return View(vm);
 			}
-			vm.AttorneyId = AttorneyRepository.InsertAttorney(userID, vm);
-			vm.CourtId = CourtRepository.InsertCourt(userID, vm);
-			vm.ProsecutionId = PartyRepository.InsertPartyProsecution(userID, vm);
-			vm.DefenseId = PartyRepository.InsertPartyDefense(userID, vm);
-			vm.RecipientId = PartyRepository.InsertPartyRecipient(userID, vm);
+
+			if (vm.newAttorney)
+			{
+				vm.AttorneyId = AttorneyRepository.InsertAttorney(userID, vm);
+			}
+
+			if (vm.newCourt)
+			{
+				vm.CourtId = CourtRepository.InsertCourt(userID, vm);
+			}
+
+			if (vm.newProsecution)
+			{
+				vm.ProsecutionId = PartyRepository.InsertPartyProsecution(userID, vm);
+			}
+
+			if (vm.newDefense)
+			{
+				vm.DefenseId = PartyRepository.InsertPartyDefense(userID, vm);
+			}
+
+			if (vm.newRecipient)
+			{
+				vm.RecipientId = PartyRepository.InsertPartyRecipient(userID, vm);
+			}
 
 			CaseRepository.InsertCaseFromViewModel(userID,vm);
 
