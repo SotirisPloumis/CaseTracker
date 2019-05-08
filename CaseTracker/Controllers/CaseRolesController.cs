@@ -4,11 +4,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using CaseTracker.CustomAnnotation;
 
 namespace CaseTracker.Controllers
 {
-	[Authorize(Roles = "Admin")]
-	public class CaseRolesController : BaseController
+    [CustomAdminAnnotation.YourCustomAuthorize(Roles = "Admin")]
+    public class CaseRolesController : BaseController
 	{
         private ApplicationDbContext db;
 

@@ -212,14 +212,11 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\ZonesController.cs" />
+    <Compile Include="CustomAnnotation\CustomAdminAnnotation.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\201905071629474_rebuild.cs" />
-    <Compile Include="Migrations\201905071629474_rebuild.Designer.cs">
-      <DependentUpon>201905071629474_rebuild.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905071638474_runSeed.cs" />
-    <Compile Include="Migrations\201905071638474_runSeed.Designer.cs">
-      <DependentUpon>201905071638474_runSeed.cs</DependentUpon>
+    <Compile Include="Migrations\201905080651270_rebuild.cs" />
+    <Compile Include="Migrations\201905080651270_rebuild.Designer.cs">
+      <DependentUpon>201905080651270_rebuild.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -351,6 +348,7 @@
     <Content Include="Views\CaseRoles\Details.cshtml" />
     <Content Include="Views\CaseRoles\Edit.cshtml" />
     <Content Include="Views\CaseRoles\Index.cshtml" />
+    <Content Include="Views\Home\Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -379,11 +377,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>App_LocalResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905071629474_rebuild.resx">
-      <DependentUpon>201905071629474_rebuild.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905071638474_runSeed.resx">
-      <DependentUpon>201905071638474_runSeed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905080651270_rebuild.resx">
+      <DependentUpon>201905080651270_rebuild.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

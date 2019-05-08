@@ -319,7 +319,7 @@
                 });
 
                 posting.done(function (data) {
-                    alert('success');
+                    $('#modalLoginForm').modal('hide');
                 });
 
 
@@ -327,13 +327,32 @@
             $("#formidCourt").submit(function (event) {
                 event.preventDefault();
                 var posting = $.post("/api/Courts", { "Name": $("#defaultForm-CourtName").val() });
-                posting.done(function (data) {
-                    alert('success');
-                    $('#modalAddCourt').modal('hide');
-                       
+                posting.done(function (data) {                    
+                    $('#modalAddCourt').modal('hide');                     
                    
                 });
             });
+            jQuery.fn.ForceNumericOnly =
+                function () {
+                    return this.each(function () {
+                        $(this).keydown(function (e) {
+                            var key = e.charCode || e.keyCode || 0;
+                            // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
+                            // home, end, period, and numpad decimal
+                            return (
+                                key == 8 ||
+                                key == 9 ||
+                                key == 13 ||
+                                key == 46 ||
+                                key == 110 ||
+                                key == 190 ||
+                                (key >= 35 && key <= 40) ||
+                                (key >= 48 && key <= 57) ||
+                                (key >= 96 && key <= 105));
+                        });
+                    });
+                };
+            $("#defaultForm-afm").ForceNumericOnly();
         });
     </script>
 }

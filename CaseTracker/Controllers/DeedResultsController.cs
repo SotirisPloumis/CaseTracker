@@ -8,10 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using CaseTracker.Models;
 using CaseTracker.Repository;
+using CaseTracker.CustomAnnotation;
 
 namespace CaseTracker.Controllers
 {
-	[Authorize(Roles = "Admin")]
+    [CustomAdminAnnotation.YourCustomAuthorize(Roles = "Admin")]
     public class DeedResultsController : BaseController
 	{
         private ApplicationDbContext db = new ApplicationDbContext();

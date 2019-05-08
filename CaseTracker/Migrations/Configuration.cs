@@ -9,7 +9,7 @@ namespace CaseTracker.Migrations
     using System.Data.Entity.Validation;
     using System.Diagnostics;
     using System.Linq;
-    
+
 
     internal sealed class Configuration : DbMigrationsConfiguration<CaseTracker.Repository.ApplicationDbContext>
     {

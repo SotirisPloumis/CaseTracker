@@ -13,7 +13,7 @@ namespace CaseTracker.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201905071629474_rebuild"; }
+            get { return "201905080651270_rebuild"; }
         }
         
         string IMigrationMetadata.Source

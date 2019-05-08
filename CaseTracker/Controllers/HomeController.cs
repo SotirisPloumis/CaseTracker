@@ -26,5 +26,10 @@ namespace CaseTracker.Controllers
 
 			return View();
 		}
+        
+        public ActionResult Unauthorized()
+        {
+            return View();
+        }
 	}
 }
