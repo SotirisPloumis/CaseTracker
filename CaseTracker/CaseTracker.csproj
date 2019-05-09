@@ -201,6 +201,7 @@
     <Compile Include="Controllers\API\CasesController.cs" />
     <Compile Include="Controllers\API\CourtsController.cs" />
     <Compile Include="Controllers\API\PartiesController.cs" />
+    <Compile Include="Controllers\API\PaymentController.cs" />
     <Compile Include="Controllers\AttorneyController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaseRolesController.cs" />
@@ -214,13 +215,9 @@
     <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="CustomAnnotations\NotAllowed.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\201905070734207_rebuild.cs" />
-    <Compile Include="Migrations\201905070734207_rebuild.Designer.cs">
-      <DependentUpon>201905070734207_rebuild.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905071800033_unifiedcreatecase.cs" />
-    <Compile Include="Migrations\201905071800033_unifiedcreatecase.Designer.cs">
-      <DependentUpon>201905071800033_unifiedcreatecase.cs</DependentUpon>
+    <Compile Include="Migrations\201905082135239_rebuild.cs" />
+    <Compile Include="Migrations\201905082135239_rebuild.Designer.cs">
+      <DependentUpon>201905082135239_rebuild.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -235,6 +232,7 @@
     <Compile Include="Models\DeedResult.cs" />
     <Compile Include="Models\DocumentType.cs" />
     <Compile Include="Models\Party.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Zone.cs" />
     <Compile Include="Repository\ApplicationDbContext.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -262,6 +260,7 @@
     <None Include="Properties\PublishProfiles\icasetracker - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\case\create.js" />
+    <Content Include="Scripts\case\payment.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -354,6 +353,8 @@
     <Content Include="Views\CaseRoles\Edit.cshtml" />
     <Content Include="Views\CaseRoles\Index.cshtml" />
     <Content Include="Views\Home\Unauthorized.cshtml" />
+    <Content Include="Views\Home\BecomePro.cshtml" />
+    <Content Include="Views\Home\Pro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -382,11 +383,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>App_LocalResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905070734207_rebuild.resx">
-      <DependentUpon>201905070734207_rebuild.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905071800033_unifiedcreatecase.resx">
-      <DependentUpon>201905071800033_unifiedcreatecase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905082135239_rebuild.resx">
+      <DependentUpon>201905082135239_rebuild.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

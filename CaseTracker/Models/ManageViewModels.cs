@@ -12,6 +12,7 @@ namespace CaseTracker.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+		public bool IsPro { get; set; }
     }
 
     public class ManageLoginsViewModel

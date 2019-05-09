@@ -27,6 +27,7 @@ namespace CaseTracker.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        IsPro = c.Boolean(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -99,8 +100,8 @@ namespace CaseTracker.Migrations
                         Aa = c.String(maxLength: 450),
                         IsFinished = c.Boolean(nullable: false),
                         DocumentTypeId = c.Int(nullable: false),
-                        CourtId = c.Int(nullable: false),
-                        AttorneyId = c.Int(nullable: false),
+                        CourtId = c.Int(),
+                        AttorneyId = c.Int(),
                         DateOfAssignment = c.DateTime(nullable: false),
                         DateOfSubmission = c.DateTime(nullable: false),
                         DateOfEnd = c.DateTime(nullable: false),
@@ -113,8 +114,8 @@ namespace CaseTracker.Migrations
                         ZoneId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Attorneys", t => t.AttorneyId, cascadeDelete: true)
-                .ForeignKey("dbo.Courts", t => t.CourtId, cascadeDelete: true)
+                .ForeignKey("dbo.Attorneys", t => t.AttorneyId)
+                .ForeignKey("dbo.Courts", t => t.CourtId)
                 .ForeignKey("dbo.DeedResults", t => t.DeedResultId, cascadeDelete: true)
                 .ForeignKey("dbo.Parties", t => t.DefenseId)
                 .ForeignKey("dbo.DocumentTypes", t => t.DocumentTypeId, cascadeDelete: true)

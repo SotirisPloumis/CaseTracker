@@ -51,7 +51,8 @@ namespace CaseTracker.Migrations
 				UserName = "admin@admin.com",
 				PasswordHash = HashedPassword,
 				Email = "admin@admin.com",
-				SecurityStamp = Guid.NewGuid().ToString()
+				SecurityStamp = Guid.NewGuid().ToString(),
+				IsPro = true
 			};
 
 			context.Users.AddOrUpdate(Admin);

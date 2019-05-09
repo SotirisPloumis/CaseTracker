@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CaseTracker.Models;
+using CaseTracker.Repository;
 
 namespace CaseTracker.Controllers
 {
@@ -15,9 +16,11 @@ namespace CaseTracker.Controllers
 	{
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+		private ApplicationDbContext db;
 
         public ManageController()
         {
+			db = new ApplicationDbContext();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -64,13 +67,16 @@ namespace CaseTracker.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+			var user = db.Users.Find(userId);
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+				IsPro = user.IsPro
             };
             return View(model);
         }

@@ -1,0 +1,51 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Become a Pro</h2>
+
+<form id="proform">
+	<label for="cardNumber">Card Number</label>
+	<input type="text" id="cardNumber" name="cardnumber" required /><br />
+
+	<label for="expiresMonth">Month of expiration</label>
+	<select id="expiresMonth" name="expiresmonth" required>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+	</select><br />
+
+	<label for="expiresYear">year of expiration</label>
+	<select id="expiresYear" name="expiresyear" required>
+		<option value="2019">2019</option>
+		<option value="2020">2020</option>
+		<option value="2021">2021</option>
+		<option value="2022">2022</option>
+		<option value="2023">2023</option>
+	</select><br />
+
+	<label for="fname">first name</label>
+	<input type="text" name="fname" id="fname" required /><br />
+
+	<label for="lname">last name</label>
+	<input type="text" name="lname" id="lname" required /><br />
+
+	<input id="submit" type="submit" />
+</form>
+
+@section Scripts{
+	@Scripts.Render("~/bundles/jqueryval")
+	<script src="~/Scripts/case/payment.js">
+
+	</script>
+}
