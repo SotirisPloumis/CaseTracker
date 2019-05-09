@@ -11,6 +11,7 @@ using CaseTracker.ViewModels;
 using CaseTracker.Repository;
 using System.Diagnostics;
 using Microsoft.AspNet.Identity;
+using Rotativa;
 
 namespace CaseTracker.Controllers
 {
@@ -77,6 +78,58 @@ namespace CaseTracker.Controllers
             }
             return View(@case);
         }
+
+		[AllowAnonymous]
+		public ActionResult PreparePrint(int? id, string userID)
+		{
+			if (userID == null)
+			{
+				//userID = User.Identity.GetUserId();
+				return HttpNotFound();
+			}
+
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Case @case = db.Cases.Find(id);
+
+
+			if (@case == null || @case.UserId != userID)
+			{
+				return HttpNotFound();
+			}
+			return View(@case);
+		}
+
+		public ActionResult Print(int? id)
+		{
+			userID = User.Identity.GetUserId();
+
+			var user = db.Users.Find(userID);
+
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Case @case = db.Cases.Find(id);
+
+
+			if (@case == null || @case.UserId != userID)
+			{
+				return HttpNotFound();
+			}
+
+			if (!user.IsPro)
+			{
+				return RedirectToAction("BecomePro", "Home");
+			}
+
+			return new ActionAsPdf("PreparePrint", new { id = @case.Id, userID = userID})
+			{
+				FileName = "test.pdf"
+			};
+		}
 
         public ActionResult Create()
         {

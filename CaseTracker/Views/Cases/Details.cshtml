@@ -74,7 +74,7 @@
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.Prosecution.FullName)
+			@Html.DisplayNameFor(model => model.ProsecutionId)
 		</dt>
 
 		<dd>
@@ -82,7 +82,7 @@
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.Defense.FullName)
+			@Html.DisplayNameFor(model => model.DefenseId)
 		</dt>
 
 		<dd>
@@ -90,7 +90,7 @@
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.Recipient.FullName)
+			@Html.DisplayNameFor(model => model.RecipientId)
 		</dt>
 
 		<dd>
@@ -100,6 +100,7 @@
 	</dl>
 </div>
 <p>
+	@Html.ActionLink("Print", "Print", new { id = Model.Id }) |
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
