@@ -3,7 +3,7 @@ namespace CaseTracker.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class rebuild : DbMigration
+    public partial class rebuildplusMessage : DbMigration
     {
         public override void Up()
         {

@@ -14,10 +14,12 @@ namespace CaseTracker.Repository
 		public DbSet<DocumentType> DocumentTypes { get; set; }
 		public DbSet<DeedResult> DeedResults { get; set; }
 		public DbSet<Zone> Zones { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
 		public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            
         }
 
         public static ApplicationDbContext Create()

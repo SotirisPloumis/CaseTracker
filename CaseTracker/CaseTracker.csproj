@@ -200,6 +200,7 @@
     <Compile Include="Controllers\API\AttorniesController.cs" />
     <Compile Include="Controllers\API\CasesController.cs" />
     <Compile Include="Controllers\API\CourtsController.cs" />
+    <Compile Include="Controllers\API\MessageController.cs" />
     <Compile Include="Controllers\API\PartiesController.cs" />
     <Compile Include="Controllers\AttorneyController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -210,13 +211,18 @@
     <Compile Include="Controllers\DocumentTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="CustomAnnotation\CustomAdminAnnotation.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\201905080651270_rebuild.cs" />
-    <Compile Include="Migrations\201905080651270_rebuild.Designer.cs">
-      <DependentUpon>201905080651270_rebuild.cs</DependentUpon>
+    <Compile Include="Migrations\201905090107494_rebuildplusMessage.cs" />
+    <Compile Include="Migrations\201905090107494_rebuildplusMessage.Designer.cs">
+      <DependentUpon>201905090107494_rebuildplusMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905090111317_MessagePrototype.cs" />
+    <Compile Include="Migrations\201905090111317_MessagePrototype.Designer.cs">
+      <DependentUpon>201905090111317_MessagePrototype.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -230,6 +236,7 @@
     <Compile Include="Models\CaseRole.cs" />
     <Compile Include="Models\DeedResult.cs" />
     <Compile Include="Models\DocumentType.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Party.cs" />
     <Compile Include="Models\Zone.cs" />
     <Compile Include="Repository\ApplicationDbContext.cs" />
@@ -238,6 +245,7 @@
     <Compile Include="Repository\AttorneyRepository.cs" />
     <Compile Include="Repository\CaseRepository.cs" />
     <Compile Include="Repository\CourtRepository.cs" />
+    <Compile Include="Repository\MessageRepository.cs" />
     <Compile Include="Repository\PartyRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CaseViewModel.cs" />
@@ -349,6 +357,8 @@
     <Content Include="Views\CaseRoles\Edit.cshtml" />
     <Content Include="Views\CaseRoles\Index.cshtml" />
     <Content Include="Views\Home\Unauthorized.cshtml" />
+    <Content Include="Views\Message\CreateMessage.cshtml" />
+    <Content Include="Views\Message\ViewMessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -377,8 +387,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>App_LocalResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905080651270_rebuild.resx">
-      <DependentUpon>201905080651270_rebuild.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905090107494_rebuildplusMessage.resx">
+      <DependentUpon>201905090107494_rebuildplusMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905090111317_MessagePrototype.resx">
+      <DependentUpon>201905090111317_MessagePrototype.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
