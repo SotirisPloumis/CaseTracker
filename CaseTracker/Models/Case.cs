@@ -36,6 +36,15 @@ namespace CaseTracker.Models
 		[Display(Name = "State", ResourceType = typeof(GlobalRes))]
 		public bool IsFinished { get; set; }
 
+		[NotMapped]
+		public string IsFinishedText
+		{
+			get
+			{
+				return IsFinished ? GlobalRes.Finished : GlobalRes.NotFinished;
+			}
+		}
+
 		[ForeignKey("DocumentType")]
 		[Display(Name = "Document_Type", ResourceType = typeof(GlobalRes))]
 		public int DocumentTypeId { get; set; }

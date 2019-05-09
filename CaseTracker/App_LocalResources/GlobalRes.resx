@@ -336,4 +336,10 @@
   <data name="ZoneCostClean" xml:space="preserve">
     <value>Zone Cost after Taxes</value>
   </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="NotFinished" xml:space="preserve">
+    <value>Not finished</value>
+  </data>
 </root>

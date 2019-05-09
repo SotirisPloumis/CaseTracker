@@ -336,4 +336,10 @@
   <data name="ZoneCostClean" xml:space="preserve">
     <value>Καθαρό Κόστος ζώνης</value>
   </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Ολοκληρωμένη</value>
+  </data>
+  <data name="NotFinished" xml:space="preserve">
+    <value>Μη ολοκληρωμένη</value>
+  </data>
 </root>
