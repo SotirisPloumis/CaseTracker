@@ -130,7 +130,7 @@ namespace CaseTracker.Controllers
 
 			return new ActionAsPdf("PreparePrint", new { id = @case.Id, userID = userID})
 			{
-				FileName = "test.pdf"
+				FileName = "case" + @case.Aa + ".pdf"
 			};
 		}
 

@@ -79,6 +79,15 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to list.
+        /// </summary>
+        public static string BackTolist {
+            get {
+                return ResourceManager.GetString("BackTolist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Case Role.
         /// </summary>
         public static string CaseRole {
@@ -124,6 +133,33 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create new.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string Dashboard {
+            get {
+                return ResourceManager.GetString("Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string DashboardAitiatiki {
+            get {
+                return ResourceManager.GetString("DashboardAitiatiki", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date of assignment.
         /// </summary>
         public static string Date_Assignment {
@@ -165,6 +201,33 @@ namespace App_LocalResources {
         public static string Defense {
             get {
                 return ResourceManager.GetString("Defense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details for case.
+        /// </summary>
+        public static string DetailsForCase {
+            get {
+                return ResourceManager.GetString("DetailsForCase", resourceCulture);
             }
         }
         
@@ -439,6 +502,15 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Father&apos;s Name.
         /// </summary>
         public static string FatherName {
@@ -529,6 +601,24 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log in.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log off.
+        /// </summary>
+        public static string Logoff {
+            get {
+                return ResourceManager.GetString("Logoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mobile Phone.
         /// </summary>
         public static string MobilePhone {
@@ -543,6 +633,96 @@ namespace App_LocalResources {
         public static string Municipality {
             get {
                 return ResourceManager.GetString("Municipality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My attornies.
+        /// </summary>
+        public static string MyAttornies {
+            get {
+                return ResourceManager.GetString("MyAttornies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My book.
+        /// </summary>
+        public static string MyBook {
+            get {
+                return ResourceManager.GetString("MyBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My case roles.
+        /// </summary>
+        public static string MyCaseRoles {
+            get {
+                return ResourceManager.GetString("MyCaseRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My cases.
+        /// </summary>
+        public static string MyCases {
+            get {
+                return ResourceManager.GetString("MyCases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My courts.
+        /// </summary>
+        public static string MyCourts {
+            get {
+                return ResourceManager.GetString("MyCourts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My parties.
+        /// </summary>
+        public static string MyParties {
+            get {
+                return ResourceManager.GetString("MyParties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My legder.
+        /// </summary>
+        public static string MyPinakio {
+            get {
+                return ResourceManager.GetString("MyPinakio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My results.
+        /// </summary>
+        public static string MyResults {
+            get {
+                return ResourceManager.GetString("MyResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My types.
+        /// </summary>
+        public static string MyTypes {
+            get {
+                return ResourceManager.GetString("MyTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My zones.
+        /// </summary>
+        public static string MyZones {
+            get {
+                return ResourceManager.GetString("MyZones", resourceCulture);
             }
         }
         
@@ -583,6 +763,15 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Print.
+        /// </summary>
+        public static string Print {
+            get {
+                return ResourceManager.GetString("Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pro benefits are activated.
         /// </summary>
         public static string ProActivated {
@@ -592,7 +781,16 @@ namespace App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Head to a case, select Details and click Print.
+        ///   Looks up a localized string similar to My Pro subscription.
+        /// </summary>
+        public static string Probenefits {
+            get {
+                return ResourceManager.GetString("Probenefits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click on a case and click Print.
         /// </summary>
         public static string ProMessage {
             get {
@@ -615,6 +813,15 @@ namespace App_LocalResources {
         public static string Recipient {
             get {
                 return ResourceManager.GetString("Recipient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
             }
         }
         
@@ -673,6 +880,96 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Welcome to case tracker.
+        /// </summary>
+        public static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to you can view, edit and delete all your elements.
+        /// </summary>
+        public static string String10 {
+            get {
+                return ResourceManager.GetString("String10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keep track of all incoming and outcoming movement of your cases!.
+        /// </summary>
+        public static string String2 {
+            get {
+                return ResourceManager.GetString("String2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New fixes and updates will be posted here.
+        /// </summary>
+        public static string String3 {
+            get {
+                return ResourceManager.GetString("String3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start by viewing your.
+        /// </summary>
+        public static string String4 {
+            get {
+                return ResourceManager.GetString("String4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to or.
+        /// </summary>
+        public static string String5 {
+            get {
+                return ResourceManager.GetString("String5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to a new one if you don&apos;t have any.
+        /// </summary>
+        public static string String6 {
+            get {
+                return ResourceManager.GetString("String6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cases.
+        /// </summary>
+        public static string String7 {
+            get {
+                return ResourceManager.GetString("String7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to create.
+        /// </summary>
+        public static string String8 {
+            get {
+                return ResourceManager.GetString("String8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At your.
+        /// </summary>
+        public static string String9 {
+            get {
+                return ResourceManager.GetString("String9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tax.
         /// </summary>
         public static string Tax {
@@ -705,6 +1002,15 @@ namespace App_LocalResources {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
         

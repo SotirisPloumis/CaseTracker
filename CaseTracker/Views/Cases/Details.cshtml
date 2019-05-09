@@ -1,14 +1,14 @@
-﻿@model CaseTracker.Models.Case
+﻿@using App_LocalResources
+@model CaseTracker.Models.Case
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@GlobalRes.Details</h2>
 
 <div>
-    <h4>Case</h4>
-    <hr />
+	<hr />
 	<dl class="dl-horizontal">
 		<dt>
 			@Html.DisplayNameFor(model => model.Aa)
@@ -131,7 +131,7 @@
 	</dl>
 </div>
 <p>
-	@Html.ActionLink("Print", "Print", new { id = Model.Id }) |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink(GlobalRes.Print, "Print", new { id = Model.Id }) |
+	@Html.ActionLink(GlobalRes.Edit, "Edit", new { id = Model.Id }) |
+	@Html.ActionLink(GlobalRes.BackTolist, "Index")
 </p>

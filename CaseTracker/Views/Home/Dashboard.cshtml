@@ -1,0 +1,23 @@
+﻿@using App_LocalResources
+
+
+<h2>@GlobalRes.Dashboard</h2>
+
+@Html.ActionLink(GlobalRes.MyBook, "Book", "Cases")<br />
+@Html.ActionLink(GlobalRes.MyPinakio, "Pinakio", "Cases")<br />
+@Html.ActionLink(GlobalRes.MyCases, "Index", "Cases")<br />
+@Html.ActionLink(GlobalRes.Probenefits, "Pro", "Home")<br />
+
+@if (User.IsInRole("Admin"))
+{
+	@Html.ActionLink(GlobalRes.MyAttornies, "Index", "Attorney")<br />
+	@Html.ActionLink(GlobalRes.MyCourts, "Index", "Court")<br />
+	@Html.ActionLink(GlobalRes.MyParties, "Index", "Parties")<br />
+	@Html.ActionLink(GlobalRes.MyCaseRoles, "Index", "CaseRoles")<br />
+	@Html.ActionLink(GlobalRes.MyTypes, "Index", "DocumentTypes")<br />
+	@Html.ActionLink(GlobalRes.MyResults, "Index", "DeedResults")<br />
+	@Html.ActionLink(GlobalRes.MyZones, "Index", "Zones")<br />
+}
+
+
+

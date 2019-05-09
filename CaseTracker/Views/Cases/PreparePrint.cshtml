@@ -1,4 +1,5 @@
-﻿@model CaseTracker.Models.Case
+﻿@using App_LocalResources
+@model CaseTracker.Models.Case
 
 @{
 	ViewBag.Title = "Details";
@@ -7,7 +8,7 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @Styles.Render("~/Content/css")
-<h2>Details for case: @Html.DisplayFor(model => model.Aa)</h2>
+<h2>@GlobalRes.DetailsForCase: @Html.DisplayFor(model => model.Aa)</h2>
 
 <div>
 	<dl class="dl-horizontal">

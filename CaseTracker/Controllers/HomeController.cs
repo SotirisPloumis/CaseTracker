@@ -23,6 +23,7 @@ namespace CaseTracker.Controllers
 
 		public ActionResult Index()
 		{
+
 			return View();
 		}
 
@@ -54,10 +55,8 @@ namespace CaseTracker.Controllers
 			return View();
 		}
 
-		public ActionResult Contact()
+		public ActionResult Dashboard()
 		{
-			ViewBag.Message = "Your contact page.";
-
 			return View();
 		}
 

@@ -1,13 +1,14 @@
-﻿@model IEnumerable<CaseTracker.Models.Case>
+﻿@using App_LocalResources
+@model IEnumerable<CaseTracker.Models.Case>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>@GlobalRes.MyCases</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	@Html.ActionLink(GlobalRes.Create, "Create") | @Html.ActionLink(GlobalRes.MyBook, "Book") | @Html.ActionLink(GlobalRes.MyPinakio, "Pinakio")
 </p>
 <table class="table">
 	<tr>
@@ -60,7 +61,7 @@
 	@using App_LocalResources
 	@foreach (var item in Model)
 	{
-		<tr>
+		<tr class="itemRow" onclick="location.href = '@Url.Action("Details","Cases",new { id = item.Id })'">
 			<td>
 				@Html.DisplayFor(modelItem => item.Aa)
 			</td>
@@ -107,9 +108,9 @@
 				@Html.DisplayFor(modelItem => item.IsFinished)
 			</td>
 			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-				@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+				@Html.ActionLink(GlobalRes.Edit, "Edit", new { id = item.Id }) |
+				@Html.ActionLink(GlobalRes.Details, "Details", new { id = item.Id }) |
+				@Html.ActionLink(GlobalRes.Delete, "Delete", new { id = item.Id })
 			</td>
 		</tr>
 	}

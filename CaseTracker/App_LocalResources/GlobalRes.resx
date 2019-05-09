@@ -355,6 +355,108 @@
     <value>Pro benefits are activated</value>
   </data>
   <data name="ProMessage" xml:space="preserve">
-    <value>Head to a case, select Details and click Print</value>
+    <value>Click on a case and click Print</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="BackTolist" xml:space="preserve">
+    <value>Back to list</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create new</value>
+  </data>
+  <data name="DashboardAitiatiki" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="DetailsForCase" xml:space="preserve">
+    <value>Details for case</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="Logoff" xml:space="preserve">
+    <value>Log off</value>
+  </data>
+  <data name="MyAttornies" xml:space="preserve">
+    <value>My attornies</value>
+  </data>
+  <data name="MyBook" xml:space="preserve">
+    <value>My book</value>
+  </data>
+  <data name="MyCaseRoles" xml:space="preserve">
+    <value>My case roles</value>
+  </data>
+  <data name="MyCases" xml:space="preserve">
+    <value>My cases</value>
+  </data>
+  <data name="MyCourts" xml:space="preserve">
+    <value>My courts</value>
+  </data>
+  <data name="MyParties" xml:space="preserve">
+    <value>My parties</value>
+  </data>
+  <data name="MyPinakio" xml:space="preserve">
+    <value>My legder</value>
+  </data>
+  <data name="MyResults" xml:space="preserve">
+    <value>My results</value>
+  </data>
+  <data name="MyTypes" xml:space="preserve">
+    <value>My types</value>
+  </data>
+  <data name="MyZones" xml:space="preserve">
+    <value>My zones</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Probenefits" xml:space="preserve">
+    <value>My Pro subscription</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Welcome to case tracker</value>
+  </data>
+  <data name="String10" xml:space="preserve">
+    <value>you can view, edit and delete all your elements</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>Keep track of all incoming and outcoming movement of your cases!</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>New fixes and updates will be posted here</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>Start by viewing your</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>a new one if you don't have any</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>cases</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>create</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>At your</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
   </data>
 </root>

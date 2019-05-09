@@ -24,8 +24,8 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li>@Html.ActionLink(GlobalRes.Home, "Index", "Home")</li>
-					<li>@Html.ActionLink("About", "About", "Home")</li>
-					<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+					<li>@Html.ActionLink(GlobalRes.Dashboard, "Dashboard", "Home")</li>
+					@*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
 					
 
 					@Url.LangSwitcher("English", ViewContext.RouteData, "en")

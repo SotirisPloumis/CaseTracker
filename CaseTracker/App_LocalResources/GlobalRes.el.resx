@@ -355,6 +355,108 @@
     <value>Τα προνόμια σας έχουν ενεργοποιηθεί</value>
   </data>
   <data name="ProMessage" xml:space="preserve">
-    <value>Πηγαίνετε στις υποθέσεις σας, πατήστε λεπτομέριες και μετα Εκτύ[ωση</value>
+    <value>Πατήστε σε μια υπόθεση και μετα Εκτύπωση</value>
+  </data>
+  <data name="BackTolist" xml:space="preserve">
+    <value>Πίσω στην λίστα</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Δημιουργία νέου</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Πίνακας ελέγχου</value>
+  </data>
+  <data name="DashboardAitiatiki" xml:space="preserve">
+    <value>Πίνακα ελέγχου</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Λεπτομέριες</value>
+  </data>
+  <data name="DetailsForCase" xml:space="preserve">
+    <value>Λεπτομέριες υπόθεσης</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Επεξεργασία</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Σύνδεση</value>
+  </data>
+  <data name="Logoff" xml:space="preserve">
+    <value>Αποσύνδεση</value>
+  </data>
+  <data name="MyAttornies" xml:space="preserve">
+    <value>Οι δικηγόροι μου</value>
+  </data>
+  <data name="MyBook" xml:space="preserve">
+    <value>Το βιβλίο μου</value>
+  </data>
+  <data name="MyCaseRoles" xml:space="preserve">
+    <value>Οι ρόλοι μου</value>
+  </data>
+  <data name="MyCases" xml:space="preserve">
+    <value>Οι υποθέσεις μου</value>
+  </data>
+  <data name="MyCourts" xml:space="preserve">
+    <value>Τα δικαστήρια μου</value>
+  </data>
+  <data name="MyParties" xml:space="preserve">
+    <value>Τα άτομα μου</value>
+  </data>
+  <data name="MyPinakio" xml:space="preserve">
+    <value>Το πινάκιο μου</value>
+  </data>
+  <data name="MyResults" xml:space="preserve">
+    <value>Τα αποτελέσματα μου</value>
+  </data>
+  <data name="MyTypes" xml:space="preserve">
+    <value>Οι τύποι αρχείων μου</value>
+  </data>
+  <data name="MyZones" xml:space="preserve">
+    <value>Οι ζώνες μου</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Εκτύπωση</value>
+  </data>
+  <data name="Probenefits" xml:space="preserve">
+    <value>Η συνδρομή μου</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Εγγραφή</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Καλώς ήρθατε στο case tracker</value>
+  </data>
+  <data name="String10" xml:space="preserve">
+    <value>σας μπορείτε να δείτε, να επεξεργαστείτε και να διαγράψετε όλα τα αντικείμενα σας</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>Διαχειριστείτε τις υποθέσεις σας</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>Νέες προσθήκες και αλλαγές θα εμφανίζονται εδώ</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>Ξεκινήστε βλέποντας τις</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>ή</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>μια νέα αν δεν έχετε ήδη</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>υποθέσεις σας</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>δημιουργήστε</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>Στον</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Καλώς ήρθες</value>
   </data>
 </root>

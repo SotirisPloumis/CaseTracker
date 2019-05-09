@@ -1,13 +1,14 @@
-﻿@model IEnumerable<CaseTracker.Models.Case>
+﻿@using App_LocalResources
+@model IEnumerable<CaseTracker.Models.Case>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>@GlobalRes.MyBook</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+	@Html.ActionLink(GlobalRes.Create, "Create") | @Html.ActionLink(GlobalRes.MyPinakio, "Pinakio") | @Html.ActionLink(GlobalRes.MyCases, "Index")
 </p>
 <table class="table">
 	<tr>
@@ -34,35 +35,36 @@
 		</th>
 	</tr>
 
-@foreach (var item in Model) {
-	<tr>
-		<td>
-			@Html.DisplayFor(modelItem => item.Aa)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DateOfDeed)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.DocumentType.TranslatedDescription)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Prosecution.FullName)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Defense.FullName)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Court.Name)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Recipient.FullName)
-		</td>
-		<td>
-			@Html.ActionLink("Επεργασία", "Edit", new { id = item.Id }) |
-			@Html.ActionLink("Λεπτομέριες", "Details", new { id = item.Id }) |
-			@Html.ActionLink("Διαγραφή", "Delete", new { id = item.Id })
-		</td>
-	</tr>
-}
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Aa)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DateOfDeed)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DocumentType.TranslatedDescription)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Prosecution.FullName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Defense.FullName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Court.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Recipient.FullName)
+			</td>
+			<td>
+				@Html.ActionLink(GlobalRes.Edit, "Edit", new { id = item.Id }) |
+				@Html.ActionLink(GlobalRes.Details, "Details", new { id = item.Id }) |
+				@Html.ActionLink(GlobalRes.Delete, "Delete", new { id = item.Id })
+			</td>
+		</tr>
+	}
 
 </table>

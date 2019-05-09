@@ -1,26 +1,27 @@
 ﻿@using Microsoft.AspNet.Identity
+@using App_LocalResources
 
 @if (Request.IsAuthenticated)
 {
 	using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
 	{
-    @Html.AntiForgeryToken()
+		@Html.AntiForgeryToken()
 
-	
 
-<ul class="nav navbar-nav navbar-right">
-	
-	<li>
-		@Html.ActionLink("Καλώς ήρθες " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-	</li>
-	<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-</ul>
-    }
+
+		<ul class="nav navbar-nav navbar-right">
+
+			<li>
+				@Html.ActionLink(GlobalRes.Welcome + " " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+			</li>
+			<li><a href="javascript:document.getElementById('logoutForm').submit()">@GlobalRes.Logoff</a></li>
+		</ul>
+	}
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Εγγραφή", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Είσοδος", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+	<ul class="nav navbar-nav navbar-right">
+		<li>@Html.ActionLink(GlobalRes.Register, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+		<li>@Html.ActionLink(GlobalRes.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+	</ul>
 }
