@@ -103,18 +103,15 @@ namespace CaseTracker.ViewModels
 			}
 
 			ProsecutionList = db.Parties
-							.Where(c => c.CaseRole.Type == RoleType.Accuse 
-									 && c.UserId == userID)
+							.Where(c => c.UserId == userID)
 							.ToList();
 
 			DefenseList = db.Parties
-							.Where(c => c.CaseRole.Type == RoleType.Defend 
-									 && c.UserId == userID)
+							.Where(c => c.UserId == userID)
 							.ToList();
 
 			RecipientList = db.Parties
-							.Where(c => c.CaseRole.Type == RoleType.Receive 
-									 && c.UserId == userID)
+							.Where(c => c.UserId == userID)
 							.ToList();
 
 			DeedResultList = db.DeedResults.ToList();

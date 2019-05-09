@@ -31,7 +31,7 @@ namespace CaseTracker.ViewModels
 		[Display(Name = "City", ResourceType = typeof(GlobalRes))]
 		public string AttorneyCity { get; set; }
 
-		[HiddenInput(DisplayValue = true)]
+		[HiddenInput]
 		public bool newAttorney { get; set; }
 
 		//court

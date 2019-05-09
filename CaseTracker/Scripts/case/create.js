@@ -40,7 +40,10 @@ let manageRecipient = () => {
 let manageCourt = () => {
 	$('.newCourtButton').click((e) => {
 		e.preventDefault();
-		$("#newCourtValue").val(!$("#newCourtValue").val);
+		let currentVal = $("#newCourtValue").data("val");
+		$("#newCourtValue").data("val", !currentVal);
+		$("#newCourtValue").val( !currentVal);
+		console.log("new court: " + $("#newCourtValue").data("val"));
 		$("#CourtListInput").toggle();
 		$("#CourtNameInput").toggle();
 	});
@@ -50,7 +53,10 @@ let manageCourt = () => {
 let manageAttorney = () => {
 	$('.newAttorneyButton').click((e) => {
 		e.preventDefault();
-		$("#newAttorneyValue").val(!$("#newAttorneyValue").val);
+		let currentVal = $("#newAttorneyValue").data("val");
+		$("#newAttorneyValue").data("val", !currentVal);
+		$("#newAttorneyValue").val(!currentVal);
+		console.log("new attorney: " + $("#newAttorneyValue").data("val"));
 		$("#AttorneyListInput").toggle();
 		$("#AttorneyInfoInput").toggle();
 	});
