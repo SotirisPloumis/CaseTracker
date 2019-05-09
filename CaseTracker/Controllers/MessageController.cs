@@ -1,8 +1,10 @@
-﻿using System;
+﻿using CaseTracker.CustomAnnotation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace CaseTracker.Controllers
 {   
@@ -90,7 +92,7 @@ namespace CaseTracker.Controllers
         {
             return View();
         }
-
+        [CustomAdminAnnotation.YourCustomAuthorize(Roles = "Admin")]
         public ActionResult ViewMessages()
         {
             return View();

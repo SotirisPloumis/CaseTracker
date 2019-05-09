@@ -15,6 +15,7 @@ namespace CaseTracker.Repository
         public MessageRepository()
         {
             db = new ApplicationDbContext();
+            
         }
 
         public int AddMessage(Message message)

@@ -14,21 +14,31 @@ namespace CaseTracker.Controllers.API
 {
     public class MessageController : ApiController
     {
+        //private ApplicationDbContext db;
         MessageRepository MessageRepository;
 
         public MessageController()
         {
             MessageRepository = new MessageRepository();
+           // db.Configuration.ProxyCreationEnabled = false;
         }
 
         public ICollection<Message> messages = new List<Message>();
-        
+        public class SmallMessage
+        {
+            public string body { get; set; }
+        }
 
         // GET: api/Message
-        public ICollection<Message> Get()
+        public List<SmallMessage> Get()
         {
             messages = MessageRepository.MessageList();
-            return messages;
+            List<SmallMessage> toSend = new List<SmallMessage>();
+            foreach(var m in messages)
+            {
+                toSend.Add(new SmallMessage { body = m.MessageBody });
+            }
+            return toSend;
         }
 
         // GET: api/Message/5

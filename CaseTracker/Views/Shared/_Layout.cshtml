@@ -27,6 +27,8 @@
                 <li>@Html.ActionLink("Cases", "Index", "Cases", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
                 <li>@Html.ActionLink("Book", "Book", "Cases", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
                 <li>@Html.ActionLink("Pinakio", "Pinakio", "Cases", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Messages", "CreateMessage", "Message", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("ViewAdminMessages", "ViewMessages", "Message", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
             </ul>
 
             @Html.Partial("_LoginPartial")
