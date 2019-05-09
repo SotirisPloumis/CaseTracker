@@ -342,4 +342,19 @@
   <data name="NotFinished" xml:space="preserve">
     <value>Not finished</value>
   </data>
+  <data name="click_to_select_an_existing" xml:space="preserve">
+    <value>click to select an existing</value>
+  </data>
+  <data name="click_to_type_new" xml:space="preserve">
+    <value>click to type new</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="ProActivated" xml:space="preserve">
+    <value>Pro benefits are activated</value>
+  </data>
+  <data name="ProMessage" xml:space="preserve">
+    <value>Head to a case, select Details and click Print</value>
+  </data>
 </root>

@@ -97,6 +97,24 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to click to select an existing.
+        /// </summary>
+        public static string click_to_select_an_existing {
+            get {
+                return ResourceManager.GetString("click_to_select_an_existing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to click to type new.
+        /// </summary>
+        public static string click_to_type_new {
+            get {
+                return ResourceManager.GetString("click_to_type_new", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Court.
         /// </summary>
         public static string Court {
@@ -475,6 +493,15 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home Phone.
         /// </summary>
         public static string HomePhone {
@@ -552,6 +579,24 @@ namespace App_LocalResources {
         public static string PostalCode {
             get {
                 return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pro benefits are activated.
+        /// </summary>
+        public static string ProActivated {
+            get {
+                return ResourceManager.GetString("ProActivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Head to a case, select Details and click Print.
+        /// </summary>
+        public static string ProMessage {
+            get {
+                return ResourceManager.GetString("ProMessage", resourceCulture);
             }
         }
         

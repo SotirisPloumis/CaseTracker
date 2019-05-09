@@ -342,4 +342,19 @@
   <data name="NotFinished" xml:space="preserve">
     <value>Μη ολοκληρωμένη</value>
   </data>
+  <data name="click_to_select_an_existing" xml:space="preserve">
+    <value>Πατήστε για να διαλέξετε </value>
+  </data>
+  <data name="click_to_type_new" xml:space="preserve">
+    <value>Πατήστε για να εισάγετε</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Αρχική</value>
+  </data>
+  <data name="ProActivated" xml:space="preserve">
+    <value>Τα προνόμια σας έχουν ενεργοποιηθεί</value>
+  </data>
+  <data name="ProMessage" xml:space="preserve">
+    <value>Πηγαίνετε στις υποθέσεις σας, πατήστε λεπτομέριες και μετα Εκτύ[ωση</value>
+  </data>
 </root>

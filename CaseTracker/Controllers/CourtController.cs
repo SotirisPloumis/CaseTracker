@@ -23,9 +23,10 @@ namespace CaseTracker.Controllers
         public ActionResult Index()
         {
 			string userID = User.Identity.GetUserId();
+			bool isAdmin = User.IsInRole("Admin");
 
 			var courts = db.Courts
-							.Where(c => c.UserId == userID)
+							.Where(c => c.UserId == userID || isAdmin)
 							.ToList();
 
 			return View(courts);

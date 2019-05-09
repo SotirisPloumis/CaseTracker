@@ -48,10 +48,9 @@ namespace CaseTracker.Controllers
 			return RedirectToAction("BecomePro", "Home");
 		}
 
+		[Authorize]
 		public ActionResult About()
 		{
-			ViewBag.Message = "Your application description page.";
-
 			return View();
 		}
 

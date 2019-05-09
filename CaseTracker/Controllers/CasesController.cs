@@ -37,8 +37,9 @@ namespace CaseTracker.Controllers
 		public ActionResult Index()
         {
 			userID = User.Identity.GetUserId();
+			bool isAdmin = User.IsInRole("Admin");
 
-			var cases = CaseRepository.GetCases(userID);
+			var cases = CaseRepository.GetCases(userID, isAdmin);
 
             return View(cases);
         }
@@ -46,8 +47,9 @@ namespace CaseTracker.Controllers
 		public ActionResult Book()
 		{
 			userID = User.Identity.GetUserId();
+			bool isAdmin = User.IsInRole("Admin");
 
-			var cases = CaseRepository.GetBookCases(userID);
+			var cases = CaseRepository.GetBookCases(userID, isAdmin);
 
 			return View(cases);
 		}
@@ -55,8 +57,9 @@ namespace CaseTracker.Controllers
 		public ActionResult Pinakio()
 		{
 			userID = User.Identity.GetUserId();
+			bool isAdmin = User.IsInRole("Admin");
 
-			var cases = CaseRepository.GetPinakioCases(userID);
+			var cases = CaseRepository.GetPinakioCases(userID, isAdmin);
 
 			return View(cases);
 		}

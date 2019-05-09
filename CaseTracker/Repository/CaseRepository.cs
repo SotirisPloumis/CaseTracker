@@ -17,7 +17,7 @@ namespace CaseTracker.Repository
 			db = new ApplicationDbContext();
 		}
 
-		public ICollection<Case> GetCases(string userID)
+		public ICollection<Case> GetCases(string userID, bool isAdmin)
 		{
 			return db.Cases
 						.Include(c => c.Attorney)
@@ -28,12 +28,12 @@ namespace CaseTracker.Repository
 						.Include(c => c.Recipient)
 						.Include(c => c.DeedResult)
 						.Include(c => c.Zone)
-						.Where(c => c.UserId == userID)
+						.Where(c => c.UserId == userID || isAdmin)
 						.OrderByDescending(c => c.Id)
 						.ToList();
 		}
 
-		public ICollection<Case> GetBookCases(string userID)
+		public ICollection<Case> GetBookCases(string userID, bool isAdmin)
 		{
 			return db.Cases
 						.Include(c => c.Court)
@@ -42,12 +42,12 @@ namespace CaseTracker.Repository
 						.Include(c => c.Defense)
 						.Include(c => c.Recipient)
 						.Include(c => c.DeedResult)
-						.Where(c => c.UserId == userID)
+						.Where(c => c.UserId == userID || isAdmin)
 						.OrderByDescending(c => c.Id)
 						.ToList();
 		}
 
-		public ICollection<Case> GetPinakioCases(string userID)
+		public ICollection<Case> GetPinakioCases(string userID, bool isAdmin)
 		{
 			return db.Cases
 						.Include(c => c.Court)
@@ -57,7 +57,7 @@ namespace CaseTracker.Repository
 						.Include(c => c.Recipient)
 						.Include(c => c.DeedResult)
 						.Include(c => c.Zone)
-						.Where(c => c.UserId == userID)
+						.Where(c => c.UserId == userID || isAdmin)
 						.Where(c => c.DeedResult.IsPayable && !c.IsFinished)
 						.OrderByDescending(c => c.Id)
 						.ToList();

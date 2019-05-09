@@ -28,10 +28,11 @@ namespace CaseTracker.Controllers
         public ActionResult Index()
         {
 			string userID = User.Identity.GetUserId();
+			bool isAdmin = User.IsInRole("Admin");
 
-            var parties = db.Parties
+			var parties = db.Parties
 							.Include(p => p.CaseRole)
-							.Where(p => p.UserId == userID)
+							.Where(p => p.UserId == userID || isAdmin)
 							.ToList();
 
             return View(parties);
