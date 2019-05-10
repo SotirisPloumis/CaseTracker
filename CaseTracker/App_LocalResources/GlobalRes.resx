@@ -477,4 +477,7 @@
   <data name="ViewMessages" xml:space="preserve">
     <value>View messages</value>
   </data>
+  <data name="OnlyNumbers" xml:space="preserve">
+    <value>Only numbers allowed</value>
+  </data>
 </root>

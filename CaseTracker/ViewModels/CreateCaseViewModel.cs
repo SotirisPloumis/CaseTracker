@@ -25,6 +25,7 @@ namespace CaseTracker.ViewModels
 		public string AttorneyLastName { get; set; }
 
 		[Display(Name = "TaxID", ResourceType = typeof(GlobalRes))]
+		[RegularExpression("([1-9]+)",ErrorMessageResourceName = "OnlyNumbers", ErrorMessageResourceType = typeof(GlobalRes))]
 		//[Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "This_field_is_required")]
 		public string AttorneyAFM { get; set; }
 

@@ -477,4 +477,7 @@
   <data name="Welcome" xml:space="preserve">
     <value>Καλώς ήρθες</value>
   </data>
+  <data name="OnlyNumbers" xml:space="preserve">
+    <value>Επιτρέπονται μόνο αριθμοί</value>
+  </data>
 </root>

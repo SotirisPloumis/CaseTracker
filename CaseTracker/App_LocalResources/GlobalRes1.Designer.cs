@@ -781,6 +781,15 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only numbers allowed.
+        /// </summary>
+        public static string OnlyNumbers {
+            get {
+                return ResourceManager.GetString("OnlyNumbers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payable.
         /// </summary>
         public static string Payable {
