@@ -70,6 +70,15 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add your message in the area below.
+        /// </summary>
+        public static string AddMessage {
+            get {
+                return ResourceManager.GetString("AddMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attorney.
         /// </summary>
         public static string Attorney {
@@ -120,6 +129,15 @@ namespace App_LocalResources {
         public static string click_to_type_new {
             get {
                 return ResourceManager.GetString("click_to_type_new", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact an administrator.
+        /// </summary>
+        public static string ContactAdmin {
+            get {
+                return ResourceManager.GetString("ContactAdmin", resourceCulture);
             }
         }
         
@@ -619,6 +637,24 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message ID.
+        /// </summary>
+        public static string MessageId {
+            get {
+                return ResourceManager.GetString("MessageId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mobile Phone.
         /// </summary>
         public static string MobilePhone {
@@ -853,6 +889,15 @@ namespace App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Son of.
         /// </summary>
         public static string SonOf {
@@ -1002,6 +1047,15 @@ namespace App_LocalResources {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View messages.
+        /// </summary>
+        public static string ViewMessages {
+            get {
+                return ResourceManager.GetString("ViewMessages", resourceCulture);
             }
         }
         

@@ -3,7 +3,7 @@ namespace CaseTracker.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class rebuild : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -203,6 +203,18 @@ namespace CaseTracker.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Messages",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.String(maxLength: 128),
+                        MessageBody = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -217,6 +229,7 @@ namespace CaseTracker.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Messages", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Cases", "ZoneId", "dbo.Zones");
             DropForeignKey("dbo.Cases", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Cases", "RecipientId", "dbo.Parties");
@@ -234,6 +247,7 @@ namespace CaseTracker.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Messages", new[] { "UserId" });
             DropIndex("dbo.Parties", new[] { "CaseRoleId" });
             DropIndex("dbo.Parties", new[] { "UserId" });
             DropIndex("dbo.Courts", new[] { "UserId" });
@@ -253,6 +267,7 @@ namespace CaseTracker.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Attorneys", new[] { "UserId" });
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Messages");
             DropTable("dbo.Zones");
             DropTable("dbo.DocumentTypes");
             DropTable("dbo.Parties");

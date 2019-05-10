@@ -357,8 +357,14 @@
   <data name="ProMessage" xml:space="preserve">
     <value>Πατήστε σε μια υπόθεση και μετα Εκτύπωση</value>
   </data>
+  <data name="AddMessage" xml:space="preserve">
+    <value>Γράψτε το μήνυμα σας στον χώρο</value>
+  </data>
   <data name="BackTolist" xml:space="preserve">
     <value>Πίσω στην λίστα</value>
+  </data>
+  <data name="ContactAdmin" xml:space="preserve">
+    <value>Επικοινωνήστε με έναν διαχειριστή</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Δημιουργία νέου</value>
@@ -386,6 +392,12 @@
   </data>
   <data name="Logoff" xml:space="preserve">
     <value>Αποσύνδεση</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Μήνυμα</value>
+  </data>
+  <data name="MessageId" xml:space="preserve">
+    <value>Αναγνωριστικό μηνύματος</value>
   </data>
   <data name="MyAttornies" xml:space="preserve">
     <value>Οι δικηγόροι μου</value>
@@ -426,6 +438,9 @@
   <data name="Register" xml:space="preserve">
     <value>Εγγραφή</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Αποστολή</value>
+  </data>
   <data name="String1" xml:space="preserve">
     <value>Καλώς ήρθατε στο case tracker</value>
   </data>
@@ -455,6 +470,9 @@
   </data>
   <data name="String9" xml:space="preserve">
     <value>Στον</value>
+  </data>
+  <data name="ViewMessages" xml:space="preserve">
+    <value>Ληφθέντα μηνύματα</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Καλώς ήρθες</value>

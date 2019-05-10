@@ -203,6 +203,7 @@
     <Compile Include="Controllers\API\AttorniesController.cs" />
     <Compile Include="Controllers\API\CasesController.cs" />
     <Compile Include="Controllers\API\CourtsController.cs" />
+    <Compile Include="Controllers\API\MessageController.cs" />
     <Compile Include="Controllers\API\PartiesController.cs" />
     <Compile Include="Controllers\API\PaymentController.cs" />
     <Compile Include="Controllers\AttorneyController.cs" />
@@ -214,13 +215,14 @@
     <Compile Include="Controllers\DocumentTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="CustomAnnotations\NotAllowed.cs" />
     <Compile Include="Helper\LanguageHelper.cs" />
-    <Compile Include="Migrations\201905082135239_rebuild.cs" />
-    <Compile Include="Migrations\201905082135239_rebuild.Designer.cs">
-      <DependentUpon>201905082135239_rebuild.cs</DependentUpon>
+    <Compile Include="Migrations\201905092242583_init.cs" />
+    <Compile Include="Migrations\201905092242583_init.Designer.cs">
+      <DependentUpon>201905092242583_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -234,6 +236,7 @@
     <Compile Include="Models\CaseRole.cs" />
     <Compile Include="Models\DeedResult.cs" />
     <Compile Include="Models\DocumentType.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Party.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Zone.cs" />
@@ -243,6 +246,7 @@
     <Compile Include="Repository\AttorneyRepository.cs" />
     <Compile Include="Repository\CaseRepository.cs" />
     <Compile Include="Repository\CourtRepository.cs" />
+    <Compile Include="Repository\MessageRepository.cs" />
     <Compile Include="Repository\PartyRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CaseViewModel.cs" />
@@ -364,6 +368,8 @@
     <Content Include="Views\Home\BecomePro.cshtml" />
     <Content Include="Views\Home\Pro.cshtml" />
     <Content Include="Views\Cases\PreparePrint.cshtml" />
+    <Content Include="Views\Message\CreateMessage.cshtml" />
+    <Content Include="Views\Message\ViewMessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -392,8 +398,8 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>App_LocalResources</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905082135239_rebuild.resx">
-      <DependentUpon>201905082135239_rebuild.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905092242583_init.resx">
+      <DependentUpon>201905092242583_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

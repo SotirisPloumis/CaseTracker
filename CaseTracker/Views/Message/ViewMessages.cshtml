@@ -1,0 +1,83 @@
+﻿@using App_LocalResources
+@{
+	ViewBag.Title = "ViewMessages";
+}
+
+<h2>@GlobalRes.ViewMessages</h2>
+
+<div id="table2"></div>
+@*<table class="table table-striped table-bordered" cellspacing="0">
+		<thead>
+			<tr>
+				<th class="th-sm">
+					<span>Message ID</span>
+				</th>
+				<th class="th-sm">
+					<span>Message</span>
+				</th>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+		</tbody>
+	</table>*@
+
+@section scripts{
+	<script>
+		let showMessages = (data) => {
+			let span1 = document.createElement("span");
+			span1.innerText = "@GlobalRes.MessageId";
+			let th1 = document.createElement("th");
+			th1.className = "th-sm";
+			th1.append(span1);
+
+			let span2 = document.createElement("span");
+			span2.innerText = "@GlobalRes.Message";
+			let th2 = document.createElement("th");
+			th2.className = "th-sm";
+			th2.append(span2);
+
+			let tr1 = document.createElement("tr");
+			tr1.append(th1);
+			tr1.append(th2);
+
+			let thead = document.createElement("thead");
+			thead.append(tr1);
+
+			
+			let tbody = document.createElement("tbody");
+
+			for (let i = 0; i < data.length; i++) {
+				let tdID = document.createElement("td");
+				tdID.innerText = data[i]["id"];
+
+				let tdBody = document.createElement("td");
+				tdBody.innerText = data[i]["body"];
+
+				let row = document.createElement("tr");
+				row.append(tdID);
+				row.append(tdBody);
+				
+				tbody.append(row);
+			}
+
+			let table = document.createElement("table");
+			table.className = "table table-striped table-bordered";
+			table.cellSpacing = "0";
+
+			table.append(thead);
+			table.append(tbody);
+
+			$('#table2').append(table);
+		}
+
+		$(document).ready(function () {
+
+			$.ajax({
+				type: "GET",
+				url: "/api/Message",
+				dataType: "json",
+				success: showMessages
+			});
+		});
+	</script>
+}

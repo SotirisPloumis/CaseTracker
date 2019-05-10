@@ -50,11 +50,6 @@ namespace CaseTracker.Controllers
 		}
 
 		[Authorize]
-		public ActionResult About()
-		{
-			return View();
-		}
-
 		public ActionResult Dashboard()
 		{
 			return View();

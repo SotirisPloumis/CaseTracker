@@ -1,0 +1,36 @@
+﻿@using App_LocalResources
+@{
+	ViewBag.Title = "CreateMessage";
+}
+
+<h2>@GlobalRes.ContactAdmin</h2>
+
+<p>@GlobalRes.AddMessage</p>
+
+<textarea rows="5" cols="50" id="msgbody"></textarea>
+<button class="btn btn-info" id="submit">@GlobalRes.Send</button>
+
+
+@section scripts {
+	<script>
+		$(document).ready(function () {
+			$("#submit").click(function () {
+				console.log($('#msgbody').val());
+				if ($('#msgbody').val() === '') {
+					alert('your message is empty');
+				}
+				else {
+					var posting = $.post("/api/Message", { "MessageBody": $('#msgbody').val() });
+					posting.done(function (data) {
+						//alert('all good');
+						window.location.replace('/Home/Index');
+					});
+					posting.fail(function () {
+						alert("something bad happened");
+					})
+					
+				}
+			});
+		});
+	</script>
+}

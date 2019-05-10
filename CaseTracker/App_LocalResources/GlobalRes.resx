@@ -459,4 +459,22 @@
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
+  <data name="AddMessage" xml:space="preserve">
+    <value>Add your message in the area below</value>
+  </data>
+  <data name="ContactAdmin" xml:space="preserve">
+    <value>Contact an administrator</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="MessageId" xml:space="preserve">
+    <value>Message ID</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="ViewMessages" xml:space="preserve">
+    <value>View messages</value>
+  </data>
 </root>
