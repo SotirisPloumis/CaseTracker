@@ -11,7 +11,7 @@ To install:
 and fill in the email and password for the admin account. This will be used by the Seed method 
 after the migrations are completed
 
-2.(Optional, only for production release) Create a Web.Release.config file in the solution folder in the following format:
+2. (Optional, only for production release) Create a Web.Release.config file in the solution folder in the following format:
 
 	<?xml version="1.0"?>
 	<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
