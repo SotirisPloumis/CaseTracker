@@ -12,6 +12,7 @@ namespace CaseTracker.Migrations
 	using Microsoft.Owin.Security;
 	using System.Data.Entity.Validation;
 	using System.Diagnostics;
+	using System.IO;
 
 	internal sealed class Configuration : DbMigrationsConfiguration<CaseTracker.Repository.ApplicationDbContext>
     {
@@ -28,6 +29,8 @@ namespace CaseTracker.Migrations
 			//  to avoid creating duplicate seed data.
 
 			//admin, users and roles
+			
+
 			var AdminRole = new IdentityRole
 			{
 				Id = "1",
@@ -43,14 +46,20 @@ namespace CaseTracker.Migrations
 			context.Roles.AddOrUpdate(AdminRole);
 			context.Roles.AddOrUpdate(UserRole);
 
+			string currentPath = AppDomain.CurrentDomain.BaseDirectory;
+			DotNetEnv.Env.Load(currentPath + "../.env");
+
+			string adminEmail = Environment.GetEnvironmentVariable("AdminEmail");
+			string adminPassPlain = Environment.GetEnvironmentVariable("AdminPass");
+			
 			var Hasher = new PasswordHasher();
-			string HashedPassword = Hasher.HashPassword("Qwerty1!");
+			string HashedPassword = Hasher.HashPassword(adminPassPlain);
 
 			ApplicationUser Admin = new ApplicationUser()
 			{
-				UserName = "admin@admin.com",
+				UserName = adminEmail,
 				PasswordHash = HashedPassword,
-				Email = "admin@admin.com",
+				Email = adminEmail,
 				SecurityStamp = Guid.NewGuid().ToString(),
 				IsPro = true
 			};
