@@ -39,7 +39,7 @@ c) the "user Id" and "Password" with the credentials to your DB
 3.Run "update-database" from PowerShell. This will create the database from the migration file  
 to your local machine
 
-4.(Optional, only for production release) Migrate the DB to your preferred hosting service
+4.(Optional, only for production release) Migrate the DB and the project to your preferred hosting service
 
 # CaseTracker
 This project aims to facilitate the job of Process Servers, i.e. the people responsible for  
