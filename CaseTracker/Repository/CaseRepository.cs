@@ -17,7 +17,7 @@ namespace CaseTracker.Repository
 			db = new ApplicationDbContext();
 		}
 
-		public ICollection<Case> GetCases(string userID, bool isAdmin)
+		public IQueryable<Case> GetCases(string userID, bool isAdmin)
 		{
 			return db.Cases
 						.Include(c => c.Attorney)
@@ -29,8 +29,7 @@ namespace CaseTracker.Repository
 						.Include(c => c.DeedResult)
 						.Include(c => c.Zone)
 						.Where(c => c.UserId == userID || isAdmin)
-						.OrderByDescending(c => c.Id)
-						.ToList();
+						.OrderByDescending(c => c.Id);
 		}
 
 		public ICollection<Case> GetBookCases(string userID, bool isAdmin)

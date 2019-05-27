@@ -1,0 +1,26 @@
+﻿@if (ViewBag.NumOfPages > 1)
+{
+	if (ViewBag.CurrentPage > 1)
+	{
+		<a href="@Url.Action("Index",new { page = ViewBag.CurrentPage - 1})"><i class="fas fa-chevron-left	"></i></a>
+	}
+
+	for (int i = 1; i <= ViewBag.NumOfPages; i++)
+	{
+		<a href="@Url.Action("Index", new { page = i })">
+			@if (i == ViewBag.CurrentPage)
+			{
+				<strong><u>@i</u></strong>
+			}
+			else
+			{
+				@i
+			}
+		</a>
+	}
+
+	if (ViewBag.CurrentPage < ViewBag.NumOfPages)
+	{
+		<a href="@Url.Action("Index",new { page = ViewBag.CurrentPage + 1})"><i class="fas fa-chevron-right"></i></a>
+	}
+}

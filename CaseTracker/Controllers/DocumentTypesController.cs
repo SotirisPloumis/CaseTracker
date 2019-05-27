@@ -17,9 +17,35 @@ namespace CaseTracker.Controllers
 	{
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.DocumentTypes.ToList());
+			int pageSize = 20;
+			var DocumentTypes = db.DocumentTypes;
+			int count = DocumentTypes.Count();
+			int numOfPages = count / pageSize + (count % pageSize > 0 ? 1 : 0);
+
+			page = page ?? 1;
+			if (page < 1)
+			{
+				page = 1;
+			}
+			if (page > numOfPages)
+			{
+				page = numOfPages;
+			}
+
+			int startIndex = ((int)page - 1) * pageSize;
+
+			var documentTypeList = DocumentTypes
+									.OrderBy(t => t.Id)
+									.Skip(startIndex)
+									.Take(pageSize)
+									.ToList();
+
+			ViewBag.NumOfPages = numOfPages;
+			ViewBag.CurrentPage = page;
+
+			return View(documentTypeList);
         }
 
         public ActionResult Details(int? id)
