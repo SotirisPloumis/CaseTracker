@@ -34,32 +34,101 @@ namespace CaseTracker.Controllers
 			PartyRepository = new PartyRepository();
 		}
 
-		public ActionResult Index()
+		public ActionResult Index(int? page)
         {
 			userID = User.Identity.GetUserId();
 			bool isAdmin = User.IsInRole("Admin");
 
-			var cases = CaseRepository.GetCases(userID, isAdmin);
+			int pageSize = 20;
+			int count = CaseRepository.GetCases(userID, isAdmin).Count();
+			int numOfPages = count / pageSize + (count % pageSize > 0 ? 1 : 0) ;
+
+			page = page ?? 1;
+			if (page < 1)
+			{
+				page = 1;
+			}
+			if (page > numOfPages)
+			{
+				page = numOfPages;
+			}
+
+			int startIndex = ((int)page - 1) * pageSize;
+
+			var cases = CaseRepository.GetCases(userID, isAdmin)
+						.OrderBy(c => c.Id)
+						.Skip(startIndex)
+						.Take(pageSize)
+						.ToList();
+
+			ViewBag.NumOfPages = numOfPages;
+			ViewBag.CurrentPage = page;
 
             return View(cases);
         }
 
-		public ActionResult Book()
+		public ActionResult Book(int? page)
 		{
 			userID = User.Identity.GetUserId();
 			bool isAdmin = User.IsInRole("Admin");
 
-			var cases = CaseRepository.GetBookCases(userID, isAdmin);
+			int pageSize = 20;
+			int count = CaseRepository.GetBookCases(userID, isAdmin).Count();
+			int numOfPages = count / pageSize + (count % pageSize > 0 ? 1 : 0);
+
+			page = page ?? 1;
+			if (page < 1)
+			{
+				page = 1;
+			}
+			if (page > numOfPages)
+			{
+				page = numOfPages;
+			}
+
+			int startIndex = ((int)page - 1) * pageSize;
+
+			var cases = CaseRepository.GetBookCases(userID, isAdmin)
+						.OrderBy(c => c.Id)
+						.Skip(startIndex)
+						.Take(pageSize)
+						.ToList();
+
+			ViewBag.NumOfPages = numOfPages;
+			ViewBag.CurrentPage = page;
 
 			return View(cases);
 		}
 
-		public ActionResult Pinakio()
+		public ActionResult Pinakio(int? page)
 		{
 			userID = User.Identity.GetUserId();
 			bool isAdmin = User.IsInRole("Admin");
 
-			var cases = CaseRepository.GetPinakioCases(userID, isAdmin);
+			int pageSize = 20;
+			int count = CaseRepository.GetCases(userID, isAdmin).Count();
+			int numOfPages = count / pageSize + (count % pageSize > 0 ? 1 : 0);
+
+			page = page ?? 1;
+			if (page < 1)
+			{
+				page = 1;
+			}
+			if (page > numOfPages)
+			{
+				page = numOfPages;
+			}
+
+			int startIndex = ((int)page - 1) * pageSize;
+
+			var cases = CaseRepository.GetCases(userID, isAdmin)
+						.OrderBy(c => c.Id)
+						.Skip(startIndex)
+						.Take(pageSize)
+						.ToList();
+
+			ViewBag.NumOfPages = numOfPages;
+			ViewBag.CurrentPage = page;
 
 			return View(cases);
 		}

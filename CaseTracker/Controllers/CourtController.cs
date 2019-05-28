@@ -13,6 +13,7 @@ namespace CaseTracker.Controllers
 	{
 		private ApplicationDbContext db;
 		private CourtRepository CourtRepository;
+		private string userID;
 
 		public CourtController()
 		{
@@ -20,21 +21,43 @@ namespace CaseTracker.Controllers
 			CourtRepository = new CourtRepository();
 		}
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 			bool isAdmin = User.IsInRole("Admin");
 
-			var courts = db.Courts
-							.Where(c => c.UserId == userID || isAdmin)
-							.ToList();
+			int pageSize = 3;
+			var userCourts = db.Courts.Where(a => a.UserId == userID || isAdmin);
+			int count = userCourts.Count();
+			int numOfPages = count / pageSize + (count % pageSize > 0 ? 1 : 0);
+
+			page = page ?? 1;
+			if (page < 1)
+			{
+				page = 1;
+			}
+			if (page > numOfPages)
+			{
+				page = numOfPages;
+			}
+
+			int startIndex = ((int)page - 1) * pageSize;
+
+			var courts = userCourts
+						.OrderBy(c => c.Id)
+						.Skip(startIndex)
+						.Take(pageSize)
+						.ToList();
+
+			ViewBag.NumOfPages = numOfPages;
+			ViewBag.CurrentPage = page;
 
 			return View(courts);
-        }
+		}
 
         public ActionResult Details(int? id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (id == null)
             {
@@ -57,7 +80,7 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name")] Court court)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (ModelState.IsValid)
             {
@@ -70,7 +93,7 @@ namespace CaseTracker.Controllers
 
         public ActionResult Edit(int? id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (id == null)
             {
@@ -88,7 +111,7 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name")] Court court)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			Court courtToEdit = db.Courts.Find(court.Id);
 
@@ -104,7 +127,7 @@ namespace CaseTracker.Controllers
 
         public ActionResult Delete(int? id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (id == null)
             {
@@ -122,7 +145,7 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			Court court = db.Courts.Find(id);
 			if (court == null || court.UserId != userID)

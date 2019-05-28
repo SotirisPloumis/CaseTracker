@@ -18,6 +18,7 @@ namespace CaseTracker.Controllers
 	{
         private ApplicationDbContext db;
 		private PartyRepository PartyRepository;
+		private string userID;
 
 		public PartiesController()
 		{
@@ -25,22 +26,43 @@ namespace CaseTracker.Controllers
 			PartyRepository = new PartyRepository();
 		}
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 			bool isAdmin = User.IsInRole("Admin");
 
-			var parties = db.Parties
-							.Include(p => p.CaseRole)
-							.Where(p => p.UserId == userID || isAdmin)
-							.ToList();
+			int pageSize = 20;
+			var userParties = db.Parties.Where(a => a.UserId == userID || isAdmin);
+			int count = userParties.Count();
+			int numOfPages = count / pageSize + (count % pageSize > 0 ? 1 : 0);
 
-            return View(parties);
-        }
+			page = page ?? 1;
+			if (page < 1)
+			{
+				page = 1;
+			}
+			if (page > numOfPages)
+			{
+				page = numOfPages;
+			}
+
+			int startIndex = ((int)page - 1) * pageSize;
+
+			var parties = userParties
+						.OrderBy(c => c.Id)
+						.Skip(startIndex)
+						.Take(pageSize)
+						.ToList();
+
+			ViewBag.NumOfPages = numOfPages;
+			ViewBag.CurrentPage = page;
+
+			return View(parties);
+		}
 
         public ActionResult Details(int? id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (id == null)
             {
@@ -65,7 +87,7 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,FathersName,CaseRoleId,Street,City,Municipality,PostCode,WorkPhone,HomePhone,MobilePhone,FAX,AFM,IDCard")] Party party)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (ModelState.IsValid)
             {
@@ -93,7 +115,7 @@ namespace CaseTracker.Controllers
 
         public ActionResult Edit(int? id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (id == null)
             {
@@ -114,7 +136,7 @@ namespace CaseTracker.Controllers
 												 "Street,City,Municipality,PostCode,WorkPhone,HomePhone," +
 												 "MobilePhone,FAX,AFM,IDCard")] Party party)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			Party partyToEdit = db.Parties.Find(party.Id);
 
@@ -144,7 +166,7 @@ namespace CaseTracker.Controllers
 
 		public ActionResult Delete(int? id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (id == null)
             {
@@ -162,7 +184,7 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			Party party = db.Parties.Find(id);
 			if (party == null || party.UserId != userID)

@@ -15,6 +15,7 @@ namespace CaseTracker.Controllers
 	{
         private ApplicationDbContext db;
 		private AttorneyRepository AttorneyRepository;
+		private string userID;
 
 		public AttorneyController()
 		{
@@ -22,21 +23,43 @@ namespace CaseTracker.Controllers
 			AttorneyRepository = new AttorneyRepository();
 		}
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 			bool isAdmin = User.IsInRole("Admin");
 
-			var attornies = db.Attorneys
-							.Where(a => a.UserId == userID || isAdmin)
-							.ToList();
+			int pageSize = 20;
+			var userAttornies = db.Attorneys.Where(a => a.UserId == userID || isAdmin);
+			int count = userAttornies.Count();
+			int numOfPages = count / pageSize + (count % pageSize > 0 ? 1 : 0);
+
+			page = page ?? 1;
+			if (page < 1)
+			{
+				page = 1;
+			}
+			if (page > numOfPages)
+			{
+				page = numOfPages;
+			}
+
+			int startIndex = ((int)page - 1) * pageSize;
+
+			var attornies = userAttornies
+						.OrderBy(c => c.Id)
+						.Skip(startIndex)
+						.Take(pageSize)
+						.ToList();
+
+			ViewBag.NumOfPages = numOfPages;
+			ViewBag.CurrentPage = page;
 
 			return View(attornies);
-        }
+		}
 
         public ActionResult Details(int? id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (id == null)
             {
@@ -59,7 +82,7 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FirstName,LastName,AFM,City")] Attorney attorney)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (ModelState.IsValid)
             {
@@ -77,7 +100,7 @@ namespace CaseTracker.Controllers
 
         public ActionResult Edit(int? id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (id == null)
             {
@@ -95,7 +118,7 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,AFM,City")] Attorney attorney)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 			
 			Attorney attorneyToEdit = db.Attorneys.Find(attorney.Id);
 
@@ -114,7 +137,7 @@ namespace CaseTracker.Controllers
 
         public ActionResult Delete(int? id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			if (id == null)
             {
@@ -132,7 +155,7 @@ namespace CaseTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-			string userID = User.Identity.GetUserId();
+			userID = User.Identity.GetUserId();
 
 			Attorney attorney = db.Attorneys.Find(id);
 			if (attorney == null || attorney.UserId != userID)

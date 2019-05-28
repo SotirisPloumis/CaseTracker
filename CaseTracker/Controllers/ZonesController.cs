@@ -22,10 +22,36 @@ namespace CaseTracker.Controllers
 			db = new ApplicationDbContext();
 		}
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Zones.ToList());
-        }
+			int pageSize = 20;
+			var Zones = db.Zones;
+			int count = Zones.Count();
+			int numOfPages = count / pageSize + (count % pageSize > 0 ? 1 : 0);
+
+			page = page ?? 1;
+			if (page < 1)
+			{
+				page = 1;
+			}
+			if (page > numOfPages)
+			{
+				page = numOfPages;
+			}
+
+			int startIndex = ((int)page - 1) * pageSize;
+
+			var ZoneList = Zones
+									.OrderBy(t => t.Id)
+									.Skip(startIndex)
+									.Take(pageSize)
+									.ToList();
+
+			ViewBag.NumOfPages = numOfPages;
+			ViewBag.CurrentPage = page;
+
+			return View(ZoneList);
+		}
 
         public ActionResult Details(int? id)
         {
